@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Data and weights never go in git; see README for download steps.
+data/
+weights/
+*.pt
+*.pth
+*.ckpt
+wandb/

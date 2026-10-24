@@ -21,7 +21,7 @@ before then.
 - [x] Train/val/test split by whole video (`configs/splits/cholecseg8k.json`)
 - [x] Training and evaluation script (`src/surgidoc/vision/train.py`), Kaggle notebook (`notebooks/train_kaggle.ipynb`)
 - [ ] U-Net fine-tuning on Kaggle GPU, per-class Dice and IoU
-- [ ] Pretrained Trans-SVNet phase model
+- [x] Pretrained Trans-SVNet ResNet50 phase classifier with temporal smoothing (`src/surgidoc/vision/phase.py`)
 - [ ] LangGraph agent, verifier, evals
 
 ## Setup
@@ -54,3 +54,22 @@ python -m surgidoc.vision.train --root /path/to/cholecseg8k --out runs/unet_r34
 Classes are scored on a split only if they occur in the training videos and in at least
 20 frames of that split. With the committed split, cystic duct, blood, hepatic vein, liver
 ligament and connective tissue are trained but not scored on test.
+
+## Phase recognition
+
+The per-frame ResNet50 classifier from Trans-SVNet (Gao et al., MICCAI 2021,
+[xjgaocs/Trans-SVNet](https://github.com/xjgaocs/Trans-SVNet)) is used as published, with
+no retraining. It predicts the 7 Cholec80 phases and was trained by its authors on Cholec80
+videos 1-40. The weights are not redistributed here:
+
+```bash
+.venv/bin/pip install -e ".[download]"
+.venv/bin/python scripts/download_weights.py   # fetches from the authors' Google Drive, checks sha256
+```
+
+Limitations:
+- Trans-SVNet's temporal stages (TeCNO + transformer) are not used. They read a whole
+  surgery at 1 fps; CholecSeg8k has at most about 25 s of continuous footage per video.
+  Per-frame probabilities are smoothed with a centred moving average instead.
+- No phase accuracy is reported. 13 of the 17 CholecSeg8k videos are in the phase model's
+  training set, and this project uses no Cholec80 phase annotations.

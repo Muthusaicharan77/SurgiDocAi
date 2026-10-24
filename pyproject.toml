@@ -16,6 +16,7 @@ dependencies = [
 
 [project.optional-dependencies]
 train = ["segmentation-models-pytorch>=0.3.4", "wandb>=0.17"]
+download = ["gdown>=5"]
 dev = ["pytest>=8", "ruff>=0.6"]
 
 [tool.setuptools.packages.find]
@@ -26,3 +27,4 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
+extend-exclude = ["notebooks"]

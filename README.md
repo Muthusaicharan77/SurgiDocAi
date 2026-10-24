@@ -18,7 +18,8 @@ before then.
 - [x] Corrected 13-class CholecSeg8k mapping (`src/surgidoc/vision/classes.py`)
 - [x] Dataset with image/mask-consistent augmentation (`src/surgidoc/vision/dataset.py`)
 - [x] Per-video class statistics (`reports/class_stats.json`)
-- [ ] Train/val/test split by video (`configs/splits/`)
+- [x] Train/val/test split by whole video (`configs/splits/cholecseg8k.json`)
+- [x] Training and evaluation script (`src/surgidoc/vision/train.py`), Kaggle notebook (`notebooks/train_kaggle.ipynb`)
 - [ ] U-Net fine-tuning on Kaggle GPU, per-class Dice and IoU
 - [ ] Pretrained Trans-SVNet phase model
 - [ ] LangGraph agent, verifier, evals
@@ -41,3 +42,15 @@ Download it and point the scripts at the extracted folder:
 ```bash
 .venv/bin/python scripts/class_stats.py --root /path/to/cholecseg8k --out reports/class_stats.json
 ```
+
+## Training
+
+On a GPU (Kaggle notebook in `notebooks/train_kaggle.ipynb`):
+
+```bash
+python -m surgidoc.vision.train --root /path/to/cholecseg8k --out runs/unet_r34
+```
+
+Classes are scored on a split only if they occur in the training videos and in at least
+20 frames of that split. With the committed split, cystic duct, blood, hepatic vein, liver
+ligament and connective tissue are trained but not scored on test.

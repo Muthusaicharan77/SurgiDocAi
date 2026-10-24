@@ -23,8 +23,8 @@ is measured.
 - [x] U-Net fine-tuned on Kaggle GPU: test mIoU 0.704 / mDice 0.818 on 3 unseen videos, 8 scorable classes ([RESULTS.md](RESULTS.md))
 - [x] Pretrained Trans-SVNet ResNet50 phase classifier with temporal smoothing (`src/surgidoc/vision/phase.py`)
 - [x] Code-only agent nodes: frame sampling, perception, timeline, claim schema and deterministic verifier (`src/surgidoc/agent/`)
-- [ ] Claude nodes (key-frame selection, report drafting) and LangGraph wiring
-- [ ] Guideline retrieval
+- [x] Guideline retrieval over a CC BY corpus (`src/surgidoc/retrieval/`)
+- [x] Claude nodes (key-frame selection with tools, report drafting) and LangGraph wiring with verify/retry loop, human review interrupt and SQLite checkpointing (`src/surgidoc/agent/graph.py`)
 - [ ] Evals
 
 ## Setup
@@ -76,3 +76,18 @@ Limitations:
   Per-frame probabilities are smoothed with a centred moving average instead.
 - No phase accuracy is reported. 13 of the 17 CholecSeg8k videos are in the phase model's
   training set, and this project uses no Cholec80 phase annotations.
+
+## Running the agent
+
+```bash
+.venv/bin/pip install -e ".[agent,download]"
+echo "ANTHROPIC_API_KEY=..." > .env            # git-ignored
+.venv/bin/python scripts/download_weights.py   # phase model; segmentation weights from your own training run
+.venv/bin/python scripts/fetch_guidelines.py && .venv/bin/python -m surgidoc.retrieval.index build
+
+.venv/bin/python -m surgidoc.agent.graph run --source /path/to/cholecseg8k/video37
+.venv/bin/python -m surgidoc.agent.graph review --thread <id> --approve [--remove c3] [--notes "..."]
+```
+
+The run pauses before the report is written and prints the verified claims for review.
+The model is Claude Haiku 5.5 by default (`SURGIDOC_MODEL` to change it).

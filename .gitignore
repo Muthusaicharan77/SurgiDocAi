@@ -12,3 +12,6 @@ weights/
 *.pth
 *.ckpt
 wandb/
+
+# Secrets
+.env

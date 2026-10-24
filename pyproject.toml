@@ -12,13 +12,15 @@ dependencies = [
     "pillow>=10",
     "pydantic>=2",
     "scipy>=1.11",
-    "torch>=2.2",
-    "torchvision>=0.17",
+    "torch>=2.6",
+    "torchvision>=0.21",
 ]
 
 [project.optional-dependencies]
 train = ["segmentation-models-pytorch>=0.3.4", "wandb>=0.17"]
 download = ["gdown>=5"]
+agent = ["anthropic>=0.70", "langgraph>=1.0", "langgraph-checkpoint-sqlite>=3", "python-dotenv>=1",
+         "sentence-transformers>=5", "qdrant-client>=1.12"]
 dev = ["pytest>=8", "ruff>=0.6"]
 
 [tool.setuptools.packages.find]

@@ -22,7 +22,10 @@ is measured.
 - [x] Training and evaluation script (`src/surgidoc/vision/train.py`), Kaggle notebook (`notebooks/train_kaggle.ipynb`)
 - [x] U-Net fine-tuned on Kaggle GPU: test mIoU 0.704 / mDice 0.818 on 3 unseen videos, 8 scorable classes ([RESULTS.md](RESULTS.md))
 - [x] Pretrained Trans-SVNet ResNet50 phase classifier with temporal smoothing (`src/surgidoc/vision/phase.py`)
-- [ ] LangGraph agent, verifier, evals
+- [x] Code-only agent nodes: frame sampling, perception, timeline, claim schema and deterministic verifier (`src/surgidoc/agent/`)
+- [ ] Claude nodes (key-frame selection, report drafting) and LangGraph wiring
+- [ ] Guideline retrieval
+- [ ] Evals
 
 ## Setup
 

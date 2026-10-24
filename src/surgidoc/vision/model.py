@@ -23,7 +23,7 @@ def build_unet(encoder: str = "resnet34", encoder_weights: str | None = "imagene
 
 def load_checkpoint(path: Path, device: str = "cpu") -> tuple[nn.Module, dict]:
     """Rebuild the model from a checkpoint written by train.py. Returns (model, config)."""
-    ckpt = torch.load(path, map_location=device, weights_only=False)
+    ckpt = torch.load(path, map_location=device, weights_only=True)
     config = ckpt["config"]
     model = build_unet(config["encoder"], encoder_weights=None)
     model.load_state_dict(ckpt["model"])  # strict: a mismatch should fail loudly

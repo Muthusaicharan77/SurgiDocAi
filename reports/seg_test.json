@@ -1,0 +1,84 @@
+{
+  "checkpoint": "weights/seg/unet_r34_best.pt",
+  "split": "test",
+  "frames": 1040,
+  "per_class": {
+    "background": {
+      "frames": 1040,
+      "dice": 0.9959557568752874,
+      "iou": 0.9919440937938623
+    },
+    "abdominal_wall": {
+      "frames": 1040,
+      "dice": 0.9079672231849447,
+      "iou": 0.8314468598946791
+    },
+    "liver": {
+      "frames": 1040,
+      "dice": 0.8111085225781342,
+      "iou": 0.6822393279637587
+    },
+    "gastrointestinal_tract": {
+      "frames": 535,
+      "dice": 0.6689180759023944,
+      "iou": 0.5025371194608333
+    },
+    "fat": {
+      "frames": 1040,
+      "dice": 0.862873358274082,
+      "iou": 0.7588190502373795
+    },
+    "grasper": {
+      "frames": 960,
+      "dice": 0.7666750459016572,
+      "iou": 0.6216326389521217
+    },
+    "connective_tissue": {
+      "frames": 0,
+      "dice": null,
+      "iou": null
+    },
+    "blood": {
+      "frames": 0,
+      "dice": null,
+      "iou": null
+    },
+    "cystic_duct": {
+      "frames": 2,
+      "dice": null,
+      "iou": null
+    },
+    "l_hook_electrocautery": {
+      "frames": 326,
+      "dice": 0.7198616983212484,
+      "iou": 0.5623311929478509
+    },
+    "gallbladder": {
+      "frames": 1039,
+      "dice": 0.8123956112410324,
+      "iou": 0.684062486574318
+    },
+    "hepatic_vein": {
+      "frames": 0,
+      "dice": null,
+      "iou": null
+    },
+    "liver_ligament": {
+      "frames": 0,
+      "dice": null,
+      "iou": null
+    }
+  },
+  "mean_dice": 0.8182194115348476,
+  "mean_iou": 0.7043765962281004,
+  "scored_classes": [
+    "background",
+    "abdominal_wall",
+    "liver",
+    "gastrointestinal_tract",
+    "fat",
+    "grasper",
+    "l_hook_electrocautery",
+    "gallbladder"
+  ]
+}

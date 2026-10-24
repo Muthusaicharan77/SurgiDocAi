@@ -12,15 +12,15 @@ track): [BFH-SxH](https://github.com/ChandrikaSethumadhavan/BFH-SxH).
 
 ## Status
 
-Work in progress. Numbers go in `RESULTS.md` once they are measured; nothing is reported
-before then.
+Work in progress. Measured numbers are in [RESULTS.md](RESULTS.md); nothing is reported before it
+is measured.
 
 - [x] Corrected 13-class CholecSeg8k mapping (`src/surgidoc/vision/classes.py`)
 - [x] Dataset with image/mask-consistent augmentation (`src/surgidoc/vision/dataset.py`)
 - [x] Per-video class statistics (`reports/class_stats.json`)
 - [x] Train/val/test split by whole video (`configs/splits/cholecseg8k.json`)
 - [x] Training and evaluation script (`src/surgidoc/vision/train.py`), Kaggle notebook (`notebooks/train_kaggle.ipynb`)
-- [ ] U-Net fine-tuning on Kaggle GPU, per-class Dice and IoU
+- [x] U-Net fine-tuned on Kaggle GPU: test mIoU 0.704 / mDice 0.818 on 3 unseen videos, 8 scorable classes ([RESULTS.md](RESULTS.md))
 - [x] Pretrained Trans-SVNet ResNet50 phase classifier with temporal smoothing (`src/surgidoc/vision/phase.py`)
 - [ ] LangGraph agent, verifier, evals
 

@@ -1,0 +1,1997 @@
+{
+ "questions": 27,
+ "candidates": 25,
+ "summary": {
+  "dense": {
+   "mrr": 0.6569111595255386,
+   "hit@1": 0.5555555555555556,
+   "recall@1": 0.3358024691358025,
+   "hit@3": 0.7037037037037037,
+   "recall@3": 0.532716049382716,
+   "hit@5": 0.7777777777777778,
+   "recall@5": 0.5802469135802469
+  },
+  "BAAI/bge-reranker-base": {
+   "mrr": 0.6037477954144621,
+   "hit@1": 0.48148148148148145,
+   "recall@1": 0.24012345679012345,
+   "hit@3": 0.5925925925925926,
+   "recall@3": 0.37654320987654316,
+   "hit@5": 0.8518518518518519,
+   "recall@5": 0.578395061728395
+  },
+  "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+   "mrr": 0.725071225071225,
+   "hit@1": 0.5925925925925926,
+   "recall@1": 0.4055555555555555,
+   "hit@3": 0.8518518518518519,
+   "recall@3": 0.587037037037037,
+   "hit@5": 0.9259259259259259,
+   "recall@5": 0.6734567901234568
+  },
+  "BAAI/bge-reranker-v2-m3": {
+   "mrr": 0.8277777777777778,
+   "hit@1": 0.7407407407407407,
+   "recall@1": 0.4808641975308642,
+   "hit@3": 0.8888888888888888,
+   "recall@3": 0.671604938271605,
+   "hit@5": 0.9259259259259259,
+   "recall@5": 0.6932098765432099
+  }
+ },
+ "rows": [
+  {
+   "id": "q01",
+   "question": "What are the three components of the critical view of safety?",
+   "relevant": [
+    "CVS-FAILS-2023-024",
+    "WSES-BDI-2020-028"
+   ],
+   "dense": {
+    "top5": [
+     "CVS-FAILS-2023-026",
+     "CVS-FAILS-2023-024",
+     "CVS-FAILS-2023-002",
+     "CVS-FAILS-2023-028",
+     "SYNOPTIC-2022-010"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-026",
+     "SYNOPTIC-2022-023",
+     "WSES-BDI-2020-028",
+     "WSES-BDI-2020-026",
+     "CVS-FAILS-2023-025"
+    ],
+    "mrr": 0.3333333333333333,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "CVS-FAILS-2023-024",
+     "CVS-FAILS-2023-002",
+     "WSES-BDI-2020-013",
+     "SYNOPTIC-2022-010",
+     "CVS-FAILS-2023-026"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-013",
+     "CVS-FAILS-2023-024",
+     "SYNOPTIC-2022-010",
+     "CVS-FAILS-2023-002",
+     "CVS-FAILS-2023-014"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   }
+  },
+  {
+   "id": "q02",
+   "question": "What should the surgeon do if the critical view of safety cannot be achieved?",
+   "relevant": [
+    "WSES-BDI-2020-011",
+    "WSES-BDI-2020-015",
+    "WSES-ACC-2020-048",
+    "WSES-ACC-2020-049"
+   ],
+   "dense": {
+    "top5": [
+     "CVS-FAILS-2023-026",
+     "CVS-FAILS-2023-024",
+     "WSES-BDI-2020-037",
+     "CVS-FAILS-2023-028",
+     "WSES-BDI-2020-072"
+    ],
+    "mrr": 0.0,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-026",
+     "WSES-BDI-2020-019",
+     "WSES-BDI-2020-037",
+     "CVS-FAILS-2023-006",
+     "WSES-BDI-2020-012"
+    ],
+    "mrr": 0.0,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "CVS-FAILS-2023-024",
+     "WSES-BDI-2020-013",
+     "CVS-FAILS-2023-028",
+     "CVS-FAILS-2023-002",
+     "CVS-FAILS-2023-014"
+    ],
+    "mrr": 0.0,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-013",
+     "CVS-FAILS-2023-024",
+     "WSES-ACC-2020-052",
+     "WSES-ACC-2020-087",
+     "CVS-FAILS-2023-028"
+    ],
+    "mrr": 0.0,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   }
+  },
+  {
+   "id": "q03",
+   "question": "What is a time-out before clipping or cutting ductal structures?",
+   "relevant": [
+    "CVS-FAILS-2023-025",
+    "WSES-BDI-2020-029"
+   ],
+   "dense": {
+    "top5": [
+     "CVS-FAILS-2023-025",
+     "WSES-BDI-2020-029",
+     "WSES-BDI-2020-014",
+     "CVS-FAILS-2023-016",
+     "WSES-BDI-2020-067"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-025",
+     "CVS-FAILS-2023-016",
+     "WSES-BDI-2020-067",
+     "CVS-FAILS-2023-017",
+     "SYNOPTIC-2022-009"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "CVS-FAILS-2023-025",
+     "WSES-BDI-2020-029",
+     "CVS-FAILS-2023-027",
+     "WSES-BDI-2020-067",
+     "WSES-BDI-2020-057"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "CVS-FAILS-2023-025",
+     "WSES-BDI-2020-029",
+     "CVS-FAILS-2023-027",
+     "WSES-BDI-2020-067",
+     "WSES-BDI-2020-073"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q04",
+   "question": "Who has to confirm the critical view of safety when a resident does the dissection?",
+   "relevant": [
+    "WSES-BDI-2020-014"
+   ],
+   "dense": {
+    "top5": [
+     "CVS-FAILS-2023-024",
+     "CVS-FAILS-2023-027",
+     "CVS-FAILS-2023-026",
+     "WSES-BDI-2020-071",
+     "WSES-BDI-2020-031"
+    ],
+    "mrr": 0.06666666666666667,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-026",
+     "CVS-FAILS-2023-024",
+     "CVS-FAILS-2023-002",
+     "WSES-BDI-2020-014",
+     "WSES-BDI-2020-037"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "CVS-FAILS-2023-024",
+     "CVS-FAILS-2023-027",
+     "CVS-FAILS-2023-002",
+     "WSES-BDI-2020-014",
+     "SYNOPTIC-2022-010"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-014",
+     "CVS-FAILS-2023-024",
+     "SYNOPTIC-2022-018",
+     "CVS-FAILS-2023-027",
+     "SYNOPTIC-2022-010"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q05",
+   "question": "Which items should every operation note contain according to the Royal College of Surgeons of Ireland?",
+   "relevant": [
+    "SYNOPTIC-2022-004"
+   ],
+   "dense": {
+    "top5": [
+     "SYNOPTIC-2022-004",
+     "SYNOPTIC-2022-018",
+     "SYNOPTIC-2022-001",
+     "SYNOPTIC-2022-006",
+     "SYNOPTIC-2022-011"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-009",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-004",
+     "WSES-BDI-2020-028"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "SYNOPTIC-2022-004",
+     "SYNOPTIC-2022-011",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-001",
+     "SYNOPTIC-2022-005"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "SYNOPTIC-2022-004",
+     "SYNOPTIC-2022-011",
+     "SYNOPTIC-2022-010",
+     "SYNOPTIC-2022-009",
+     "SYNOPTIC-2022-025"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q06",
+   "question": "What must the operative report minimally include after a bile duct injury?",
+   "relevant": [
+    "WSES-BDI-2020-074",
+    "WSES-BDI-2020-024",
+    "WSES-BDI-2020-028"
+   ],
+   "dense": {
+    "top5": [
+     "SYNOPTIC-2022-009",
+     "WSES-BDI-2020-028",
+     "WSES-BDI-2020-021",
+     "WSES-BDI-2020-074",
+     "SYNOPTIC-2022-006"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.3333333333333333,
+    "hit@5": 1.0,
+    "recall@5": 0.6666666666666666
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-BDI-2020-001",
+     "WSES-BDI-2020-074",
+     "WSES-BDI-2020-073",
+     "SYNOPTIC-2022-009",
+     "WSES-BDI-2020-029"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.3333333333333333,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-028",
+     "SYNOPTIC-2022-009",
+     "WSES-BDI-2020-001",
+     "WSES-BDI-2020-029",
+     "WSES-BDI-2020-057"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.3333333333333333,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-028",
+     "SYNOPTIC-2022-009",
+     "WSES-BDI-2020-074",
+     "WSES-BDI-2020-029",
+     "WSES-BDI-2020-001"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.6666666666666666,
+    "hit@5": 1.0,
+    "recall@5": 0.6666666666666666
+   }
+  },
+  {
+   "id": "q07",
+   "question": "Are video recordings more accurate than written operative notes for laparoscopic cholecystectomy?",
+   "relevant": [
+    "SYNOPTIC-2022-014",
+    "SYNOPTIC-2022-021"
+   ],
+   "dense": {
+    "top5": [
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-018",
+     "SYNOPTIC-2022-001",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-006"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-014",
+     "SYNOPTIC-2022-003",
+     "SYNOPTIC-2022-005"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-001",
+     "SYNOPTIC-2022-018",
+     "SYNOPTIC-2022-014"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-014",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-008",
+     "SYNOPTIC-2022-001"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q08",
+   "question": "How reliable is intraoperative photography for documenting the critical view of safety?",
+   "relevant": [
+    "SYNOPTIC-2022-014"
+   ],
+   "dense": {
+    "top5": [
+     "SYNOPTIC-2022-014",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-023",
+     "CVS-FAILS-2023-029"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-014",
+     "CVS-FAILS-2023-002",
+     "SYNOPTIC-2022-021"
+    ],
+    "mrr": 0.3333333333333333,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "SYNOPTIC-2022-014",
+     "SYNOPTIC-2022-005",
+     "CVS-FAILS-2023-001",
+     "SYNOPTIC-2022-010",
+     "CVS-FAILS-2023-002"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "SYNOPTIC-2022-014",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-010"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q09",
+   "question": "Should intraoperative cholangiography be used routinely to prevent bile duct injury?",
+   "relevant": [
+    "WSES-BDI-2020-016",
+    "WSES-BDI-2020-011",
+    "WSES-BDI-2020-073"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-BDI-2020-016",
+     "WSES-BDI-2020-073",
+     "CVS-FAILS-2023-021",
+     "CVS-FAILS-2023-001",
+     "WSES-BDI-2020-003"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.6666666666666666,
+    "hit@5": 1.0,
+    "recall@5": 0.6666666666666666
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-BDI-2020-016",
+     "CVS-FAILS-2023-003",
+     "WSES-BDI-2020-017",
+     "WSES-BDI-2020-013",
+     "WSES-BDI-2020-001"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.3333333333333333,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-034",
+     "WSES-BDI-2020-016",
+     "WSES-BDI-2020-017",
+     "WSES-BDI-2020-073",
+     "WSES-BDI-2020-039"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.3333333333333333,
+    "hit@5": 1.0,
+    "recall@5": 0.6666666666666666
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-016",
+     "WSES-BDI-2020-073",
+     "WSES-BDI-2020-034",
+     "WSES-BDI-2020-014",
+     "WSES-BDI-2020-013"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.6666666666666666,
+    "hit@5": 1.0,
+    "recall@5": 0.6666666666666666
+   }
+  },
+  {
+   "id": "q10",
+   "question": "What is the role of indocyanine green fluorescence cholangiography?",
+   "relevant": [
+    "CVS-FAILS-2023-019",
+    "WSES-BDI-2020-017",
+    "WSES-BDI-2020-011",
+    "WSES-BDI-2020-073",
+    "WSES-BDI-2020-034"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-BDI-2020-017",
+     "CVS-FAILS-2023-019",
+     "CVS-FAILS-2023-020",
+     "CVS-FAILS-2023-021",
+     "WSES-ACC-2020-017"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.2,
+    "hit@3": 1.0,
+    "recall@3": 0.4,
+    "hit@5": 1.0,
+    "recall@5": 0.4
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-BDI-2020-017",
+     "WSES-BDI-2020-016",
+     "CVS-FAILS-2023-019",
+     "CVS-FAILS-2023-020",
+     "WSES-BDI-2020-034"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.2,
+    "hit@3": 1.0,
+    "recall@3": 0.4,
+    "hit@5": 1.0,
+    "recall@5": 0.6
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-017",
+     "CVS-FAILS-2023-019",
+     "CVS-FAILS-2023-020",
+     "CVS-FAILS-2023-021",
+     "CVS-FAILS-2023-005"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.2,
+    "hit@3": 1.0,
+    "recall@3": 0.4,
+    "hit@5": 1.0,
+    "recall@5": 0.4
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-017",
+     "CVS-FAILS-2023-019",
+     "WSES-BDI-2020-016",
+     "CVS-FAILS-2023-021",
+     "CVS-FAILS-2023-020"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.2,
+    "hit@3": 1.0,
+    "recall@3": 0.4,
+    "hit@5": 1.0,
+    "recall@5": 0.4
+   }
+  },
+  {
+   "id": "q11",
+   "question": "Does converting to open surgery reduce the risk of bile duct injury?",
+   "relevant": [
+    "WSES-BDI-2020-011",
+    "WSES-BDI-2020-013",
+    "WSES-BDI-2020-073"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-BDI-2020-013",
+     "WSES-ACC-2020-052",
+     "WSES-BDI-2020-003",
+     "WSES-ACC-2020-050",
+     "WSES-ACC-2020-051"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.3333333333333333,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-ACC-2020-049",
+     "WSES-BDI-2020-001",
+     "WSES-ACC-2020-061",
+     "WSES-BDI-2020-013",
+     "CVS-FAILS-2023-003"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-073",
+     "WSES-BDI-2020-013",
+     "CVS-FAILS-2023-001",
+     "WSES-ACC-2020-051",
+     "WSES-ACC-2020-059"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.6666666666666666,
+    "hit@5": 1.0,
+    "recall@5": 0.6666666666666666
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-073",
+     "WSES-BDI-2020-013",
+     "WSES-BDI-2020-003",
+     "CVS-FAILS-2023-001",
+     "SYNOPTIC-2022-016"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.6666666666666666,
+    "hit@5": 1.0,
+    "recall@5": 0.6666666666666666
+   }
+  },
+  {
+   "id": "q12",
+   "question": "How is a fundus-first cholecystectomy performed and when is it used?",
+   "relevant": [
+    "CVS-FAILS-2023-016",
+    "WSES-BDI-2020-015"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-BDI-2020-015",
+     "CVS-FAILS-2023-016",
+     "CVS-FAILS-2023-017",
+     "WSES-ACC-2020-049",
+     "WSES-BDI-2020-005"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-016",
+     "CVS-FAILS-2023-017",
+     "WSES-ACC-2020-048",
+     "WSES-ACC-2020-003",
+     "CVS-FAILS-2023-003"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "CVS-FAILS-2023-017",
+     "WSES-BDI-2020-015",
+     "CVS-FAILS-2023-016",
+     "CVS-FAILS-2023-015",
+     "WSES-ACC-2020-053"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "CVS-FAILS-2023-017",
+     "CVS-FAILS-2023-016",
+     "WSES-BDI-2020-015",
+     "WSES-ACC-2020-048",
+     "CVS-FAILS-2023-015"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q13",
+   "question": "Which anatomical landmark marks the plane of the common bile duct?",
+   "relevant": [
+    "CVS-FAILS-2023-010"
+   ],
+   "dense": {
+    "top5": [
+     "CVS-FAILS-2023-012",
+     "WSES-BDI-2020-029",
+     "CVS-FAILS-2023-010",
+     "CVS-FAILS-2023-004",
+     "CVS-FAILS-2023-001"
+    ],
+    "mrr": 0.3333333333333333,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-002",
+     "WSES-BDI-2020-027",
+     "WSES-ACC-2020-007",
+     "CVS-FAILS-2023-001",
+     "WSES-BDI-2020-025"
+    ],
+    "mrr": 0.14285714285714285,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "CVS-FAILS-2023-004",
+     "CVS-FAILS-2023-001",
+     "CVS-FAILS-2023-012",
+     "CVS-FAILS-2023-002",
+     "WSES-ACC-2020-026"
+    ],
+    "mrr": 0.07692307692307693,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "CVS-FAILS-2023-001",
+     "CVS-FAILS-2023-004",
+     "CVS-FAILS-2023-002",
+     "WSES-BDI-2020-029",
+     "WSES-BDI-2020-027"
+    ],
+    "mrr": 0.1,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   }
+  },
+  {
+   "id": "q14",
+   "question": "What are the borders of Calot's triangle?",
+   "relevant": [
+    "CVS-FAILS-2023-012"
+   ],
+   "dense": {
+    "top5": [
+     "CVS-FAILS-2023-012",
+     "CVS-FAILS-2023-024",
+     "CVS-FAILS-2023-010",
+     "CVS-FAILS-2023-013",
+     "CVS-FAILS-2023-009"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-012",
+     "SYNOPTIC-2022-010",
+     "CVS-FAILS-2023-010",
+     "CVS-FAILS-2023-013",
+     "CVS-FAILS-2023-016"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "CVS-FAILS-2023-012",
+     "CVS-FAILS-2023-016",
+     "CVS-FAILS-2023-024",
+     "CVS-FAILS-2023-013",
+     "SYNOPTIC-2022-010"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "CVS-FAILS-2023-012",
+     "CVS-FAILS-2023-016",
+     "CVS-FAILS-2023-013",
+     "CVS-FAILS-2023-024",
+     "SYNOPTIC-2022-010"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q15",
+   "question": "What should be done when a bile duct injury is found during surgery and no hepatobiliary surgeon is available?",
+   "relevant": [
+    "WSES-BDI-2020-035",
+    "WSES-BDI-2020-030",
+    "WSES-BDI-2020-036"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-BDI-2020-003",
+     "WSES-BDI-2020-004",
+     "WSES-BDI-2020-021",
+     "WSES-BDI-2020-066",
+     "WSES-BDI-2020-048"
+    ],
+    "mrr": 0.1111111111111111,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-BDI-2020-001",
+     "CVS-FAILS-2023-001",
+     "WSES-BDI-2020-014",
+     "WSES-BDI-2020-030",
+     "WSES-BDI-2020-039"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-001",
+     "WSES-BDI-2020-039",
+     "WSES-BDI-2020-035",
+     "WSES-BDI-2020-028",
+     "WSES-BDI-2020-029"
+    ],
+    "mrr": 0.3333333333333333,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.3333333333333333,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-035",
+     "WSES-BDI-2020-066",
+     "WSES-BDI-2020-001",
+     "WSES-BDI-2020-004",
+     "WSES-BDI-2020-003"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.3333333333333333,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   }
+  },
+  {
+   "id": "q16",
+   "question": "How should a minor bile duct injury recognised during the operation be repaired?",
+   "relevant": [
+    "WSES-BDI-2020-035",
+    "WSES-BDI-2020-030",
+    "WSES-BDI-2020-074",
+    "WSES-BDI-2020-027",
+    "WSES-BDI-2020-036"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-BDI-2020-035",
+     "WSES-BDI-2020-074",
+     "WSES-BDI-2020-021",
+     "WSES-BDI-2020-004",
+     "WSES-BDI-2020-030"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.2,
+    "hit@3": 1.0,
+    "recall@3": 0.4,
+    "hit@5": 1.0,
+    "recall@5": 0.6
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-BDI-2020-027",
+     "WSES-BDI-2020-036",
+     "WSES-BDI-2020-035",
+     "WSES-BDI-2020-004",
+     "WSES-BDI-2020-001"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.2,
+    "hit@3": 1.0,
+    "recall@3": 0.6,
+    "hit@5": 1.0,
+    "recall@5": 0.6
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-004",
+     "WSES-BDI-2020-067",
+     "WSES-BDI-2020-035",
+     "WSES-BDI-2020-001",
+     "WSES-BDI-2020-060"
+    ],
+    "mrr": 0.3333333333333333,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.2,
+    "hit@5": 1.0,
+    "recall@5": 0.2
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-035",
+     "WSES-BDI-2020-027",
+     "WSES-BDI-2020-004",
+     "WSES-BDI-2020-001",
+     "WSES-BDI-2020-076"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.2,
+    "hit@3": 1.0,
+    "recall@3": 0.4,
+    "hit@5": 1.0,
+    "recall@5": 0.4
+   }
+  },
+  {
+   "id": "q17",
+   "question": "What does unexplained bile in the operative field suggest?",
+   "relevant": [
+    "WSES-BDI-2020-033"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-BDI-2020-048",
+     "CVS-FAILS-2023-004",
+     "WSES-BDI-2020-033",
+     "WSES-BDI-2020-029",
+     "WSES-BDI-2020-060"
+    ],
+    "mrr": 0.3333333333333333,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-004",
+     "WSES-BDI-2020-048",
+     "WSES-BDI-2020-016",
+     "WSES-BDI-2020-033",
+     "WSES-ACC-2020-021"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-033",
+     "WSES-BDI-2020-060",
+     "WSES-BDI-2020-057",
+     "WSES-BDI-2020-004",
+     "CVS-FAILS-2023-004"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-033",
+     "WSES-BDI-2020-048",
+     "WSES-BDI-2020-060",
+     "CVS-FAILS-2023-004",
+     "WSES-BDI-2020-029"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q18",
+   "question": "When should cholecystectomy be performed in acute cholecystitis?",
+   "relevant": [
+    "WSES-ACC-2020-053",
+    "WSES-ACC-2020-057",
+    "WSES-BDI-2020-011",
+    "WSES-BDI-2020-073"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-ACC-2020-053",
+     "WSES-ACC-2020-054",
+     "WSES-BDI-2020-018",
+     "WSES-ACC-2020-059",
+     "WSES-ACC-2020-003"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.25,
+    "hit@3": 1.0,
+    "recall@3": 0.25,
+    "hit@5": 1.0,
+    "recall@5": 0.25
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-ACC-2020-053",
+     "WSES-ACC-2020-007",
+     "WSES-ACC-2020-059",
+     "WSES-BDI-2020-040",
+     "WSES-BDI-2020-067"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.25,
+    "hit@3": 1.0,
+    "recall@3": 0.25,
+    "hit@5": 1.0,
+    "recall@5": 0.25
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-ACC-2020-053",
+     "WSES-ACC-2020-054",
+     "WSES-ACC-2020-057",
+     "WSES-ACC-2020-059",
+     "WSES-ACC-2020-060"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.25,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-ACC-2020-053",
+     "WSES-ACC-2020-054",
+     "WSES-ACC-2020-059",
+     "CVS-FAILS-2023-003",
+     "WSES-ACC-2020-007"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.25,
+    "hit@3": 1.0,
+    "recall@3": 0.25,
+    "hit@5": 1.0,
+    "recall@5": 0.25
+   }
+  },
+  {
+   "id": "q19",
+   "question": "Should antibiotics be continued after surgery for uncomplicated acute cholecystitis?",
+   "relevant": [
+    "WSES-ACC-2020-081"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-ACC-2020-081",
+     "WSES-BDI-2020-040",
+     "WSES-ACC-2020-070",
+     "WSES-ACC-2020-060",
+     "WSES-ACC-2020-066"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-ACC-2020-081",
+     "WSES-BDI-2020-067",
+     "WSES-BDI-2020-048",
+     "WSES-BDI-2020-040",
+     "WSES-BDI-2020-042"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-ACC-2020-081",
+     "WSES-BDI-2020-045",
+     "WSES-BDI-2020-041",
+     "WSES-ACC-2020-070",
+     "WSES-ACC-2020-066"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-ACC-2020-081",
+     "WSES-BDI-2020-041",
+     "WSES-BDI-2020-045",
+     "WSES-BDI-2020-040",
+     "WSES-BDI-2020-039"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q20",
+   "question": "What are the risks of laparoscopic cholecystectomy in patients with liver cirrhosis?",
+   "relevant": [
+    "WSES-ACC-2020-038"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-ACC-2020-038",
+     "WSES-ACC-2020-039",
+     "CVS-FAILS-2023-003",
+     "WSES-ACC-2020-037",
+     "WSES-ACC-2020-049"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-004",
+     "WSES-ACC-2020-061",
+     "WSES-ACC-2020-007",
+     "WSES-BDI-2020-048",
+     "WSES-ACC-2020-038"
+    ],
+    "mrr": 0.2,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-ACC-2020-038",
+     "WSES-ACC-2020-039",
+     "WSES-ACC-2020-002",
+     "WSES-ACC-2020-059",
+     "WSES-ACC-2020-048"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-ACC-2020-038",
+     "WSES-ACC-2020-061",
+     "WSES-ACC-2020-037",
+     "WSES-ACC-2020-059",
+     "WSES-ACC-2020-007"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q21",
+   "question": "Which unusual anatomical findings should be described in the operative report?",
+   "relevant": [
+    "WSES-BDI-2020-029"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-BDI-2020-029",
+     "SYNOPTIC-2022-006",
+     "SYNOPTIC-2022-002",
+     "WSES-BDI-2020-028",
+     "CVS-FAILS-2023-014"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-BDI-2020-029",
+     "CVS-FAILS-2023-012",
+     "CVS-FAILS-2023-004",
+     "SYNOPTIC-2022-004",
+     "CVS-FAILS-2023-009"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-029",
+     "WSES-BDI-2020-028",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-022",
+     "SYNOPTIC-2022-006"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-029",
+     "SYNOPTIC-2022-005",
+     "WSES-BDI-2020-028",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-022"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q22",
+   "question": "What are the benefits of synoptic, templated operative reports?",
+   "relevant": [
+    "SYNOPTIC-2022-005",
+    "SYNOPTIC-2022-023",
+    "WSES-BDI-2020-071",
+    "SYNOPTIC-2022-012"
+   ],
+   "dense": {
+    "top5": [
+     "SYNOPTIC-2022-020",
+     "SYNOPTIC-2022-019",
+     "SYNOPTIC-2022-002",
+     "SYNOPTIC-2022-012",
+     "SYNOPTIC-2022-001"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 0.25
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-003",
+     "SYNOPTIC-2022-025",
+     "SYNOPTIC-2022-024"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.25,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "SYNOPTIC-2022-020",
+     "SYNOPTIC-2022-025",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-002",
+     "SYNOPTIC-2022-019"
+    ],
+    "mrr": 0.3333333333333333,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.25,
+    "hit@5": 1.0,
+    "recall@5": 0.25
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "SYNOPTIC-2022-019",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-020",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-006"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.25,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   }
+  },
+  {
+   "id": "q23",
+   "question": "What privacy and medico-legal concerns come with storing surgical videos?",
+   "relevant": [
+    "SYNOPTIC-2022-024",
+    "SYNOPTIC-2022-005"
+   ],
+   "dense": {
+    "top5": [
+     "SYNOPTIC-2022-024",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-002"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "SYNOPTIC-2022-024",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-003",
+     "SYNOPTIC-2022-023"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "SYNOPTIC-2022-024",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-010"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "SYNOPTIC-2022-024",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-002"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q24",
+   "question": "How often is a complete critical view of safety actually achieved?",
+   "relevant": [
+    "WSES-BDI-2020-013",
+    "SYNOPTIC-2022-014"
+   ],
+   "dense": {
+    "top5": [
+     "CVS-FAILS-2023-024",
+     "CVS-FAILS-2023-026",
+     "CVS-FAILS-2023-006",
+     "CVS-FAILS-2023-002",
+     "CVS-FAILS-2023-025"
+    ],
+    "mrr": 0.16666666666666666,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "CVS-FAILS-2023-006",
+     "CVS-FAILS-2023-026",
+     "WSES-BDI-2020-019",
+     "WSES-BDI-2020-020",
+     "WSES-BDI-2020-028"
+    ],
+    "mrr": 0.16666666666666666,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "CVS-FAILS-2023-024",
+     "WSES-BDI-2020-013",
+     "CVS-FAILS-2023-002",
+     "SYNOPTIC-2022-010",
+     "CVS-FAILS-2023-027"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-013",
+     "CVS-FAILS-2023-024",
+     "CVS-FAILS-2023-003",
+     "SYNOPTIC-2022-010",
+     "WSES-ACC-2020-052"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.5,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   }
+  },
+  {
+   "id": "q25",
+   "question": "Which key steps of the operation does the Dutch Surgical Society guideline ask to document?",
+   "relevant": [
+    "SYNOPTIC-2022-010"
+   ],
+   "dense": {
+    "top5": [
+     "SYNOPTIC-2022-018",
+     "SYNOPTIC-2022-002",
+     "SYNOPTIC-2022-004",
+     "SYNOPTIC-2022-001",
+     "WSES-BDI-2020-028"
+    ],
+    "mrr": 0.16666666666666666,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "SYNOPTIC-2022-003",
+     "SYNOPTIC-2022-009",
+     "SYNOPTIC-2022-005",
+     "WSES-BDI-2020-028",
+     "SYNOPTIC-2022-023"
+    ],
+    "mrr": 0.125,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "SYNOPTIC-2022-010",
+     "SYNOPTIC-2022-021",
+     "SYNOPTIC-2022-018",
+     "WSES-BDI-2020-007",
+     "SYNOPTIC-2022-003"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "SYNOPTIC-2022-010",
+     "SYNOPTIC-2022-021",
+     "WSES-BDI-2020-028",
+     "SYNOPTIC-2022-018",
+     "SYNOPTIC-2022-003"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 1.0,
+    "hit@3": 1.0,
+    "recall@3": 1.0,
+    "hit@5": 1.0,
+    "recall@5": 1.0
+   }
+  },
+  {
+   "id": "q26",
+   "question": "Should the video of the procedure be attached to the operative report?",
+   "relevant": [
+    "WSES-BDI-2020-030",
+    "WSES-BDI-2020-074",
+    "WSES-BDI-2020-024"
+   ],
+   "dense": {
+    "top5": [
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-024",
+     "SYNOPTIC-2022-006",
+     "SYNOPTIC-2022-018",
+     "SYNOPTIC-2022-021"
+    ],
+    "mrr": 0.058823529411764705,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 0.0,
+    "recall@5": 0.0
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "SYNOPTIC-2022-024",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-023",
+     "WSES-BDI-2020-030",
+     "SYNOPTIC-2022-021"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-030",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-006",
+     "SYNOPTIC-2022-003"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.3333333333333333,
+    "hit@3": 1.0,
+    "recall@3": 0.3333333333333333,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "SYNOPTIC-2022-005",
+     "SYNOPTIC-2022-023",
+     "SYNOPTIC-2022-008",
+     "WSES-BDI-2020-030",
+     "SYNOPTIC-2022-003"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 0.3333333333333333
+   }
+  },
+  {
+   "id": "q27",
+   "question": "How are bile duct injuries classified?",
+   "relevant": [
+    "WSES-BDI-2020-024",
+    "WSES-BDI-2020-026",
+    "WSES-BDI-2020-073",
+    "WSES-BDI-2020-027"
+   ],
+   "dense": {
+    "top5": [
+     "WSES-BDI-2020-024",
+     "WSES-BDI-2020-026",
+     "WSES-BDI-2020-025",
+     "SYNOPTIC-2022-017",
+     "WSES-BDI-2020-021"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.25,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "BAAI/bge-reranker-base": {
+    "top5": [
+     "WSES-BDI-2020-026",
+     "WSES-BDI-2020-001",
+     "SYNOPTIC-2022-017",
+     "WSES-BDI-2020-027",
+     "WSES-BDI-2020-025"
+    ],
+    "mrr": 1.0,
+    "hit@1": 1.0,
+    "recall@1": 0.25,
+    "hit@3": 1.0,
+    "recall@3": 0.25,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "cross-encoder/ms-marco-MiniLM-L-6-v2": {
+    "top5": [
+     "WSES-BDI-2020-001",
+     "WSES-BDI-2020-025",
+     "WSES-BDI-2020-014",
+     "WSES-BDI-2020-027",
+     "WSES-BDI-2020-024"
+    ],
+    "mrr": 0.25,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 0.0,
+    "recall@3": 0.0,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   },
+   "BAAI/bge-reranker-v2-m3": {
+    "top5": [
+     "WSES-BDI-2020-025",
+     "WSES-BDI-2020-026",
+     "WSES-BDI-2020-027",
+     "WSES-BDI-2020-001",
+     "SYNOPTIC-2022-017"
+    ],
+    "mrr": 0.5,
+    "hit@1": 0.0,
+    "recall@1": 0.0,
+    "hit@3": 1.0,
+    "recall@3": 0.5,
+    "hit@5": 1.0,
+    "recall@5": 0.5
+   }
+  }
+ ]
+}

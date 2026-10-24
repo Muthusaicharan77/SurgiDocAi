@@ -26,7 +26,8 @@ is measured.
 - [x] Guideline retrieval over a CC BY corpus (`src/surgidoc/retrieval/`)
 - [x] Claude nodes (key-frame selection with tools, report drafting) and LangGraph wiring with verify/retry loop, human review interrupt and SQLite checkpointing (`src/surgidoc/agent/graph.py`)
 - [x] Quote rule: every guideline claim carries a verbatim quote from its cited passage, checked by code (`src/surgidoc/agent/verify.py`) and shown to the reviewer
-- [ ] Evals
+- [x] Evals: claim grounding against ground-truth masks, verifier on/off, retrieval hit@k / recall@k / MRR with three rerankers (`src/surgidoc/evals/`, [RESULTS.md](RESULTS.md))
+- [ ] Injected-error eval for the verifier, tool-use eval
 
 ## Setup
 

@@ -34,14 +34,15 @@ class Hit(BaseModel):
 
 
 class GuidelineIndex:
-    def __init__(self, path: Path = DEFAULT_PATH, rerank: bool = True) -> None:
+    def __init__(self, path: Path = DEFAULT_PATH, rerank: bool = True,
+                 rerank_model: str = RERANK_MODEL) -> None:
         from qdrant_client import QdrantClient
         from sentence_transformers import CrossEncoder, SentenceTransformer
 
         # Local file mode; the same client talks to a Qdrant server given a URL.
         self.client = QdrantClient(path=str(path))
         self.embedder = SentenceTransformer(EMBED_MODEL, device="cpu")
-        self.reranker = CrossEncoder(RERANK_MODEL, device="cpu") if rerank else None
+        self.reranker = CrossEncoder(rerank_model, device="cpu") if rerank else None
 
     def build(self, passages: list[Passage]) -> None:
         from qdrant_client.models import Distance, PointStruct, VectorParams

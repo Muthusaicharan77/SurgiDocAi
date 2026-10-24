@@ -78,3 +78,61 @@ Checkpoint used here: `unet_r34_best.pt`, sha256
 No accuracy is reported. See the README: the pretrained Trans-SVNet frame classifier is
 used as published, 13 of the 17 CholecSeg8k videos are in its training set, and this project
 uses no Cholec80 phase annotations.
+
+## Agent: grounding of report claims
+
+Measured 2026-10-24 on the 3 test videos (`reports/eval_grounding.json`). Each run's claims
+are checked twice with the same verifier: once against the vision models' output (what
+the agent sees), once against facts rebuilt from CholecSeg8k's hand-drawn masks.
+
+| Condition | Claims | Gradable | Grounded | Contradicted | Contradicted, measured class |
+|---|---:|---:|---:|---:|---:|
+| First draft, no verifier | 50 | 21 | 20 | 1 | 0 |
+| After verifier and retries | 50 | 21 | 20 | 1 | 0 |
+
+- **Gradable** claims say a structure is visible: structure claims and event claims that
+  name a structure. Phase claims have no ground truth here; guideline and limitation claims
+  make no observation. Claims are graded on every structure their text names.
+- **The one contradiction** (video55): "connective tissue is detected in key frames". The
+  U-Net saw it in 6 frames, the masks in none. Connective tissue has no measured test score,
+  so the report already labels the claim unverified.
+- **Verifier value: no measurable effect in these runs.** The verifier rejected 5 first-draft
+  claims in video55, and Claude fixed them on retry. All 5 were true by the masks; they named
+  instruments without listing them. In these 3 runs Claude wrote no false claim that the
+  verifier could catch, so the two conditions are identical. Measuring what the verifier
+  catches needs drafts with known errors (injected false claims), which this eval does not do.
+- **Small sample.** 3 videos, 1 run each, 21 gradable claims. Not a precision estimate.
+
+```bash
+.venv/bin/python -m surgidoc.agent.graph run --source /path/to/cholecseg8k/video17 --thread eval-video17
+.venv/bin/python -m surgidoc.evals.grounding --threads eval-video17 eval-video37 eval-video55
+```
+
+## Guideline retrieval
+
+Measured 2026-10-24 (`reports/eval_retrieval.json`). 27 hand-written questions over the
+219-passage corpus, each labelled with the passages that answer it
+(`configs/evals/retrieval_questions.json`). Every ranking reorders the same 25 dense
+candidates from `bge-small-en-v1.5`; the agent keeps the top 3 per query.
+
+| Ranking | MRR | Hit@1 | Hit@3 | Recall@3 | Hit@5 | Recall@5 | CPU s / query |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Dense only | 0.66 | 0.56 | 0.70 | 0.53 | 0.78 | 0.58 | <0.1 |
+| + bge-reranker-base | 0.60 | 0.48 | 0.59 | 0.38 | 0.85 | 0.58 | 6.6 |
+| + ms-marco-MiniLM-L-6-v2 | 0.73 | 0.59 | 0.85 | 0.59 | 0.93 | 0.67 | 1.1 |
+| + bge-reranker-v2-m3 | 0.83 | 0.74 | 0.89 | 0.67 | 0.93 | 0.69 | 24.9 |
+
+- **The reranker the agent was built with makes retrieval worse.** bge-reranker-base gives
+  near-1.0 scores to most passages about cholecystectomy complications, so it reorders
+  passages that are related but do not answer the question above the ones that do.
+- **Dense recall is the ceiling.** For q02 (what to do when the critical view of safety
+  cannot be achieved) none of the 4 answering passages is in the dense top 25.
+- **Caveats.** I wrote and labelled the questions myself, while reading the corpus,
+  which favours wording overlap. Five labels were added after a first run, for passages a
+  ranker returned that do answer the question on a full read. The rerankers were compared
+  on the same 27 questions, with no held-out set.
+
+```bash
+.venv/bin/python -m surgidoc.evals.retrieval --rerankers BAAI/bge-reranker-base \
+    cross-encoder/ms-marco-MiniLM-L-6-v2 BAAI/bge-reranker-v2-m3
+```

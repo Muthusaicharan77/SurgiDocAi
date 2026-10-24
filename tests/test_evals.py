@@ -1,0 +1,91 @@
+import json
+from pathlib import Path
+
+import numpy as np
+from PIL import Image
+
+from surgidoc.agent.claims import Claim
+from surgidoc.agent.facts import FrameFacts, StructureFacts
+from surgidoc.agent.timeline import build_timeline
+from surgidoc.evals.grounding import grade, ground_truth_facts, summarise
+from surgidoc.evals.retrieval import DEFAULT_QUESTIONS, score
+
+GRASPER, LIVER, UNLABELED = 31, 21, 255  # watershed grey values
+
+
+def write_frame(tmp_path: Path, i: int, mask: np.ndarray) -> str:
+    image = tmp_path / f"frame_{i}_endo.png"
+    Image.fromarray(np.zeros((*mask.shape, 3), np.uint8)).save(image)
+    Image.fromarray(np.stack([mask] * 3, -1)).save(tmp_path / f"frame_{i}_endo_watershed_mask.png")
+    return str(image)
+
+
+def test_ground_truth_facts_read_the_mask_and_skip_unlabeled(tmp_path):
+    mask = np.full((10, 10), LIVER, np.uint8)
+    mask[:2] = GRASPER
+    mask[9, 9] = UNLABELED
+    f = FrameFacts(frame_id=0, frame_number=0, time_s=0.0, source=write_frame(tmp_path, 0, mask),
+                   phase="preparation", phase_confidence=0.9,
+                   structures={"gallbladder": StructureFacts(area=0.5, components=1)})
+    gt = ground_truth_facts([f])[0]
+    assert set(gt.structures) == {"grasper", "liver"}
+    assert gt.structures["grasper"].area == 0.2 and gt.structures["liver"].area == 0.79
+    assert gt.phase == "preparation"
+
+
+def test_claim_the_model_supports_but_the_masks_contradict(tmp_path):
+    # The model sees a grasper in both frames; the masks have only liver.
+    facts, gt = [], []
+    for i in range(2):
+        mask = np.full((10, 10), LIVER, np.uint8)
+        f = FrameFacts(frame_id=i, frame_number=i * 5, time_s=i * 0.2,
+                       source=write_frame(tmp_path, i, mask), phase="preparation",
+                       phase_confidence=0.9,
+                       structures={"grasper": StructureFacts(area=0.1, components=1),
+                                   "liver": StructureFacts(area=0.9, components=1)})
+        facts.append(f)
+    gt = ground_truth_facts(facts)
+    claims = [
+        Claim(id="c1", claim_type="structures_visible", text="The liver is visible",
+              frame_ids=[0, 1], structures=["liver"]),
+        Claim(id="c2", claim_type="structures_visible", text="A grasper is visible",
+              frame_ids=[0, 1], structures=["grasper"]),
+        Claim(id="c3", claim_type="phase", text="Preparation", frame_ids=[0, 1],
+              phase="preparation"),
+    ]
+    rows = grade(claims, facts, gt, build_timeline(facts), {})
+    assert [r["gradable"] for r in rows] == [True, True, False]
+    s = summarise(rows)
+    assert (s["graded"], s["grounded"], s["contradicted"]) == (2, 1, 1)
+    assert s["passed_verifier_but_contradicted"] == 1
+    assert s["contradicted_structures"] == {"grasper": 1}
+
+
+def test_named_but_unlisted_structure_is_still_graded(tmp_path):
+    mask = np.full((10, 10), LIVER, np.uint8)
+    f = FrameFacts(frame_id=0, frame_number=0, time_s=0.0, source=write_frame(tmp_path, 0, mask),
+                   phase="preparation", phase_confidence=0.9,
+                   structures={"grasper": StructureFacts(area=0.1, components=1)})
+    timeline = build_timeline([f])
+    claim = Claim(id="c1", claim_type="event", text="A grasper is in view",
+                  event_ids=[timeline.events[0].id])
+    [row] = grade([claim], [f], ground_truth_facts([f]), timeline, {})
+    assert row["model_status"] == "invalid"  # verifier: grasper named but not listed
+    assert (row["gradable"], row["gt_status"]) == (True, "unsupported")  # masks: no grasper
+
+
+def test_retrieval_scores():
+    s = score(["a", "b", "c", "d"], {"c", "x"})
+    assert s["mrr"] == 1 / 3
+    assert (s["hit@1"], s["hit@3"], s["recall@3"], s["recall@5"]) == (0.0, 1.0, 0.5, 0.5)
+    assert score(["a"], {"x"})["mrr"] == 0.0
+
+
+def test_retrieval_labels_exist_in_the_corpus():
+    from surgidoc.retrieval.chunking import load_corpus
+
+    ids = {p.id for p in load_corpus()}
+    questions = json.loads(DEFAULT_QUESTIONS.read_text())["questions"]
+    assert len({q["id"] for q in questions}) == len(questions)
+    for q in questions:
+        assert q["relevant"] and set(q["relevant"]) <= ids, q["id"]

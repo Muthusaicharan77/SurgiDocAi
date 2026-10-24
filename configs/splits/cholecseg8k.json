@@ -1,0 +1,6 @@
+{
+  "train": ["video01", "video09", "video12", "video20", "video24", "video25",
+            "video26", "video27", "video28", "video35", "video43", "video52"],
+  "val": ["video18", "video48"],
+  "test": ["video17", "video37", "video55"]
+}

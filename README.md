@@ -25,6 +25,7 @@ is measured.
 - [x] Code-only agent nodes: frame sampling, perception, timeline, claim schema and deterministic verifier (`src/surgidoc/agent/`)
 - [x] Guideline retrieval over a CC BY corpus (`src/surgidoc/retrieval/`)
 - [x] Claude nodes (key-frame selection with tools, report drafting) and LangGraph wiring with verify/retry loop, human review interrupt and SQLite checkpointing (`src/surgidoc/agent/graph.py`)
+- [x] Quote rule: every guideline claim carries a verbatim quote from its cited passage, checked by code (`src/surgidoc/agent/verify.py`) and shown to the reviewer
 - [ ] Evals
 
 ## Setup

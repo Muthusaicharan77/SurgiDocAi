@@ -75,6 +75,8 @@ def render(source: str, facts: list[FrameFacts], timeline: Timeline, key_frames:
                 f" [{pid}: {by_passage[pid].doc_title[:70]}, {by_passage[pid].section[:50]}]"
                 for pid in c.passage_ids)
             lines.append(f"- {c.text}{_frames(c, facts)}{label}{cites}")
+            if c.quote:
+                lines.append(f"  > \"{c.quote}\"")
 
     if review.get("notes"):
         lines += ["", "## Reviewer notes", "", review["notes"]]

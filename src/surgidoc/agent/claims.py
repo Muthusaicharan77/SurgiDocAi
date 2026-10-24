@@ -29,6 +29,8 @@ class Claim(BaseModel):
     phase: str | None = None
     event_ids: list[str] = Field(default_factory=list)
     passage_ids: list[str] = Field(default_factory=list)
+    quote: str | None = Field(
+        default=None, description="Guideline claims: a verbatim span from a cited passage")
 
 
 Status = Literal["supported", "unsupported", "invalid"]

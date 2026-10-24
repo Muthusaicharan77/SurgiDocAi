@@ -127,7 +127,8 @@ def node_draft(s: RunState) -> dict:
 
 
 def node_verify(s: RunState) -> dict:
-    report = verify(_claims(s), _facts(s), _timeline(s), {p["id"] for p in s["passages"]})
+    report = verify(_claims(s), _facts(s), _timeline(s),
+                    {p["id"]: p["text"] for p in s["passages"]})
     return {"results": [r.model_dump() for r in report.results]}
 
 
@@ -220,6 +221,8 @@ def _print_pending(state) -> None:
                 tag = "" if c["basis"] in ("validated_model", "retrieved_source") else \
                     f" [{c['basis']}]"
                 print(f"  {c['id']:4s} {c['claim_type']:18s} {c['text']}{tag}")
+                if c.get("quote"):
+                    print(f"  {'':4s} {'':18s} source: \"{c['quote']}\"")
             for d in payload["dropped"]:
                 print(f"  DROPPED {d['claim']['id']}: {d['claim']['text']} ({'; '.join(d['reasons'])})")
 

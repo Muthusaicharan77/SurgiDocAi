@@ -24,9 +24,17 @@ def scene():
     return facts, build_timeline(facts)
 
 
-def check(claim, passages=frozenset({"TG18-12"})):
+CVS_PASSAGE = ("The following three steps must be achieved during LC to ensure a safe "
+               "dissection: (I) the hepatocystic triangle should be cleared of fat and fibrous "
+               "tissue; (II) the lower third of the gallbladder should be separated from the "
+               "liver to expose the cystic plate; (III) two and only two structures should be "
+               "seen entering the gallbladder.")
+CVS_QUOTE = "two and only two structures should be seen entering the gallbladder"
+
+
+def check(claim, passages=None):
     facts, timeline = scene()
-    return verify([claim], facts, timeline, set(passages)).results[0]
+    return verify([claim], facts, timeline, passages or {"TG18-12": CVS_PASSAGE}).results[0]
 
 
 def test_validated_classes_come_from_results():
@@ -56,15 +64,38 @@ def test_guideline_claim_needs_a_retrieved_passage():
     ok = check(Claim(id="3", claim_type="guideline",
                      text="The critical view of safety should be confirmed before clipping; "
                           "two structures, the cystic duct and artery, enter the gallbladder",
-                     passage_ids=["TG18-12"]))
+                     passage_ids=["TG18-12"], quote=CVS_QUOTE))
     assert (ok.status, ok.basis) == ("supported", "retrieved_source")
-    made_up = check(Claim(id="3b", claim_type="guideline", text="...", passage_ids=["TG18-99"]))
+    made_up = check(Claim(id="3b", claim_type="guideline", text="...", passage_ids=["TG18-99"],
+                          quote=CVS_QUOTE))
     assert made_up.status == "invalid"
+
+
+def test_guideline_quote_must_be_verbatim_from_the_cited_passage():
+    def guideline(quote):
+        return check(Claim(id="q", claim_type="guideline", text="Guidance on the CVS",
+                           passage_ids=["TG18-12"], quote=quote))
+
+    assert "needs a quote" in guideline(None).reasons[0]
+    assert "words" in guideline("two structures").reasons[0]
+    reworded = guideline("exactly two structures should be seen entering the gallbladder")
+    assert reworded.status == "invalid" and "verbatim" in reworded.reasons[0]
+    # Case, curly quotes, dashes and line breaks do not count as differences.
+    assert guideline("\u201cTwo and only two structures\nshould be seen entering the "
+                     "GALLBLADDER\u201d").status == "supported"
+
+
+def test_quote_from_a_passage_the_claim_does_not_cite_is_invalid():
+    r = check(Claim(id="q2", claim_type="guideline", text="Guidance on the CVS",
+                    passage_ids=["OTHER-1"], quote=CVS_QUOTE),
+              passages={"TG18-12": CVS_PASSAGE, "OTHER-1": "An operative report must include "
+                                                           "the indication for surgery."})
+    assert r.status == "invalid" and "verbatim" in r.reasons[0]
 
 
 def test_guideline_claim_cannot_carry_observations():
     r = check(Claim(id="3c", claim_type="guideline", text="CVS achieved", passage_ids=["TG18-12"],
-                    frame_ids=[5]))
+                    quote=CVS_QUOTE, frame_ids=[5]))
     assert r.status == "invalid"
 
 

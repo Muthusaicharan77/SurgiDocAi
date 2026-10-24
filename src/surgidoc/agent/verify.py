@@ -18,6 +18,13 @@ from .facts import FrameFacts, Timeline, validated_classes
 # A claim about a set of frames holds if it is true in at least this share of them.
 MIN_SUPPORT = 0.8
 
+# A guideline claim must quote its passage. The quote is checked as a verbatim span,
+# so the reviewer can compare the claim with the source's own words. Code checks that
+# the quote exists, not that the claim paraphrases it faithfully; that stays with the
+# reviewer. Bounds keep the quote meaningful and stop it from pasting the whole passage.
+QUOTE_MIN_WORDS = 6
+QUOTE_MAX_WORDS = 60
+
 # Words in claim text that name a structure. Any structure the text names must be
 # listed in claim.structures, so it gets checked: otherwise a claim could cite
 # "grasper" while its sentence says "cystic duct". This is a keyword heuristic,
@@ -59,8 +66,29 @@ def mentioned_structures(text: str) -> set[str]:
     return found
 
 
+def normalise(text: str) -> str:
+    """Lower case, one kind of quote mark and dash, single spaces, no outer quotes."""
+    text = text.lower().translate(str.maketrans({
+        "\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"',
+        "\u2013": "-", "\u2014": "-", "\u00a0": " "}))
+    return " ".join(text.split()).strip(' "\'')
+
+
+def quote_problem(quote: str | None, sources: list[str]) -> str | None:
+    """Why the quote fails, or None if it is a verbatim span of one of the sources."""
+    if not quote:
+        return "guideline claim needs a quote from its passage"
+    n = len(normalise(quote).split())
+    if not QUOTE_MIN_WORDS <= n <= QUOTE_MAX_WORDS:
+        return f"quote has {n} words, needs {QUOTE_MIN_WORDS}-{QUOTE_MAX_WORDS}"
+    if not any(normalise(quote) in normalise(s) for s in sources):
+        return "quote does not appear verbatim in the cited passages"
+    return None
+
+
 def verify(claims: list[Claim], facts: list[FrameFacts], timeline: Timeline,
-           retrieved_passages: set[str]) -> VerificationReport:
+           retrieved_passages: dict[str, str]) -> VerificationReport:
+    """retrieved_passages maps the id of each passage retrieved in this run to its text."""
     by_id = {f.frame_id: f for f in facts}
     events = {e.id: e for e in timeline.events}
     validated = validated_classes()
@@ -70,7 +98,7 @@ def verify(claims: list[Claim], facts: list[FrameFacts], timeline: Timeline,
 
 
 def _check(c: Claim, frames: dict, events: dict, validated: frozenset[str],
-           passages: set[str]) -> ClaimResult:
+           passages: dict[str, str]) -> ClaimResult:
     invalid, unsupported = [], []
 
     # --- references must exist ------------------------------------------------
@@ -104,6 +132,8 @@ def _check(c: Claim, frames: dict, events: dict, validated: frozenset[str],
         if c.frame_ids or c.structures:
             invalid.append("guideline claims state guidance, not observations; "
                            "put observations in their own claim")
+        if not bad and (problem := quote_problem(c.quote, [passages[p] for p in c.passage_ids])):
+            invalid.append(problem)
 
     if invalid:
         return ClaimResult(claim_id=c.id, status="invalid", basis="none", reasons=invalid)

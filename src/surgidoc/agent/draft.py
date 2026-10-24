@@ -38,8 +38,10 @@ Claim types:
 - structures_visible: structures visible in frames. Set frame_ids and structures.
 - phase: frames belong to a surgical phase. Set frame_ids and phase.
 - event: an event from the timeline. Set event_ids (and structures if the text names any).
-- guideline: guidance from a retrieved passage. Set passage_ids only; no frames, no \
-structures. State guidance, never an observation.
+- guideline: guidance from a retrieved passage. Set passage_ids and quote; no frames, no \
+structures. State guidance, never an observation. quote is copied character for character \
+from one cited passage, 6-60 words, and must contain the guidance the claim states. Do not \
+claim more than the quote says.
 - limitation: something the system could not determine. No evidence fields.
 
 Rules:

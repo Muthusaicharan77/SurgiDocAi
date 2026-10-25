@@ -51,6 +51,7 @@ MAX_DRAFTS = 3  # first draft + 2 retries
 class RunState(TypedDict, total=False):
     # Plain JSON-able values only, so the checkpointer can store every step.
     source: str
+    label: str  # how the report names the input (an uploaded file's name); default: source
     every_n: int
     frames: list[dict]
     facts: list[dict]
@@ -183,7 +184,7 @@ def node_finalize(s: RunState, config: RunnableConfig) -> dict:
     claims = [c for c in _claims(s) if c.id not in remove]
     results = {r["claim_id"]: ClaimResult(**r) for r in s["results"]}
     facts = _facts(s)
-    report = render(s["source"], facts, _timeline(s), [KeyFrame(**k) for k in s["key_frames"]],
+    report = render(s.get("label") or s["source"], facts, _timeline(s), [KeyFrame(**k) for k in s["key_frames"]],
                     claims, results, _passages(s), s.get("dropped", []), s["review"],
                     s.get("usage", []))
     out = RUNS_DIR / config["configurable"]["thread_id"]
@@ -226,19 +227,18 @@ def build_graph(checkpointer):
 # --- CLI ---------------------------------------------------------------------------
 
 def _print_pending(state) -> None:
-    for task in state.tasks:
-        for intr in task.interrupts:
-            payload = intr.value
-            print(f"\nAwaiting review: {len(payload['claims'])} verified claims, "
-                  f"{len(payload['dropped'])} dropped by the verifier.")
-            for c in payload["claims"]:
-                tag = "" if c["basis"] in ("validated_model", "retrieved_source") else \
-                    f" [{c['basis']}]"
-                print(f"  {c['id']:4s} {c['claim_type']:18s} {c['text']}{tag}")
-                if c.get("quote"):
-                    print(f"  {'':4s} {'':18s} source: \"{c['quote']}\"")
-            for d in payload["dropped"]:
-                print(f"  DROPPED {d['claim']['id']}: {d['claim']['text']} ({'; '.join(d['reasons'])})")
+    payload = pending_review(state)
+    if payload is None:
+        return
+    print(f"\nAwaiting review: {len(payload['claims'])} verified claims, "
+          f"{len(payload['dropped'])} dropped by the verifier.")
+    for c in payload["claims"]:
+        tag = "" if c["basis"] in ("validated_model", "retrieved_source") else f" [{c['basis']}]"
+        print(f"  {c['id']:4s} {c['claim_type']:18s} {c['text']}{tag}")
+        if c.get("quote"):
+            print(f"  {'':4s} {'':18s} source: \"{c['quote']}\"")
+    for d in payload["dropped"]:
+        print(f"  DROPPED {d['claim']['id']}: {d['claim']['text']} ({'; '.join(d['reasons'])})")
 
 
 def _score_run(trace, values: dict) -> None:
@@ -251,6 +251,40 @@ def _score_run(trace, values: dict) -> None:
     trace.score("drafts", values.get("drafts", 0))
     trace.score("claims_dropped", len(values.get("dropped", [])))
     trace.score("selection_fallback", float(values.get("selection_fallback", False)))
+
+
+def start_run(graph, thread: str, inputs: dict, on_node=None):
+    """Run the graph until it pauses for review (or ends). Returns (state, trace url).
+
+    on_node(name) is called after each node, for progress reporting.
+    """
+    with run_trace("surgidoc run", thread, inputs) as trace:
+        config = {"configurable": {"thread_id": thread}, "callbacks": trace.callbacks}
+        for update in graph.stream(inputs, config, stream_mode="updates"):
+            for node in update:
+                if node != "__interrupt__" and on_node is not None:
+                    on_node(node)
+        state = graph.get_state(config)
+        _score_run(trace, state.values)
+    return state, trace.url
+
+
+def review_run(graph, thread: str, decision: dict) -> dict:
+    """Resume a paused run with the reviewer's decision; returns the final state values."""
+    with run_trace("surgidoc review", thread, decision) as trace:
+        config = {"configurable": {"thread_id": thread}, "callbacks": trace.callbacks}
+        result = graph.invoke(Command(resume=decision), config)
+        trace.score("approved", float(bool(decision.get("approve"))))
+        trace.score("claims_removed_by_reviewer", len(decision.get("remove", [])))
+    return result
+
+
+def pending_review(state) -> dict | None:
+    """The human_review interrupt's payload, if the run is paused there."""
+    for task in state.tasks:
+        for intr in task.interrupts:
+            return intr.value
+    return None
 
 
 def main() -> None:
@@ -273,25 +307,15 @@ def main() -> None:
         if args.cmd == "run":
             thread = args.thread or uuid.uuid4().hex[:8]
             inputs = {"source": args.source, "every_n": args.every_n}
-            with run_trace("surgidoc run", thread, inputs) as trace:
-                config = {"configurable": {"thread_id": thread}, "callbacks": trace.callbacks}
-                for update in graph.stream(inputs, config, stream_mode="updates"):
-                    for node in update:
-                        if node != "__interrupt__":
-                            print(f"[{thread}] {node} done")
-                state = graph.get_state(config)
-                _score_run(trace, state.values)
+            state, url = start_run(graph, thread, inputs,
+                                   on_node=lambda node: print(f"[{thread}] {node} done"))
             _print_pending(state)
             print(f"\nthread: {thread}")
-            if trace.url:
-                print(f"trace: {trace.url}")
+            if url:
+                print(f"trace: {url}")
         else:
             decision = {"approve": args.approve, "remove": args.remove, "notes": args.notes}
-            with run_trace("surgidoc review", args.thread, decision) as trace:
-                config = {"configurable": {"thread_id": args.thread}, "callbacks": trace.callbacks}
-                result = graph.invoke(Command(resume=decision), config)
-                trace.score("approved", float(args.approve))
-                trace.score("claims_removed_by_reviewer", len(args.remove))
+            result = review_run(graph, args.thread, decision)
             print(result.get("report_path", "not approved; no report written"))
 
 

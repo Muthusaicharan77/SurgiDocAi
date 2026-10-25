@@ -58,7 +58,7 @@ def _display_path(path: str, source: str) -> str:
     """Frame paths relative to the source folder, so reports carry no local paths."""
     try:
         return str(Path(path).relative_to(source))
-    except ValueError:
+    except ValueError:  # source is a label, e.g. an uploaded file's name
         return Path(path).name
 
 

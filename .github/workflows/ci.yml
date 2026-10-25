@@ -18,7 +18,7 @@ jobs:
       - name: Install (CPU torch)
         run: |
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-          pip install -e ".[agent,trace,dev]"
+          pip install -e ".[agent,trace,serve,dev]"
       - name: Lint
         run: ruff check src tests
       # The CC BY guideline corpus is not committed; one test checks the retrieval

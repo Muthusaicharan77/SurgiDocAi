@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pytest
 from PIL import Image
 
 from surgidoc.agent.claims import Claim
@@ -85,6 +86,8 @@ def test_retrieval_labels_exist_in_the_corpus():
     from surgidoc.retrieval.chunking import load_corpus
 
     ids = {p.id for p in load_corpus()}
+    if not ids:
+        pytest.skip("guideline corpus not downloaded (scripts/fetch_guidelines.py)")
     questions = json.loads(DEFAULT_QUESTIONS.read_text())["questions"]
     assert len({q["id"] for q in questions}) == len(questions)
     for q in questions:

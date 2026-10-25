@@ -1,5 +1,7 @@
 # SurgiDoc
 
+[![CI](https://github.com/Muthusaicharan77/SurgiDocAi/actions/workflows/ci.yml/badge.svg)](https://github.com/Muthusaicharan77/SurgiDocAi/actions/workflows/ci.yml)
+
 Agentic documentation of laparoscopic cholecystectomy videos. The plan: segment the
 anatomy and instruments in each frame, recognise the surgical phase, let an agent pick
 the key frames, and draft a report in which every claim is checked against the vision

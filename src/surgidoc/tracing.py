@@ -30,12 +30,17 @@ def enabled() -> bool:
             and bool(os.environ.get("LANGFUSE_SECRET_KEY")))
 
 
+@cache
 def _client():
-    from langfuse import get_client
+    """The Langfuse client for the configured keys (LANGFUSE_* variables).
 
-    # By key, so a second client in the same process (as in the tests) is never picked
-    # up by mistake.
-    return get_client(public_key=os.environ.get("LANGFUSE_PUBLIC_KEY"))
+    Created explicitly, once: the LangGraph callback looks the client up by public key,
+    which only finds a client that already exists.
+    """
+    from langfuse import Langfuse
+
+    enabled()  # loads .env, where the keys usually are
+    return Langfuse()
 
 
 def strip_images(value):

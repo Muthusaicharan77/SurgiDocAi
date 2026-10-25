@@ -33,7 +33,9 @@ def enabled() -> bool:
 def _client():
     from langfuse import get_client
 
-    return get_client()
+    # By key, so a second client in the same process (as in the tests) is never picked
+    # up by mistake.
+    return get_client(public_key=os.environ.get("LANGFUSE_PUBLIC_KEY"))
 
 
 def strip_images(value):
@@ -77,7 +79,8 @@ def run_trace(name: str, session_id: str, input: dict, metadata: dict | None = N
     client = _client()
     with (propagate_attributes(session_id=session_id, trace_name=name, metadata=metadata),
           client.start_as_current_observation(name=name, as_type="agent", input=input) as root):
-        run = _Run(client.get_current_trace_id(), [CallbackHandler()])
+        handler = CallbackHandler(public_key=os.environ.get("LANGFUSE_PUBLIC_KEY"))
+        run = _Run(client.get_current_trace_id(), [handler])
         try:
             yield run
         finally:

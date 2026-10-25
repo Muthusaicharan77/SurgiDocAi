@@ -190,3 +190,33 @@ def test_judge_only_sees_passed_claims_and_turns_overstatements_into_failures(mo
     assert by_id["c1"].status == "supported"
     assert by_id["c2"].status == "unsupported" and "cutting not observed" in by_id["c2"].reasons[0]
     assert by_id["c3"].status == "unsupported" and usage["node"] == "judge"
+
+
+def test_report_shows_exact_frames_event_times_relative_paths_and_no_key_frame_reasons():
+    from surgidoc.agent.claims import ClaimResult
+    from surgidoc.agent.render import frame_spans, render
+    from surgidoc.agent.select import KeyFrame
+
+    facts = [f.model_copy(update={"source": f"/data/video48/clip1/frame_{f.frame_id}_endo.png"})
+             for f in scene()[0]]
+    timeline = build_timeline(facts)
+    assert frame_spans([0, 1, 2, 5, 9], facts) == "frames 0-2 (0.0-0.4 s), 5 (1.0 s), 9 (1.8 s)"
+    assert frame_spans([4], facts) == "frame 4 (0.8 s)"
+
+    bleed = next(e for e in timeline.events if e.kind == "possible_bleeding")
+    claims = [
+        Claim(id="c1", claim_type="structures_visible", text="The grasper is visible",
+              frame_ids=[0, 5, 9], structures=["grasper"]),
+        Claim(id="c2", claim_type="event", text="Possible bleeding", event_ids=[bleed.id],
+              structures=["blood"]),
+    ]
+    results = {r.claim_id: r for r in verify(claims, facts, timeline, {}).results}
+    assert all(isinstance(r, ClaimResult) and r.status == "supported" for r in results.values())
+    keys = [KeyFrame(frame_id=0, reason="grasper working near the gallbladder")]
+    md = render("/data/video48", facts, timeline, keys, claims, results, [], [],
+                {"approve": True}, [])
+    assert "[frames 0 (0.0 s), 5 (1.0 s), 9 (1.8 s)]" in md  # not "frames 0-9"
+    assert f"[{bleed.id}: frames 6-8 (1.2-1.6 s)]" in md
+    assert "working near" not in md  # key-frame reasons are not checked claims
+    assert "`clip1/frame_0_endo.png`" in md and "/data/" not in md
+    assert "second model" in md and "not checked claims" in md

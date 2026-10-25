@@ -20,7 +20,9 @@ from pydantic import BaseModel
 from .chunking import Passage, load_corpus
 
 EMBED_MODEL = "BAAI/bge-small-en-v1.5"
-RERANK_MODEL = "BAAI/bge-reranker-base"
+# Chosen by the retrieval eval (RESULTS.md): hit@3 0.89 vs 0.59 for bge-reranker-base,
+# at about 25 s per query on CPU.
+RERANK_MODEL = "BAAI/bge-reranker-v2-m3"
 # bge embedding models expect this prefix on queries (not on passages).
 QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
 COLLECTION = "guidelines"

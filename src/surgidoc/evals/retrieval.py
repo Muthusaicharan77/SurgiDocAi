@@ -4,7 +4,7 @@ Hand-labelled questions (configs/evals/retrieval_questions.json), scored for den
 search alone and for dense search plus each cross-encoder reranker given. Every
 ranking reorders the same 25 dense candidates, so the comparison isolates the reranker.
 
-    python -m surgidoc.evals.retrieval --rerankers BAAI/bge-reranker-base other/model
+    python -m surgidoc.evals.retrieval --rerankers BAAI/bge-reranker-v2-m3 other/model
 
 Metrics, averaged over questions:
 - hit@k:    a relevant passage is in the top k

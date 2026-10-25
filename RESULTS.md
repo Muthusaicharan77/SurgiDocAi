@@ -125,6 +125,9 @@ candidates from `bge-small-en-v1.5`; the agent keeps the top 3 per query.
 - **The reranker the agent was built with makes retrieval worse.** bge-reranker-base gives
   near-1.0 scores to most passages about cholecystectomy complications, so it reorders
   passages that are related but do not answer the question above the ones that do.
+- **The agent now uses bge-reranker-v2-m3** (`surgidoc.retrieval.index.RERANK_MODEL`). The
+  grounding runs above used bge-reranker-base; the reranker only affects guideline claims,
+  which the grounding eval does not grade.
 - **Dense recall is the ceiling.** For q02 (what to do when the critical view of safety
   cannot be achieved) none of the 4 answering passages is in the dense top 25.
 - **Caveats.** I wrote and labelled the questions myself, while reading the corpus,

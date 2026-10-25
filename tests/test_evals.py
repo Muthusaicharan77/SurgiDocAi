@@ -89,3 +89,31 @@ def test_retrieval_labels_exist_in_the_corpus():
     assert len({q["id"] for q in questions}) == len(questions)
     for q in questions:
         assert q["relevant"] and set(q["relevant"]) <= ids, q["id"]
+
+
+def test_injected_errors_are_rejected_and_controls_pass(tmp_path):
+    from surgidoc.evals.injected import run_eval
+
+    # 20 frames: grasper and liver throughout, hook in 10-19. The masks agree except
+    # in frames 3-4, where the model also sees fat.
+    facts = []
+    for i in range(20):
+        mask = np.full((10, 10), LIVER, np.uint8)
+        mask[:2] = GRASPER
+        areas = {"grasper": 0.2, "liver": 0.8}
+        if i >= 10:
+            areas["l_hook_electrocautery"] = 0.05
+        if i in (3, 4):
+            areas["fat"] = 0.1
+        facts.append(FrameFacts(
+            frame_id=i, frame_number=i * 5, time_s=i * 0.2, source=write_frame(tmp_path, i, mask),
+            phase="preparation" if i < 10 else "calot_triangle_dissection", phase_confidence=0.9,
+            structures={k: StructureFacts(area=v, components=1) for k, v in areas.items()}))
+    passages = {f"P{k}": " ".join(f"word{k}_{j}" for j in range(40)) for k in range(4)}
+    corpus = {**passages, "OTHER": " ".join(f"other{j}" for j in range(40))}
+    rows = run_eval(facts, ground_truth_facts(facts), build_timeline(facts), passages, corpus,
+                    seed=0)
+    categories = {r["category"] for r in rows}
+    assert {"absent_structure", "wrong_phase", "altered_quote", "vision_error",
+            "true_structure"} <= categories
+    assert all(r["correct"] for r in rows), [r for r in rows if not r["correct"]][:1]

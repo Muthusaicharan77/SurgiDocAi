@@ -108,6 +108,45 @@ the agent sees), once against facts rebuilt from CholecSeg8k's hand-drawn masks.
 .venv/bin/python -m surgidoc.evals.grounding --threads eval-video17 eval-video37 eval-video55
 ```
 
+## Verifier: injected errors
+
+Measured 2026-10-25 (`reports/eval_injected.json`, seed 0). For each of the 3 test runs,
+code builds claims from that run's own facts, timeline and retrieved passages, each with a
+known answer, and passes them to the verifier. Up to 5 cases per category and run.
+
+| Category | What is wrong | n | Rejected |
+|---|---|---:|---:|
+| absent_structure | structure not visible in any cited frame | 15 | 15 |
+| partial_support | structure visible in half the cited frames | 7 | 7 |
+| wrong_phase | phase differs from the model's in every cited frame | 15 | 15 |
+| unknown_frames | frame ids that do not exist | 15 | 15 |
+| unknown_event | event id that does not exist | 15 | 15 |
+| unlisted_structure | text names an absent structure the claim does not list | 15 | 15 |
+| unretrieved_passage | cites a corpus passage not retrieved in the run | 15 | 15 |
+| altered_quote | one word of a real quote swapped | 15 | 15 |
+| quote_from_other_passage | quote is real but from a different passage than cited | 15 | 15 |
+| guideline_with_observation | guideline claim cites frames | 15 | 15 |
+| **All errors** | | **142** | **142** |
+| *Blind spot:* vision_error | model sees the structure, the masks do not | 8 | 0 |
+| *Blind spot:* misstated_guideline | verbatim quote, claim says the opposite | 15 | 0 |
+| *Control:* true structure, phase and guideline claims | nothing | 45 | 0 |
+
+Every rejection was for the intended reason (checked per category in the report file).
+
+- **What 100% means.** The errors are built from templates that match the verifier's rules,
+  so this shows the rules are implemented and hold on real run data, with no false alarms
+  on true claims. It is not a catch rate for real model mistakes, which are messier.
+- **What the verifier cannot catch.** Both blind spots pass every time, by design. The
+  verifier trusts the vision output, so a segmentation error becomes a supported claim
+  (7 of the 8 cases are on classes without a measured test score, which the report labels
+  unverified; 1 is gallbladder). And it checks that a quote exists, not that the claim
+  means what the quote says. Those two are left to the reviewer, which is why the report
+  shows the quote next to each guideline claim.
+
+```bash
+.venv/bin/python -m surgidoc.evals.injected --threads eval-video17 eval-video37 eval-video55
+```
+
 ## Guideline retrieval
 
 Measured 2026-10-24 (`reports/eval_retrieval.json`). 27 hand-written questions over the

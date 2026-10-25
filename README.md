@@ -27,7 +27,8 @@ is measured.
 - [x] Claude nodes (key-frame selection with tools, report drafting) and LangGraph wiring with verify/retry loop, human review interrupt and SQLite checkpointing (`src/surgidoc/agent/graph.py`)
 - [x] Quote rule: every guideline claim carries a verbatim quote from its cited passage, checked by code (`src/surgidoc/agent/verify.py`) and shown to the reviewer
 - [x] Evals: claim grounding against ground-truth masks, verifier on/off, retrieval hit@k / recall@k / MRR with three rerankers (`src/surgidoc/evals/`, [RESULTS.md](RESULTS.md))
-- [ ] Injected-error eval for the verifier, tool-use eval
+- [x] Injected-error eval for the verifier: 142/142 planted errors rejected, 0/45 true claims rejected, 0/23 blind-spot cases caught ([RESULTS.md](RESULTS.md))
+- [ ] Tool-use eval
 
 ## Setup
 

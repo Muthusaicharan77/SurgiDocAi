@@ -12,6 +12,7 @@ import json
 from pydantic import BaseModel
 
 from surgidoc.retrieval.chunking import Passage
+from surgidoc.tracing import generation
 from surgidoc.vision.classes import CLASS_NAMES
 from surgidoc.vision.phase import PHASES
 
@@ -92,11 +93,15 @@ def build_messages(facts: list[FrameFacts], timeline: Timeline, key_frames: list
 
 
 def draft_report(facts, timeline, key_frames, passages, previous=None, failures=None):
-    response = client().messages.parse(
-        model=MODEL, max_tokens=16000, system=system_prompt(),
-        messages=build_messages(facts, timeline, key_frames, passages, previous, failures),
-        output_format=Draft, output_config={"effort": EFFORT},
-    )
+    system = system_prompt()
+    messages = build_messages(facts, timeline, key_frames, passages, previous, failures)
+    name = "draft_report" if previous is None else "draft_report retry"
+    with generation(name, MODEL, messages, system, {"effort": EFFORT, "max_tokens": 16000}) as record:
+        response = client().messages.parse(
+            model=MODEL, max_tokens=16000, system=system, messages=messages,
+            output_format=Draft, output_config={"effort": EFFORT},
+        )
+        record(response)
     if response.stop_reason != "end_turn" or response.parsed_output is None:
         raise RuntimeError(f"draft_report: no parsed draft (stop_reason={response.stop_reason})")
     return response.parsed_output.claims, usage_row("draft_report", response)

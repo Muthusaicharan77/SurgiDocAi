@@ -28,6 +28,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.types import Command, interrupt
 
 from surgidoc.retrieval.chunking import Passage
+from surgidoc.tracing import run_trace
 
 from .claims import Claim, ClaimResult
 from .draft import draft_report
@@ -229,6 +230,18 @@ def _print_pending(state) -> None:
                 print(f"  DROPPED {d['claim']['id']}: {d['claim']['text']} ({'; '.join(d['reasons'])})")
 
 
+def _score_run(trace, values: dict) -> None:
+    """Attach the run's verification outcome to its trace."""
+    results = values.get("results", [])
+    if results:
+        supported = sum(r["status"] == "supported" for r in results)
+        trace.score("verifier_pass_rate", supported / len(results),
+                    comment=f"{supported}/{len(results)} claims in the last draft")
+    trace.score("drafts", values.get("drafts", 0))
+    trace.score("claims_dropped", len(values.get("dropped", [])))
+    trace.score("selection_fallback", float(values.get("selection_fallback", False)))
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -248,18 +261,26 @@ def main() -> None:
         graph = build_graph(saver)
         if args.cmd == "run":
             thread = args.thread or uuid.uuid4().hex[:8]
-            config = {"configurable": {"thread_id": thread}}
-            for update in graph.stream({"source": args.source, "every_n": args.every_n},
-                                       config, stream_mode="updates"):
-                for node in update:
-                    if node != "__interrupt__":
-                        print(f"[{thread}] {node} done")
-            _print_pending(graph.get_state(config))
+            inputs = {"source": args.source, "every_n": args.every_n}
+            with run_trace("surgidoc run", thread, inputs) as trace:
+                config = {"configurable": {"thread_id": thread}, "callbacks": trace.callbacks}
+                for update in graph.stream(inputs, config, stream_mode="updates"):
+                    for node in update:
+                        if node != "__interrupt__":
+                            print(f"[{thread}] {node} done")
+                state = graph.get_state(config)
+                _score_run(trace, state.values)
+            _print_pending(state)
             print(f"\nthread: {thread}")
+            if trace.url:
+                print(f"trace: {trace.url}")
         else:
-            config = {"configurable": {"thread_id": args.thread}}
-            result = graph.invoke(Command(resume={"approve": args.approve, "remove": args.remove,
-                                                  "notes": args.notes}), config)
+            decision = {"approve": args.approve, "remove": args.remove, "notes": args.notes}
+            with run_trace("surgidoc review", args.thread, decision) as trace:
+                config = {"configurable": {"thread_id": args.thread}, "callbacks": trace.callbacks}
+                result = graph.invoke(Command(resume=decision), config)
+                trace.score("approved", float(args.approve))
+                trace.score("claims_removed_by_reviewer", len(args.remove))
             print(result.get("report_path", "not approved; no report written"))
 
 

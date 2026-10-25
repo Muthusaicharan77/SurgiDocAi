@@ -11,6 +11,8 @@ import json
 
 from pydantic import BaseModel, Field
 
+from surgidoc.tracing import generation
+
 from .facts import FrameFacts, Timeline, validated_classes
 from .llm import EFFORT, MODEL, client, image_block, usage_row
 
@@ -113,11 +115,14 @@ def select_key_frames(facts: list[FrameFacts], timeline: Timeline) -> tuple[list
     messages = [{"role": "user", "content": (
         f"{len(facts)} frames, ids 0-{len(facts) - 1}.\nTimeline:\n"
         f"{timeline.model_dump_json(indent=1)}")}]
-    for _ in range(MAX_TURNS):
-        response = client().messages.parse(
-            model=MODEL, max_tokens=8000, system=SYSTEM, tools=TOOLS, messages=messages,
-            output_format=Selection, output_config={"effort": EFFORT},
-        )
+    for turn in range(MAX_TURNS):
+        with generation(f"select_key_frames turn {turn + 1}", MODEL, messages, SYSTEM,
+                        {"effort": EFFORT, "max_tokens": 8000}) as record:
+            response = client().messages.parse(
+                model=MODEL, max_tokens=8000, system=SYSTEM, tools=TOOLS, messages=messages,
+                output_format=Selection, output_config={"effort": EFFORT},
+            )
+            record(response)
         usage.append(usage_row("select_key_frames", response))
         if response.stop_reason != "tool_use":
             break

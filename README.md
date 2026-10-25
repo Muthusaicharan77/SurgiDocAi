@@ -29,6 +29,8 @@ is measured.
 - [x] Evals: claim grounding against ground-truth masks, verifier on/off, retrieval hit@k / recall@k / MRR with three rerankers (`src/surgidoc/evals/`, [RESULTS.md](RESULTS.md))
 - [x] Injected-error eval for the verifier: 142/142 planted errors rejected, 0/45 true claims rejected, 0/23 blind-spot cases caught ([RESULTS.md](RESULTS.md))
 - [x] Tool-use eval for key-frame selection: clean tool calls, no measured gain over the deterministic fallback rule ([RESULTS.md](RESULTS.md))
+- [x] Langfuse tracing: a span per graph node, a generation per Claude call, verifier scores per trace (`src/surgidoc/tracing.py`)
+- [ ] Trace screenshot from a real Langfuse instance
 
 ## Setup
 
@@ -94,3 +96,23 @@ echo "ANTHROPIC_API_KEY=..." > .env            # git-ignored
 
 The run pauses before the report is written and prints the verified claims for review.
 The model is Claude Haiku 5.5 by default (`SURGIDOC_MODEL` to change it).
+
+## Tracing (optional)
+
+Runs can be traced in [Langfuse](https://langfuse.com), Cloud or self-hosted. Tracing is off
+unless keys are set:
+
+```bash
+.venv/bin/pip install -e ".[trace]"
+cat >> .env <<'KEYS'
+LANGFUSE_PUBLIC_KEY=pk-lf-...
+LANGFUSE_SECRET_KEY=sk-lf-...
+LANGFUSE_HOST=https://cloud.langfuse.com   # or your self-hosted URL
+KEYS
+```
+
+Each `run` and `review` becomes one trace: a span per graph node, and a generation per
+Claude call with model, token usage, input and output. Frame images are replaced by a
+placeholder before anything is sent. The thread id is the Langfuse session, so a run and
+its review appear together. Each run trace is scored with the verifier pass rate, the
+number of drafts, the claims dropped and whether key-frame selection fell back to the rule.

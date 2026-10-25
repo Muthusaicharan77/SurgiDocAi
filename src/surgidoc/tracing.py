@@ -84,8 +84,14 @@ class _Run:
 
 
 @contextmanager
-def run_trace(name: str, session_id: str, input: dict, metadata: dict | None = None):
-    """Trace one graph invocation. Yields a _Run; a no-op when tracing is off."""
+def run_trace(name: str, session_id: str, input: dict, metadata: dict | None = None,
+              flush: bool = True):
+    """Trace one graph invocation. Yields a _Run; a no-op when tracing is off.
+
+    flush=True waits for the trace to be uploaded, for short-lived processes (the CLI).
+    A server passes False: spans upload in the background and the client flushes at
+    exit, so a slow Langfuse never holds up a run.
+    """
     if not enabled():
         yield _Run(None, [])
         return
@@ -101,7 +107,8 @@ def run_trace(name: str, session_id: str, input: dict, metadata: dict | None = N
             yield run
         finally:
             root.update(output={"trace_id": run.trace_id})
-    client.flush()
+    if flush:
+        client.flush()
 
 
 @contextmanager

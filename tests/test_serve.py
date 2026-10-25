@@ -57,8 +57,11 @@ class FakeGraph:
         for node in self.NODES:
             yield {node: {}}
         claim = {"id": "c1", "claim_type": "phase", "text": "Preparation", "basis": "none"}
+        facts = [{"frame_id": i, "time_s": r.time_s, "source": str(r.path)}
+                 for i, r in enumerate(frames)]
         self.threads[self._thread(config)] = {
-            "values": {**inputs, "frames": len(frames), "drafts": 1},
+            "values": {**inputs, "facts": facts, "key_frames": [{"frame_id": 0, "reason": ""}],
+                       "drafts": 1},
             "interrupt": {"claims": [claim], "dropped": []}}
         yield {"__interrupt__": ()}
 
@@ -97,6 +100,7 @@ def api(tmp_path, monkeypatch):
     from surgidoc.serve import api as api_mod
 
     monkeypatch.setattr(api_mod, "UPLOADS_DIR", tmp_path / "uploads")
+    monkeypatch.setattr(api_mod.pipeline, "CHECKPOINT_DB", tmp_path / "runs.sqlite")
     graph = FakeGraph(tmp_path)
 
     def client(**kwargs):
@@ -120,10 +124,19 @@ def test_upload_run_review_report(api):
         assert body["review"]["claims"][0]["id"] == "c1"
         values = client.app.state.runner.checkpoint(run_id).values
         assert values["label"] == "clip.mp4" and values["every_n"] == 1  # every extracted frame
+        ctx = body["context"]
+        assert ctx["label"] == "clip.mp4" and ctx["key_frames"] == [0]
+        assert ctx["frame_times"][:2] == [0.0, 0.2]
+        image = client.get(f"/runs/{run_id}/frames/0")
+        assert image.status_code == 200 and image.headers["content-type"] == "image/png"
+        assert client.get(f"/runs/{run_id}/frames/999").status_code == 404
+        assert client.get("/runs").json()[0] == {"id": run_id, "status": "awaiting_review",
+                                                 "label": "clip.mp4"}
         assert client.get(f"/runs/{run_id}/report").status_code == 404  # not reviewed yet
 
         events = client.get(f"/runs/{run_id}/events").text
         assert "event: node" in events and '"status": "awaiting_review"' in events
+        assert events.index('"status": "running"') < events.index('"node": "extract_frames"')
 
         r = client.post(f"/runs/{run_id}/review", json={"approve": True, "notes": "looks right"})
         assert r.status_code == 202

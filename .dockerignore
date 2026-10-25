@@ -12,3 +12,5 @@ weights
 wandb
 notebooks
 tests
+ui/node_modules
+ui/dist

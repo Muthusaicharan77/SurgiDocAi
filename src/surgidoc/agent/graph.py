@@ -253,12 +253,12 @@ def _score_run(trace, values: dict) -> None:
     trace.score("selection_fallback", float(values.get("selection_fallback", False)))
 
 
-def start_run(graph, thread: str, inputs: dict, on_node=None):
+def start_run(graph, thread: str, inputs: dict, on_node=None, flush_trace: bool = True):
     """Run the graph until it pauses for review (or ends). Returns (state, trace url).
 
     on_node(name) is called after each node, for progress reporting.
     """
-    with run_trace("surgidoc run", thread, inputs) as trace:
+    with run_trace("surgidoc run", thread, inputs, flush=flush_trace) as trace:
         config = {"configurable": {"thread_id": thread}, "callbacks": trace.callbacks}
         for update in graph.stream(inputs, config, stream_mode="updates"):
             for node in update:
@@ -269,9 +269,9 @@ def start_run(graph, thread: str, inputs: dict, on_node=None):
     return state, trace.url
 
 
-def review_run(graph, thread: str, decision: dict) -> dict:
+def review_run(graph, thread: str, decision: dict, flush_trace: bool = True) -> dict:
     """Resume a paused run with the reviewer's decision; returns the final state values."""
-    with run_trace("surgidoc review", thread, decision) as trace:
+    with run_trace("surgidoc review", thread, decision, flush=flush_trace) as trace:
         config = {"configurable": {"thread_id": thread}, "callbacks": trace.callbacks}
         result = graph.invoke(Command(resume=decision), config)
         trace.score("approved", float(bool(decision.get("approve"))))

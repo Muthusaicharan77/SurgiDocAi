@@ -7,6 +7,9 @@
     GET  /runs/{id}/events      progress as Server-Sent Events, until review or the end
     POST /runs/{id}/review      {"approve": bool, "remove": [claim ids], "notes": str}
     GET  /runs/{id}/report      the Markdown report, once approved
+    GET  /runs/{id}/frames/{n}  an analysed frame's image, by frame id
+    GET  /runs                  recent runs, newest first
+    GET  /                      the web UI (ui/, once built with npm run build)
 
 Runs execute one at a time in a background worker: perception is CPU-bound and the
 local guideline index admits one process. State lives in the same SQLite checkpoints
@@ -33,7 +36,8 @@ from pathlib import Path
 from typing import Annotated
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
-from fastapi.responses import PlainTextResponse, StreamingResponse
+from fastapi.responses import FileResponse, PlainTextResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from surgidoc.agent import graph as pipeline
@@ -45,6 +49,9 @@ MAX_UPLOAD_BYTES = int(os.environ.get("SURGIDOC_MAX_UPLOAD_MB", "2000")) * 2**20
 # Lets POST /runs take a server-side frame folder instead of an upload (development).
 ALLOW_LOCAL_SOURCE = os.environ.get("SURGIDOC_ALLOW_LOCAL_SOURCE") == "1"
 TERMINAL = {"awaiting_review", "done", "failed"}
+# The built web UI (cd ui && npm run build), relative to the working directory like
+# weights/ and data/.
+UI_DIST = Path(os.environ.get("SURGIDOC_UI_DIST", "ui/dist"))
 
 
 class Review(BaseModel):
@@ -60,6 +67,7 @@ class Job:
     events: list[dict] = field(default_factory=list)
     error: str | None = None
     trace_url: str | None = None
+    label: str | None = None  # the uploaded file's name
 
 
 class Runner:
@@ -85,13 +93,14 @@ class Runner:
 
     def submit_run(self, run_id: str, video: Path | None, source: Path | None,
                    label: str | None = None) -> Job:
-        job = self.jobs[run_id] = Job(run_id)
+        job = self.jobs[run_id] = Job(run_id, label=label)
         self.pool.submit(self._run, job, video, source, label)
         return job
 
     def _run(self, job: Job, video: Path | None, source: Path | None,
              label: str | None) -> None:
         self._update(job, status="running")
+        self._event(job, "status", status="running")
         try:
             if video is not None:
                 frames = video.parent / "frames"
@@ -103,7 +112,8 @@ class Runner:
             if label:
                 inputs["label"] = label
             state, url = pipeline.start_run(
-                self.graph, job.id, inputs, on_node=lambda n: self._event(job, "node", node=n))
+                self.graph, job.id, inputs, on_node=lambda n: self._event(job, "node", node=n),
+                flush_trace=False)
             status = "awaiting_review" if pipeline.pending_review(state) else "done"
             self._update(job, status=status, trace_url=url)
             self._event(job, "status", status=status)
@@ -119,12 +129,18 @@ class Runner:
 
     def _review(self, job: Job, review: Review) -> None:
         try:
-            pipeline.review_run(self.graph, job.id, review.model_dump())
+            pipeline.review_run(self.graph, job.id, review.model_dump(), flush_trace=False)
             self._update(job, status="done")
             self._event(job, "status", status="done")
         except Exception as e:  # noqa: BLE001 - as in _run
             self._update(job, status="failed", error=f"{type(e).__name__}: {e}")
             self._event(job, "status", status="failed", error=job.error)
+
+    def queue_position(self, run_id: str) -> int:
+        """How many runs are ahead of this one (running or queued before it)."""
+        busy = [j for j in self.jobs.values() if j.status in ("queued", "running", "reviewing")]
+        ids = [j.id for j in busy]
+        return ids.index(run_id) if run_id in ids else 0
 
     def checkpoint(self, run_id: str):
         return self.graph.get_state({"configurable": {"thread_id": run_id}})
@@ -144,7 +160,12 @@ class Runner:
                "nodes_done": [e["node"] for e in (job.events if job else [])
                               if e["kind"] == "node"],
                "error": job.error if job else None,
-               "trace_url": job.trace_url if job else None}
+               "trace_url": job.trace_url if job else None,
+               "label": job.label if job else None,
+               "queue_position": self.queue_position(run_id) if status == "queued" else None}
+        if status in ("awaiting_review", "done"):
+            out["context"] = context(state.values)
+            out["label"] = out["context"].get("label") or out["label"]
         if status == "awaiting_review":
             out["review"] = pipeline.pending_review(state)
         if status == "done":
@@ -172,6 +193,23 @@ class Runner:
                 return
             if not new:
                 yield ": keep-alive\n\n"
+
+
+def context(v: dict) -> dict:
+    """What a reviewer needs next to the claims: frames, timeline and sources."""
+    if "facts" not in v:
+        return {}
+    return {
+        "label": v.get("label") or Path(v["source"]).name,
+        "frame_times": [f["time_s"] for f in v["facts"]],
+        "key_frames": [k["frame_id"] for k in v.get("key_frames", [])],
+        "timeline": v.get("timeline", {}),
+        "passages": {p["id"]: {k: p[k] for k in ("doc_title", "section", "url", "license")}
+                     for p in v.get("passages", [])},
+        "results": {r["claim_id"]: {"status": r["status"], "basis": r["basis"]}
+                    for r in v.get("results", [])},
+        "drafts": v.get("drafts", 0),
+    }
 
 
 def _sse(event: str, data: dict) -> str:
@@ -234,9 +272,39 @@ def create_app(graph=None) -> FastAPI:
         job = runner.submit_run(run_id, path, None, label=label)
         return {"id": run_id, "status": job.status}
 
+    @app.get("/runs")
+    def list_runs(limit: int = 20) -> list[dict]:
+        """Runs known to this server or to the checkpoint database, newest first."""
+        ids = list(reversed(list(runner.jobs)))
+        try:
+            with sqlite3.connect(f"file:{pipeline.CHECKPOINT_DB}?mode=ro", uri=True) as db:
+                rows = db.execute("SELECT thread_id, MAX(checkpoint_id) AS last FROM checkpoints "
+                                  "GROUP BY thread_id ORDER BY last DESC").fetchall()
+            ids += [t for t, _ in rows if t not in ids]
+        except sqlite3.Error:
+            pass  # no checkpoint database yet
+        out = []
+        for run_id in ids:
+            try:
+                s = runner.status(run_id)
+            except HTTPException:  # a thread without usable state
+                continue
+            out.append({"id": run_id, "status": s["status"], "label": s["label"]})
+            if len(out) == limit:
+                break
+        return out
+
     @app.get("/runs/{run_id}")
     def get_run(run_id: str) -> dict:
         return runner.status(run_id)
+
+    @app.get("/runs/{run_id}/frames/{frame_id}")
+    def frame(run_id: str, frame_id: int):
+        runner.status(run_id)  # 404 for unknown runs
+        facts = runner.checkpoint(run_id).values.get("facts", [])
+        if not 0 <= frame_id < len(facts):
+            raise HTTPException(404, f"no frame {frame_id}")
+        return FileResponse(facts[frame_id]["source"], media_type="image/png")
 
     @app.get("/runs/{run_id}/events")
     def events(run_id: str):
@@ -258,6 +326,8 @@ def create_app(graph=None) -> FastAPI:
             raise HTTPException(404, "no report: the run is not approved and finished")
         return PlainTextResponse(Path(path).read_text(), media_type="text/markdown")
 
+    if UI_DIST.is_dir():  # last, so the API routes above take precedence
+        app.mount("/", StaticFiles(directory=UI_DIST, html=True), name="ui")
     return app
 
 

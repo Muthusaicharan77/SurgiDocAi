@@ -1,5 +1,13 @@
-# SurgiDoc API (CPU). Code and configuration only: model weights, the guideline index
-# and run data are mounted at runtime (see docker-compose.yml).
+# SurgiDoc API and web UI (CPU). Code and configuration only: model weights, the
+# guideline index and run data are mounted at runtime (see docker-compose.yml).
+
+FROM node:22-slim AS ui
+WORKDIR /ui
+COPY ui/package.json ui/package-lock.json ./
+RUN npm ci --no-audit --no-fund
+COPY ui ./
+RUN npm run build
+
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1
@@ -16,6 +24,7 @@ RUN pip install ".[agent,trace,serve,download]"
 COPY configs ./configs
 COPY reports ./reports
 COPY scripts ./scripts
+COPY --from=ui /ui/dist ./ui/dist
 
 RUN useradd --create-home surgidoc && mkdir -p data runs weights \
     && chown -R surgidoc /app

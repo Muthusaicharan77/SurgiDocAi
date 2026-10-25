@@ -55,6 +55,7 @@ class RunState(TypedDict, total=False):
     timeline: dict
     key_frames: list[dict]
     selection_fallback: bool
+    selection_tool_calls: list[dict]
     passages: list[dict]
     queries: list[str]
     claims: list[dict]
@@ -109,7 +110,8 @@ def node_timeline(s: RunState) -> dict:
 def node_select(s: RunState) -> dict:
     keys, info = select_key_frames(_facts(s), _timeline(s))
     return {"key_frames": [k.model_dump() for k in keys],
-            "selection_fallback": info["fallback"], "usage": info["usage"]}
+            "selection_fallback": info["fallback"], "selection_tool_calls": info["tool_calls"],
+            "usage": info["usage"]}
 
 
 def node_retrieve(s: RunState) -> dict:

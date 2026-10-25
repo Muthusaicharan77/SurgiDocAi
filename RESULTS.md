@@ -147,6 +147,38 @@ Every rejection was for the intended reason (checked per category in the report 
 .venv/bin/python -m surgidoc.evals.injected --threads eval-video17 eval-video37 eval-video55
 ```
 
+## Agent: tool use in key-frame selection
+
+Measured 2026-10-25 (`reports/eval_tool_use.json`). Key-frame selection is the one node
+where Claude calls tools (`frame_stats`, `view_frames`) and decides what to inspect, so
+there is no single correct call sequence. The eval reran selection 3 times on each test
+run's facts (9 selections, Claude Haiku 5.5) and compared it with the node's deterministic
+fallback rule (middle of each phase segment, start of each event) and with random frames.
+
+| Selection | Frames | Segments covered | Event starts covered | Near-duplicate pairs | Validated structures per frame (masks) |
+|---|---:|---:|---:|---:|---:|
+| Agent (mean of 9) | 5.9 | 0.96 | 0.85 | 0.00 | 5.98 |
+| Fallback rule | 7.0 | 1.00 | 1.00 | 0.00 | 5.98 |
+| Random frames, same count | 5.9 | 0.90 | 0.24 | 0.79 | 5.84 |
+
+Tool use, per selection: 1.9 tool calls over 2.2 turns, 4.8 of 12 allowed images viewed,
+no call with an invalid frame id, no frame viewed twice, 98% of chosen frames inspected
+before being chosen, fallback never needed. About 7,200 input tokens per selection.
+
+- **Tool calls are clean.** Valid arguments, within budget, no repeats, and the agent looks
+  at what it picks.
+- **No measured benefit over the rule.** On every criterion that can be checked, the
+  fallback rule does as well or better, with no API call. Most agent misses are 1-3 frame
+  grasper flickers in video17, which a reader would likely skip too; two are real (the last
+  phase segment of video17 in one repeat, a 12-frame L-hook event in video55 in another).
+- **The value metric is weak.** Structures per frame barely separates any selection from
+  random frames (5.98 vs 5.84): in CholecSeg8k most frames show the same few structures.
+  Whether the agent's frames are better documentation would need a human rating.
+
+```bash
+.venv/bin/python -m surgidoc.evals.tool_use --threads eval-video17 eval-video37 eval-video55 --repeats 3
+```
+
 ## Guideline retrieval
 
 Measured 2026-10-24 (`reports/eval_retrieval.json`). 27 hand-written questions over the

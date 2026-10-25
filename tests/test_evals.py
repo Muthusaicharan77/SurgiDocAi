@@ -117,3 +117,29 @@ def test_injected_errors_are_rejected_and_controls_pass(tmp_path):
     assert {"absent_structure", "wrong_phase", "altered_quote", "vision_error",
             "true_structure"} <= categories
     assert all(r["correct"] for r in rows), [r for r in rows if not r["correct"]][:1]
+
+
+def test_selection_and_tool_metrics():
+    from surgidoc.evals.tool_use import selection_metrics, tool_metrics
+
+    facts = [FrameFacts(frame_id=i, frame_number=i * 5, time_s=i * 0.2, source=f"f{i}.png",
+                        phase="preparation" if i < 5 else "calot_triangle_dissection",
+                        phase_confidence=0.9,
+                        structures={"grasper": StructureFacts(area=0.1, components=1),
+                                    **({"l_hook_electrocautery": StructureFacts(
+                                        area=0.1, components=1)} if i >= 6 else {})})
+             for i in range(10)]
+    timeline = build_timeline(facts)  # 2 segments; grasper from 0, hook from 6
+    m = selection_metrics([0, 1, 7], timeline, facts)
+    assert m["segment_coverage"] == 1.0 and m["event_start_coverage"] == 1.0
+    assert m["near_duplicate_pairs"] == 1  # frames 0 and 1
+    assert m["structures_per_frame"] == 4 / 3  # grasper; grasper; grasper and hook
+    assert selection_metrics([2], timeline, facts)["segment_coverage"] == 0.5
+
+    calls = [{"tool": "frame_stats", "frame_ids": [0, 1, 99], "unknown_ids": [99],
+              "returned": [0, 1]},
+             {"tool": "view_frames", "frame_ids": [1], "unknown_ids": [], "returned": [1]},
+             {"tool": "view_frames", "frame_ids": [1], "unknown_ids": [], "returned": [1]}]
+    t = tool_metrics(calls, [0, 7])
+    assert (t["calls_with_unknown_ids"], t["images_viewed"], t["frames_viewed_twice"]) == (1, 2, 1)
+    assert t["key_frames_inspected"] == 0.5

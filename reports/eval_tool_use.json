@@ -1,0 +1,904 @@
+{
+ "threads": [
+  "eval-video17",
+  "eval-video37",
+  "eval-video55"
+ ],
+ "repeats": 3,
+ "summary": {
+  "agent": {
+   "fallback": 0.0,
+   "turns": 2.2222222222222223,
+   "key_frames": 5.888888888888889,
+   "count_in_range": 1.0,
+   "segment_coverage": 0.9629629629629629,
+   "event_start_coverage": 0.8481481481481482,
+   "near_duplicate_pairs": 0.0,
+   "structures_per_frame": 5.98042328042328,
+   "tool_calls": 1.8888888888888888,
+   "frame_stats_calls": 0.6666666666666666,
+   "view_frames_calls": 1.2222222222222223,
+   "calls_with_unknown_ids": 0.0,
+   "images_viewed": 4.777777777777778,
+   "within_image_budget": 1.0,
+   "frames_viewed_twice": 0.0,
+   "key_frames_inspected": 0.9777777777777777
+  },
+  "fallback_rule": {
+   "key_frames": 7.0,
+   "count_in_range": 1.0,
+   "segment_coverage": 1.0,
+   "event_start_coverage": 1.0,
+   "near_duplicate_pairs": 0.0,
+   "structures_per_frame": 5.981481481481481
+  },
+  "random_frames": {
+   "key_frames": 5.888888888888889,
+   "count_in_range": 1.0,
+   "segment_coverage": 0.897037037037037,
+   "event_start_coverage": 0.2388148148148148,
+   "near_duplicate_pairs": 0.7933333333333333,
+   "structures_per_frame": 5.838116402116402
+  }
+ },
+ "agent": [
+  {
+   "thread": "eval-video17",
+   "repeat": 0,
+   "keys": [
+    0,
+    8,
+    24,
+    40
+   ],
+   "fallback": false,
+   "turns": 2,
+   "reasons": [
+    "Start of video in preparation phase; grasper enters view (E1) with liver and gallbladder visible.",
+    "Grasper event E2 with gallbladder and omentum clearly visible.",
+    "Grasper event E4 showing gallbladder and instrument tip at the edge of the frame.",
+    "Grasper in view during the second preparation segment (E6), with gallbladder and grasper clearly shown together."
+   ],
+   "calls": [
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      0,
+      8,
+      24,
+      40
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      24,
+      40
+     ]
+    }
+   ],
+   "key_frames": 4,
+   "count_in_range": true,
+   "segment_coverage": 0.6666666666666666,
+   "event_start_coverage": 0.5,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 6,
+   "tool_calls": 1,
+   "frame_stats_calls": 0,
+   "view_frames_calls": 1,
+   "calls_with_unknown_ids": 0,
+   "images_viewed": 4,
+   "within_image_budget": true,
+   "frames_viewed_twice": 0,
+   "key_frames_inspected": 1
+  },
+  {
+   "thread": "eval-video17",
+   "repeat": 1,
+   "keys": [
+    0,
+    22,
+    32,
+    47,
+    48,
+    63
+   ],
+   "fallback": false,
+   "turns": 3,
+   "reasons": [
+    "Start of video in preparation phase; grasper enters view with liver, gallbladder and fat visible.",
+    "Start of grasper event E4; liver and gallbladder clearly visible with grasper retracting tissue.",
+    "Start of grasper event E6 and first frame of the second preparation segment; grasper is large in frame with gallbladder in view.",
+    "End of the second segment; grasper still present and gallbladder area at its largest (0.17).",
+    "Start of the third preparation segment after the gap; no grasper, abdominal wall dominates, showing the view change.",
+    "End of the footage; abdominal wall and fat visible with minimal liver and no instrument."
+   ],
+   "calls": [
+    {
+     "tool": "frame_stats",
+     "frame_ids": [
+      0,
+      8,
+      12,
+      22,
+      26,
+      29,
+      32,
+      40,
+      47,
+      48,
+      56,
+      63
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      12,
+      22,
+      26,
+      29,
+      32,
+      40,
+      47,
+      48,
+      56,
+      63
+     ]
+    },
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      0,
+      22,
+      32,
+      48
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      22,
+      32,
+      48
+     ]
+    }
+   ],
+   "key_frames": 6,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 0.5,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 5.333333333333333,
+   "tool_calls": 2,
+   "frame_stats_calls": 1,
+   "view_frames_calls": 1,
+   "calls_with_unknown_ids": 0,
+   "images_viewed": 4,
+   "within_image_budget": true,
+   "frames_viewed_twice": 0,
+   "key_frames_inspected": 1
+  },
+  {
+   "thread": "eval-video17",
+   "repeat": 2,
+   "keys": [
+    0,
+    8,
+    12,
+    22,
+    32,
+    48
+   ],
+   "fallback": false,
+   "turns": 2,
+   "reasons": [
+    "Start of video; grasper enters view (E1) with liver, gallbladder and fat visible.",
+    "Grasper event E2; gallbladder, liver and fat clearly visible together.",
+    "Grasper event E3 with liver and gallbladder in view, largest gallbladder share among early frames.",
+    "Start of grasper event E4; gallbladder and liver visible with abdominal wall.",
+    "Start of segment 2 and grasper event E6; grasper actively engaging gallbladder, largest grasper area.",
+    "Start of third preparation segment; only partial liver and gallbladder visible, abdominal wall dominant."
+   ],
+   "calls": [
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      0,
+      8,
+      22,
+      32
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      22,
+      32
+     ]
+    },
+    {
+     "tool": "frame_stats",
+     "frame_ids": [
+      0,
+      8,
+      12,
+      22,
+      32,
+      48,
+      63
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      12,
+      22,
+      32,
+      48,
+      63
+     ]
+    }
+   ],
+   "key_frames": 6,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 0.8333333333333334,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 5.666666666666667,
+   "tool_calls": 2,
+   "frame_stats_calls": 1,
+   "view_frames_calls": 1,
+   "calls_with_unknown_ids": 0,
+   "images_viewed": 4,
+   "within_image_budget": true,
+   "frames_viewed_twice": 0,
+   "key_frames_inspected": 1
+  },
+  {
+   "thread": "eval-video37",
+   "repeat": 0,
+   "keys": [
+    0,
+    15,
+    16,
+    45,
+    76,
+    90,
+    95
+   ],
+   "fallback": false,
+   "turns": 2,
+   "reasons": [
+    "Start of the recording in preparation phase; grasper enters view with liver, gallbladder and abdominal wall visible.",
+    "End of the first preparation segment, just before the gap; gallbladder, liver and grasper all visible with high phase confidence.",
+    "Start of the second preparation segment and the grasper event E2; grasper and gallbladder are clearly in frame.",
+    "Mid-preparation frame showing grasper, gallbladder, liver and fat together with a stable view.",
+    "Transition into calot_triangle_dissection and the start of the l_hook_electrocautery event E3; hook, grasper and gallbladder visible together.",
+    "Mid Calot triangle dissection with the hook, grasper and gallbladder all visible, high phase confidence.",
+    "Final frame of the footage; hook, grasper and gallbladder still in view at the end of the dissection segment."
+   ],
+   "calls": [
+    {
+     "tool": "frame_stats",
+     "frame_ids": [
+      0,
+      8,
+      15,
+      16,
+      30,
+      45,
+      60,
+      75,
+      76,
+      85,
+      90,
+      95
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      15,
+      16,
+      30,
+      45,
+      60,
+      75,
+      76,
+      85,
+      90,
+      95
+     ]
+    },
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      0,
+      16,
+      45,
+      76
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      16,
+      45,
+      76
+     ]
+    }
+   ],
+   "key_frames": 7,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 1,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 5.428571428571429,
+   "tool_calls": 2,
+   "frame_stats_calls": 1,
+   "view_frames_calls": 1,
+   "calls_with_unknown_ids": 0,
+   "images_viewed": 4,
+   "within_image_budget": true,
+   "frames_viewed_twice": 0,
+   "key_frames_inspected": 1
+  },
+  {
+   "thread": "eval-video37",
+   "repeat": 1,
+   "keys": [
+    0,
+    16,
+    40,
+    76,
+    85,
+    95
+   ],
+   "fallback": false,
+   "turns": 3,
+   "reasons": [
+    "Start of video in preparation phase; grasper enters view with abdominal wall, liver and gallbladder visible.",
+    "Start of second preparation segment (after gap at 15-16); grasper and gallbladder with fat clearly visible.",
+    "Mid-preparation frame showing grasper manipulating fat around the gallbladder.",
+    "Transition into Calot triangle dissection; L-hook electrocautery first appears in view.",
+    "Electrocautery hook active during Calot triangle dissection with gallbladder and liver edge visible.",
+    "End of timeline; hook and grasper both visible alongside gallbladder and liver."
+   ],
+   "calls": [
+    {
+     "tool": "frame_stats",
+     "frame_ids": [
+      0,
+      8,
+      15,
+      16,
+      40,
+      60,
+      75,
+      76,
+      85,
+      95
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      15,
+      16,
+      40,
+      60,
+      75,
+      76,
+      85,
+      95
+     ]
+    },
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      0,
+      16,
+      40,
+      76
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      16,
+      40,
+      76
+     ]
+    },
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      60,
+      85,
+      95
+     ],
+     "unknown_ids": [],
+     "returned": [
+      60,
+      85,
+      95
+     ]
+    }
+   ],
+   "key_frames": 6,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 1,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 5.5,
+   "tool_calls": 3,
+   "frame_stats_calls": 1,
+   "view_frames_calls": 2,
+   "calls_with_unknown_ids": 0,
+   "images_viewed": 7,
+   "within_image_budget": true,
+   "frames_viewed_twice": 0,
+   "key_frames_inspected": 1
+  },
+  {
+   "thread": "eval-video37",
+   "repeat": 2,
+   "keys": [
+    0,
+    8,
+    16,
+    60,
+    76,
+    85,
+    95
+   ],
+   "fallback": false,
+   "turns": 2,
+   "reasons": [
+    "Start of video in preparation phase; grasper enters view with abdominal wall, liver and gallbladder visible.",
+    "Preparation phase with high phase confidence; grasper, liver, gallbladder and fat all visible together.",
+    "Start of the second preparation segment after the gap; grasper, fat and gallbladder clearly visible.",
+    "Mid-preparation frame with grasper, gallbladder and abdominal wall in view before dissection starts.",
+    "Start of Calot triangle dissection; the L-hook electrocautery first appears alongside the grasper.",
+    "Calot triangle dissection with high phase confidence; electrocautery, grasper and gallbladder visible.",
+    "Last frame of the video; electrocautery and grasper are both clearly visible at the dissection site."
+   ],
+   "calls": [
+    {
+     "tool": "frame_stats",
+     "frame_ids": [
+      0,
+      8,
+      16,
+      40,
+      60,
+      75,
+      76,
+      85,
+      95
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      16,
+      40,
+      60,
+      75,
+      76,
+      85,
+      95
+     ]
+    },
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      0,
+      16,
+      76,
+      95
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      16,
+      76,
+      95
+     ]
+    }
+   ],
+   "key_frames": 7,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 1,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 5.428571428571429,
+   "tool_calls": 2,
+   "frame_stats_calls": 1,
+   "view_frames_calls": 1,
+   "calls_with_unknown_ids": 0,
+   "images_viewed": 4,
+   "within_image_budget": true,
+   "frames_viewed_twice": 0,
+   "key_frames_inspected": 1
+  },
+  {
+   "thread": "eval-video55",
+   "repeat": 0,
+   "keys": [
+    0,
+    8,
+    14,
+    22,
+    30,
+    36
+   ],
+   "fallback": false,
+   "turns": 2,
+   "reasons": [
+    "Segment start (t=20.3s): grasper in view with gallbladder, liver and fat visible; the only phase segment, so this anchors the timeline.",
+    "Start of E2: L-hook electrocautery first appears (t=21.9s) alongside grasper, liver and gallbladder.",
+    "Start of E3 (t=23.1s): hook and grasper both visible with gallbladder, liver, fat and GI tract, the richest multi-structure view.",
+    "End of E3 (t=24.7s): gallbladder occupies its largest share (about 15%) with hook and grasper in frame.",
+    "Start of E4 (t=26.3s): hook re-enters at the Calot region with grasper and gallbladder visible.",
+    "Start of E5 (t=27.5s): hook returns for the final dissection with gallbladder, liver, GI tract and grasper visible."
+   ],
+   "calls": [
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      0,
+      8,
+      14,
+      30
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      14,
+      30
+     ]
+    },
+    {
+     "tool": "frame_stats",
+     "frame_ids": [
+      0,
+      8,
+      14,
+      22,
+      30,
+      36,
+      47
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      14,
+      22,
+      30,
+      36,
+      47
+     ]
+    }
+   ],
+   "key_frames": 6,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 1,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 6.833333333333333,
+   "tool_calls": 2,
+   "frame_stats_calls": 1,
+   "view_frames_calls": 1,
+   "calls_with_unknown_ids": 0,
+   "images_viewed": 4,
+   "within_image_budget": true,
+   "frames_viewed_twice": 0,
+   "key_frames_inspected": 1
+  },
+  {
+   "thread": "eval-video55",
+   "repeat": 1,
+   "keys": [
+    0,
+    8,
+    14,
+    30,
+    36,
+    47
+   ],
+   "fallback": false,
+   "turns": 2,
+   "reasons": [
+    "Start of the single Calot's triangle dissection segment; grasper visible at the gallbladder neck.",
+    "Start of the L-hook electrocautery event (E2); hook enters the field beside the grasper.",
+    "Start of the sustained L-hook interval (E3); grasper and hook both visible on the gallbladder neck.",
+    "Start of the second hook event (E4); hook and grasper both clearly visible around the cystic structure.",
+    "Start of the final hook event (E5); hook tip and grasper retracting the tissue are clearly visible.",
+    "Final frame of the footage; hook and grasper still in view at the end of the dissection segment."
+   ],
+   "calls": [
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      0,
+      8,
+      14,
+      22
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      14,
+      22
+     ]
+    },
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      30,
+      36,
+      40,
+      47
+     ],
+     "unknown_ids": [],
+     "returned": [
+      30,
+      36,
+      40,
+      47
+     ]
+    }
+   ],
+   "key_frames": 6,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 1,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 6.833333333333333,
+   "tool_calls": 2,
+   "frame_stats_calls": 0,
+   "view_frames_calls": 2,
+   "calls_with_unknown_ids": 0,
+   "images_viewed": 8,
+   "within_image_budget": true,
+   "frames_viewed_twice": 0,
+   "key_frames_inspected": 1
+  },
+  {
+   "thread": "eval-video55",
+   "repeat": 2,
+   "keys": [
+    0,
+    8,
+    14,
+    30,
+    47
+   ],
+   "fallback": false,
+   "turns": 2,
+   "reasons": [
+    "Start of the single Calot's triangle dissection segment; grasper in view with gallbladder and liver edge visible.",
+    "Event E2: L-hook electrocautery first appears in view.",
+    "Event E3 start: L-hook electrocautery active with grasper, several structures visible.",
+    "Event E4: hook electrocautery re-enters view while grasper holds the tissue near the gallbladder.",
+    "End of footage; last frame of the segment, showing the end of the dissection sequence."
+   ],
+   "calls": [
+    {
+     "tool": "view_frames",
+     "frame_ids": [
+      0,
+      8,
+      14,
+      30,
+      36,
+      47
+     ],
+     "unknown_ids": [],
+     "returned": [
+      0,
+      8,
+      14,
+      30
+     ]
+    }
+   ],
+   "key_frames": 5,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 0.8,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 6.8,
+   "tool_calls": 1,
+   "frame_stats_calls": 0,
+   "view_frames_calls": 1,
+   "calls_with_unknown_ids": 0,
+   "images_viewed": 4,
+   "within_image_budget": true,
+   "frames_viewed_twice": 0,
+   "key_frames_inspected": 0.8
+  }
+ ],
+ "fallback_rule": [
+  {
+   "thread": "eval-video17",
+   "keys": [
+    0,
+    8,
+    12,
+    15,
+    22,
+    29,
+    32,
+    39,
+    55
+   ],
+   "key_frames": 9,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 1,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 5.777777777777778
+  },
+  {
+   "thread": "eval-video37",
+   "keys": [
+    0,
+    7,
+    16,
+    45,
+    76,
+    85
+   ],
+   "key_frames": 6,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 1,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 5.333333333333333
+  },
+  {
+   "thread": "eval-video55",
+   "keys": [
+    0,
+    8,
+    14,
+    23,
+    30,
+    36
+   ],
+   "key_frames": 6,
+   "count_in_range": true,
+   "segment_coverage": 1,
+   "event_start_coverage": 1,
+   "near_duplicate_pairs": 0,
+   "structures_per_frame": 6.833333333333333
+  }
+ ],
+ "usage": [
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2092,
+   "output_tokens": 284
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 3107,
+   "output_tokens": 194
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2092,
+   "output_tokens": 303
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4532,
+   "output_tokens": 188
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 5451,
+   "output_tokens": 302
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2092,
+   "output_tokens": 410
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4527,
+   "output_tokens": 290
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1777,
+   "output_tokens": 239
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4902,
+   "output_tokens": 495
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1777,
+   "output_tokens": 142
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4441,
+   "output_tokens": 60
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 5054,
+   "output_tokens": 292
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1777,
+   "output_tokens": 230
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4368,
+   "output_tokens": 355
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1836,
+   "output_tokens": 264
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4571,
+   "output_tokens": 546
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1836,
+   "output_tokens": 302
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 3632,
+   "output_tokens": 297
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1836,
+   "output_tokens": 259
+  },
+  {
+   "node": "select_key_frames",
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2826,
+   "output_tokens": 233
+  }
+ ],
+ "tokens_in": 64526,
+ "tokens_out": 5685
+}

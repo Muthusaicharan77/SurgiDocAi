@@ -85,20 +85,24 @@ def fallback_selection(facts: list[FrameFacts], timeline: Timeline) -> list[KeyF
 
 
 def select_key_frames(facts: list[FrameFacts], timeline: Timeline) -> tuple[list[KeyFrame], dict]:
-    """Returns (key frames, info) where info has usage rows and whether the fallback ran."""
+    """Returns (key frames, info): usage rows, the tool calls made, and whether the fallback ran."""
     by_id = {f.frame_id: f for f in facts}
     images_left = MAX_IMAGES
-    usage = []
+    usage, calls = [], []
 
     def run_tool(name: str, args: dict) -> list[dict] | str:
         nonlocal images_left
         ids = [i for i in args["frame_ids"] if i in by_id]
         unknown = [i for i in args["frame_ids"] if i not in by_id]
         note = f"Unknown frame ids ignored: {unknown}. " if unknown else ""
+        call = {"tool": name, "frame_ids": args["frame_ids"], "unknown_ids": unknown}
+        calls.append(call)
         if name == "frame_stats":
+            call["returned"] = ids[:40]
             return note + json.dumps([frame_summary(by_id[i]) for i in ids[:40]])
         ids = ids[: min(4, images_left)]
         images_left -= len(ids)
+        call["returned"] = ids
         blocks: list[dict] = []
         for i in ids:
             blocks += [{"type": "text", "text": f"Frame {i} (t={by_id[i].time_s:.1f}s)"},
@@ -131,6 +135,7 @@ def select_key_frames(facts: list[FrameFacts], timeline: Timeline) -> tuple[list
             if k.frame_id in by_id and k.frame_id not in seen:
                 seen.add(k.frame_id)
                 keys.append(k)
+    info = {"usage": usage, "tool_calls": calls, "turns": len(usage)}
     if not MIN_KEY <= len(keys) <= MAX_KEY:
-        return fallback_selection(facts, timeline), {"usage": usage, "fallback": True}
-    return sorted(keys, key=lambda k: k.frame_id), {"usage": usage, "fallback": False}
+        return fallback_selection(facts, timeline), {**info, "fallback": True}
+    return sorted(keys, key=lambda k: k.frame_id), {**info, "fallback": False}

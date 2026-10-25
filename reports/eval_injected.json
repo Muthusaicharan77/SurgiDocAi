@@ -1674,7 +1674,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says guidance states the step is optional and can be skipped. The quote is a fragment about Wauben et al. comparing guidelines and says nothing about optionality or skipping. The claim asserts content not in the quote."
+    "judge: overstates: The claim says guidance states the procedure is optional and can be skipped. The quote is only a fragment ('and duct. In a more recent publication, Wauben et al. compared different') and says nothing about optionality or skipping. The claim asserts content not in the quote."
    ]
   },
   {
@@ -1699,7 +1699,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says guidance states the step is optional. The quote says there is no strong evidence that CVS is superior to other cognitive instruments. It does not say CVS is optional or can be skipped; the claim strengthens and misstates the quote's content."
+    "judge: overstates: The claim says guidance states the CVS is optional and can be skipped. The quote says there is no strong evidence that CVS is superior to other cognitive instruments. It does not say CVS is optional or can be skipped, so the claim adds a recommendation the passage does not make."
    ]
   },
   {
@@ -1724,7 +1724,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says guidance states the step is optional and can be skipped. The quote says subtotal cholecystectomy is safe and a valuable option in difficult gallbladder removal. It does not say optional-and-skippable for a step; the claim extends the quote to an unsupported statement."
+    "judge: overstates: The claim says guidance states the procedure is optional and can be skipped. The quote says subtotal cholecystectomy is safe and a valuable option in difficult gallbladder removal. It does not say any step is optional or can be skipped. The claim extends the passage beyond what it says."
    ]
   },
   {
@@ -1749,7 +1749,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says guidance states the step is optional. The quote says Jung et al. promoted documentation of safety as a black box, which is 'an option in further versions of the template'. Calling it optional is loosely near the quote, but the claim frames it as a skippable step of the guidance; the quote does not state this about a step being skipped, so the claim extends it."
+    "judge: overstates: The claim says guidance states the procedure is optional and can be skipped. The quote mentions the documentation of safety as a black box being promoted and being an option in templates. It does not say any surgical step is optional or can be skipped, so the claim goes beyond the quote."
    ]
   },
   {
@@ -1774,7 +1774,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says guidance states the step is optional and can be skipped. The quote describes fundus-first dissection and its higher blood loss; it says nothing about optionality or skipping."
+    "judge: overstates: The claim says guidance states the procedure is optional and can be skipped. The quote describes fundus-first dissection and says its approach is associated with higher blood loss. It does not state optionality or that it can be skipped, so the claim adds content not in the quote."
    ]
   },
   {
@@ -1805,7 +1805,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says the fat has been fully cleared. Evidence shows fat visible in 5/5 frames with mean area 13%, phase preparation. Nothing shows clearance, and full clearance is a strong claim the visual evidence does not support."
+    "judge: overstates: The claim says the fat has been fully cleared. The evidence shows fat visible in 5/5 frames at mean 13% area, in the preparation phase. Visibility does not show clearing, and 'fully' is a certainty the evidence lacks. Clearance is an action the models cannot observe."
    ]
   },
   {
@@ -1836,7 +1836,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says the liver appears cirrhotic. Evidence shows only liver area in frames and no condition assessment. Cirrhosis is a condition the evidence does not show."
+    "judge: overstates: The claim says the liver appears cirrhotic. The evidence shows liver visible in 5/5 frames at mean 23% area. Nothing in the evidence indicates cirrhosis, a condition the models cannot determine from segmentation area."
    ]
   },
   {
@@ -1867,7 +1867,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says the gallbladder appears inflamed and distended. Evidence shows only gallbladder visible with mean area 10%. Inflammation and distension are conditions not shown."
+    "judge: overstates: The claim says the gallbladder appears inflamed and distended. The evidence shows gallbladder visible in 5/5 frames at mean 10% area. Inflammation and distension are conditions not shown by the evidence; area alone does not establish distension."
    ]
   },
   {
@@ -1898,7 +1898,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says the gallbladder appears inflamed and distended. Evidence shows gallbladder visible with mean area 12%. Inflammation and distension are not in the evidence."
+    "judge: overstates: The claim says the gallbladder appears inflamed and distended. The evidence shows gallbladder visible in 5/5 frames at mean 12% area. Inflammation and distension are not shown, so the claim adds a condition."
    ]
   },
   {
@@ -1929,7 +1929,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Claim says the liver appears cirrhotic. Evidence shows liver visible in 5/5 frames with mean area 5%. No condition is assessed, so cirrhosis is unsupported."
+    "judge: overstates: The claim says the liver appears cirrhotic. The evidence shows liver visible in 5/5 frames at mean 5% area. Nothing in the evidence supports cirrhosis, a condition the models cannot determine."
    ]
   },
   {
@@ -3798,7 +3798,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: The quote is a fragment about anatomical depictions differing from cadaveric structures due to stretching during manoeuvres. Nothing in it says this is optional or can be skipped, so the claim adds a statement the quote does not contain."
+    "judge: overstates: The quote concerns how cadaveric and atlas depictions differ from surgical views because of stretching during manoeuvres. It says nothing about any step being optional or skippable, so the claim adds this."
    ]
   },
   {
@@ -3823,7 +3823,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: contradicts: The quote says the ideal report should follow the CVS schema. That is a directive to follow the schema, the opposite of saying it is optional and can be skipped."
+    "judge: contradicts: The quote says the ideal report should follow the CVS schema and describes the CVS steps the surgeon must report on. That is the opposite of saying the element is optional and can be skipped."
    ]
   },
   {
@@ -3848,7 +3848,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: The quote says whether a timeout is performed should be reported. It does not mention optional or skippable steps, so the claim adds a statement the quote does not support."
+    "judge: contradicts: The quote says whether a timeout is performed should be reported, and that cholangiography findings must be reported. This conflicts with the claim that the guidance treats the element as optional and skippable."
    ]
   },
   {
@@ -3873,7 +3873,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: The quote is a fragment about operative notes and cholecystitis guidelines. It says nothing about the step being optional or skippable, so the claim adds content the quote does not contain."
+    "judge: overstates: The quote is about many cholecystitis guidelines lacking coverage of the operative report. It does not mention anything being optional or skippable, so the claim adds this."
    ]
   },
   {
@@ -3898,7 +3898,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: The quote says a document safety check list at the start of the procedure will fit with the need for global safety. It does not say the step is optional or can be skipped, so the claim adds content."
+    "judge: overstates: The quote says including a safety checklist at the start will fit with the need for global safety. It does not say the checklist is optional or can be skipped, so the claim adds this."
    ]
   },
   {
@@ -3930,7 +3930,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: The evidence shows grasper and gallbladder visible in 5 frames. It does not show a retraction action or the fundus being touched. The word retracting adds an action the evidence cannot show."
+    "judge: overstates: Evidence shows the grasper and gallbladder visible in 5 frames with no motion or contact described. The claim asserts the retraction action, which the vision output cannot show."
    ]
   },
   {
@@ -3961,7 +3961,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: The evidence shows only that the gallbladder is visible at about 7% of frame area. Inflamed and distended are conditions the evidence does not show, and appears adds certainty the models cannot provide."
+    "judge: overstates: Evidence shows only that the gallbladder is visible at about 7% of the frame. Inflammation and distension are conditions the evidence does not show."
    ]
   },
   {
@@ -3992,7 +3992,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: contradicts: The evidence shows fat visible in all 5 frames at a mean area of 18%. The claim that fat has been fully cleared says the opposite of what the evidence shows."
+    "judge: contradicts: Evidence shows fat visible at about 18% of the frame in all 5 frames. The claim says the fat has been fully cleared, which contradicts this visible fat."
    ]
   },
   {
@@ -4024,7 +4024,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: The evidence shows grasper and gallbladder visible in 5 frames. It does not show a retraction action or the fundus being touched. The word retracting adds an action the evidence cannot show."
+    "judge: overstates: Evidence shows the grasper and gallbladder visible in 5 frames. The claim asserts the retraction action, which the vision output cannot show."
    ]
   },
   {
@@ -4056,7 +4056,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: The evidence shows grasper and gallbladder visible in 5 frames. It does not show a retraction action or the fundus being touched. The word retracting adds an action the evidence cannot show."
+    "judge: overstates: Evidence shows the grasper and gallbladder visible in 5 frames. The claim asserts the retraction action, which the vision output cannot show."
    ]
   },
   {
@@ -6076,7 +6076,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: contradicts: The quote says operative notes may not adequately represent the procedure, and the passage argues for a comprehensive reporting template. Nothing in the quote says the guidance is optional or can be skipped. The claim asserts the opposite of the passage's emphasis on reporting."
+    "judge: overstates: The quote says operative notes may not adequately represent the performed procedure. It says nothing about the template being optional or skippable. The passage argues for a comprehensive template, so the claim adds a status the evidence does not give."
    ]
   },
   {
@@ -6101,7 +6101,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: contradicts: The quote says the inferior liver border is much more useful for laparoscopic anatomy. Nothing says the guidance is optional or can be skipped. The passage treats this landmark as useful, which runs against the claim."
+    "judge: overstates: The quote says the inferior liver border is more useful for laparoscopic anatomy. It does not say anything is optional or can be skipped, so the claim adds a status not in the quote."
    ]
   },
   {
@@ -6126,7 +6126,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: contradicts: The quote says a detailed and precise surgical report will be critically important. The claim that the guidance is optional or skippable is the opposite of that."
+    "judge: overstates: The quote says a detailed and precise surgical report is critically important after BDI. It does not say anything is optional or skippable, so the claim adds a status not in the quote."
    ]
   },
   {
@@ -6151,7 +6151,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: contradicts: The quote says the report should be computerized and should incorporate drop-down menus. The claim that this is optional or skippable runs against 'should incorporate'."
+    "judge: overstates: The quote describes a computerised report with drop-down menus. It does not say anything is optional or skippable, so the claim adds a status not in the quote."
    ]
   },
   {
@@ -6176,7 +6176,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: contradicts: The quote says applying the CVS principles is even more important. Nothing supports the claim that this is optional or can be skipped, and the passage argues the reverse."
+    "judge: overstates: The quote says applying CVS principles is even more important given the Calot-first approach. It does not say anything is optional or skippable, so the claim adds a status not in the quote."
    ]
   },
   {
@@ -6207,7 +6207,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Evidence shows the liver is visible and connective tissue in 4/5 frames. Nothing in the evidence shows cirrhosis. The claim adds a condition the evidence does not show."
+    "judge: overstates: Evidence shows the liver is visible in 5/5 frames, with no cirrhosis information. The claim that it appears cirrhotic adds a condition the evidence does not show."
    ]
   },
   {
@@ -6238,7 +6238,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: contradicts: Evidence shows fat in 5/5 frames with mean area 21%, so fat is still visible. The claim that it has been fully cleared is the opposite of what the evidence shows."
+    "judge: contradicts: Evidence shows fat in 5/5 frames with mean area 21% of the frame. The claim that fat has been fully cleared says the opposite of this."
    ]
   },
   {
@@ -6269,7 +6269,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Evidence shows the liver is visible. Nothing in the evidence shows cirrhosis, so the claim adds a condition the evidence does not show."
+    "judge: overstates: Evidence shows the liver is visible in 5/5 frames, with no cirrhosis information. The claim that it appears cirrhotic adds a condition the evidence does not show."
    ]
   },
   {
@@ -6300,7 +6300,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Evidence shows the gallbladder is visible, with no information on inflammation or distension. The claim adds conditions the evidence does not show."
+    "judge: overstates: Evidence shows the gallbladder is visible in 5/5 frames. It gives no information on inflammation or distension, so the claim adds conditions the evidence does not show."
    ]
   },
   {
@@ -6331,7 +6331,7 @@
    "correct": true,
    "judged_status": "unsupported",
    "judged_reasons": [
-    "judge: overstates: Evidence shows the gallbladder is visible, with no information on inflammation or distension. The claim adds conditions the evidence does not show."
+    "judge: overstates: Evidence shows the gallbladder is visible in 5/5 frames. It gives no information on inflammation or distension, so the claim adds conditions the evidence does not show."
    ]
   },
   {

@@ -167,11 +167,12 @@ goes back to the drafter.
 
 **Real claims** (`surgidoc.evals.judge_real`, `configs/evals/judge_labels.json`). Claims
 Claude wrote in agent runs, each labelled by me as faithful or overstating before scoring.
+The judge is not deterministic, so each set was judged 3 times.
 
-| Set | Claims | Overstating (my labels) | Caught | Missed | False alarms |
-|---|---:|---:|---:|---:|---:|
-| Tuning: test-video runs | 50 | 3 | 3 | 0 | 0 |
-| Held out: validation-video runs | 33 | 3 | 1 | 2 | 0 |
+| Set | Claims | Overstating (my labels) | Caught, per repeat | False alarms, per repeat |
+|---|---:|---:|---|---|
+| Tuning: test-video runs | 50 | 3 | 3, 3, 3 | 1, 0, 1 (of 47) |
+| Held out: validation-video runs | 33 | 3 | 1, 1, 0 | 0, 0, 0 (of 30) |
 
 - **What it catches:** actions, locations and spatial relations added to "in view"
   ("the L-hook is in use on the cystic region", "near the gallbladder"), and guidance
@@ -181,19 +182,28 @@ Claude wrote in agent runs, each labelled by me as faithful or overstating befor
   achieved in only about 50% of cases" drops one word from "easily obtained in only 50% of
   cases", which changes the meaning. And claims about the system itself it has no
   evidence for (video18 c13, borderline).
-- **No false alarms** on 77 faithful real claims or 45 planted true claims.
+- **Few false alarms:** 2 in 231 judgements of faithful real claims, both on one claim
+  (video17 c4, "five short events between frames 0 and 31", flagged in 2 of 3 repeats),
+  and none on the 45 planted true claims.
+- **Run-to-run variation is real.** The videotape claim is caught in 2 of 3 repeats; a
+  single run of the judge would have reported 0 or 1 catches on the held-out set.
 - **Tuning history.** The first version flagged 7 of the tuning set's 50 claims, 3 of them
   wrongly, because the judge lacked frame ids, areas and the timeline. After adding them,
   11 flags, with reasons that often argued for "faithful": the schema put the verdict before
   the reason. Reason first, plus the passage as context for guideline claims, gave the
   numbers above. Hence the held-out set, drafted and labelled after these changes.
+  Later, a traced demo run on video48 (one of the held-out videos) showed the judge
+  rejecting a true limitation claim ("blood is an unvalidated class") because limitation
+  claims got no information on classes; their evidence now lists the model's classes,
+  which have measured accuracy, and what was detected. That fix came from a held-out
+  video, though not from the labelled claims.
 - **Caveats.** One labeller (me), 6 overstating claims in total, and an LLM judging an
   LLM of the same family. The drafter's prompt now also tells it not to state actions,
   so overstatements are rarer in the held-out drafts.
 
 ```bash
 .venv/bin/python -m surgidoc.evals.injected --threads eval-video17 eval-video37 eval-video55 --judge
-.venv/bin/python -m surgidoc.evals.judge_real --set heldout
+.venv/bin/python -m surgidoc.evals.judge_real --set heldout --repeats 3
 ```
 
 ## Agent: tool use in key-frame selection

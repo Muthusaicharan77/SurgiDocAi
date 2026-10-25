@@ -22,9 +22,10 @@ from typing import Literal
 from pydantic import BaseModel
 
 from surgidoc.tracing import generation
+from surgidoc.vision.classes import CLASS_NAMES
 
 from .claims import Claim, ClaimResult
-from .facts import FrameFacts, Timeline
+from .facts import FrameFacts, Timeline, validated_classes
 from .llm import EFFORT, MODEL, client, usage_row
 
 ENABLED = os.environ.get("SURGIDOC_JUDGE", "1") != "0"
@@ -74,7 +75,16 @@ def evidence(c: Claim, facts: dict[int, FrameFacts], timeline: Timeline,
                 "passage_for_context": " ".join(passages.get(p, "") for p in c.passage_ids)}
     if c.claim_type == "limitation":
         # What the system did determine, so a limitation can be checked against it.
-        return {"phase_segments": [f"{g.phase} frames {g.start_frame}-{g.end_frame}"
+        validated = validated_classes()
+        detected = {n for f in facts.values() for n in f.structures if f.visible(n)}
+        return {"classes_the_segmentation_model_has": [n for n in CLASS_NAMES
+                                                       if n != "background"],
+                "structures_detected_in_any_frame": sorted(detected - {"background"}),
+                "classes_with_measured_accuracy": sorted(validated),
+                "classes_without_measured_accuracy": sorted(
+                    set(CLASS_NAMES) - validated - {"background"}),
+                "phase_model": "no measured accuracy on this data",
+                "phase_segments": [f"{g.phase} frames {g.start_frame}-{g.end_frame}"
                                    for g in timeline.segments],
                 "footage_gaps": [f"between frames {a} and {b}" for a, b in timeline.gaps],
                 "events": [f"{e.id} {e.kind} {e.detail} frames {e.start_frame}-{e.end_frame}"

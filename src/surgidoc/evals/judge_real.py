@@ -9,7 +9,10 @@ The judge's prompt and evidence were adjusted on the test-video runs, so their
 numbers are optimistic. The held-out runs (validation videos, drafted after the
 adjustment) were labelled before the judge was run on them.
 
-    python -m surgidoc.evals.judge_real --set heldout
+    python -m surgidoc.evals.judge_real --set heldout --repeats 3
+
+The judge is not deterministic, so each set is judged several times and every
+repeat's counts are reported, not one run.
 """
 
 from __future__ import annotations
@@ -44,36 +47,50 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--set", required=True, help="a key of the labels file, e.g. heldout")
     p.add_argument("--labels", type=Path, default=DEFAULT_LABELS)
+    p.add_argument("--repeats", type=int, default=3)
     p.add_argument("--out", type=Path, default=DEFAULT_OUT)
     args = p.parse_args()
 
     spec = json.loads(args.labels.read_text())["sets"][args.set]
-    rows = []
     with SqliteSaver.from_conn_string(str(CHECKPOINT_DB)) as saver:
-        for thread, labels in spec["runs"].items():
-            run = load_run(saver, thread)
-            claims = run[spec["claims"]]
-            results = verify(claims, run["facts"], run["timeline"], run["passages"]).results
-            judged, _ = judge(claims, results, run["facts"], run["timeline"], run["passages"])
-            for c, r, j in zip(claims, results, judged):
-                if r.status != "supported":
-                    continue  # the judge only sees what the verifier passed
-                if c.id not in labels:
-                    raise ValueError(f"{thread} {c.id} passed the verifier but has no label")
-                rows.append({"thread": thread, "id": c.id, "claim_type": c.claim_type,
-                             "text": c.text, "label": labels[c.id],
-                             "judged": "faithful" if j.status == "supported"
-                             else j.reasons[0].split(":")[1].strip(),
-                             "reason": j.reasons[0] if j.reasons else ""})
-
-    summary = confusion(rows)
+        runs = {t: load_run(saver, t) for t in spec["runs"]}
+    repeats = [judge_set(runs, spec, r) for r in range(args.repeats)]
+    summaries = [confusion(rows) for rows in repeats]
     out = json.loads(args.out.read_text()) if args.out.exists() else {}
-    out[args.set] = {"summary": summary, "rows": rows}
+    out[args.set] = {"repeats": summaries, "rows": repeats}
     args.out.write_text(json.dumps(out, indent=1))
-    print(json.dumps(summary, indent=1))
-    for r in rows:
-        if r["label"] != "faithful" or r["judged"] != "faithful":
-            print(f"  {r['thread']} {r['id']} label={r['label']} judged={r['judged']}: {r['text']}")
+    keys = ["claims", "overstating_by_label", "caught", "missed", "false_alarms"]
+    print(" | ".join(keys))
+    for s in summaries:
+        print(" | ".join(str(s[k]) for k in keys))
+    flagged = {}
+    for rows in repeats:
+        for r in rows:
+            if r["label"] != "faithful" or r["judged"] != "faithful":
+                key = (r["thread"], r["id"], r["label"], r["text"])
+                flagged[key] = flagged.get(key, 0) + (r["judged"] != "faithful")
+    for (thread, cid, label, text), n in flagged.items():
+        print(f"  {thread} {cid} label={label} flagged in {n}/{args.repeats}: {text}")
+
+
+def judge_set(runs: dict, spec: dict, repeat: int) -> list[dict]:
+    rows = []
+    for thread, labels in spec["runs"].items():
+        run = runs[thread]
+        claims = run[spec["claims"]]
+        results = verify(claims, run["facts"], run["timeline"], run["passages"]).results
+        judged, _ = judge(claims, results, run["facts"], run["timeline"], run["passages"])
+        for c, r, j in zip(claims, results, judged):
+            if r.status != "supported":
+                continue  # the judge only sees what the verifier passed
+            if c.id not in labels:
+                raise ValueError(f"{thread} {c.id} passed the verifier but has no label")
+            rows.append({"repeat": repeat, "thread": thread, "id": c.id,
+                         "claim_type": c.claim_type, "text": c.text, "label": labels[c.id],
+                         "judged": "faithful" if j.status == "supported"
+                         else j.reasons[0].split(":")[1].strip(),
+                         "reason": j.reasons[0] if j.reasons else ""})
+    return rows
 
 
 if __name__ == "__main__":

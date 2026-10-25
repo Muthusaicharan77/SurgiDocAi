@@ -30,6 +30,19 @@ def enabled() -> bool:
             and bool(os.environ.get("LANGFUSE_SECRET_KEY")))
 
 
+def make_client(**kwargs):
+    """A Langfuse client that exports only spans made through Langfuse.
+
+    The Anthropic SDK has its own OpenTelemetry spans, which Langfuse would export as
+    a second generation per Claude call, counting every call's tokens twice. The
+    generations made here carry the same model and usage, plus the input and output.
+    """
+    from langfuse import Langfuse
+    from langfuse.span_filter import is_langfuse_span
+
+    return Langfuse(should_export_span=is_langfuse_span, **kwargs)
+
+
 @cache
 def _client():
     """The Langfuse client for the configured keys (LANGFUSE_* variables).
@@ -37,10 +50,8 @@ def _client():
     Created explicitly, once: the LangGraph callback looks the client up by public key,
     which only finds a client that already exists.
     """
-    from langfuse import Langfuse
-
     enabled()  # loads .env, where the keys usually are
-    return Langfuse()
+    return make_client()
 
 
 def strip_images(value):

@@ -30,16 +30,18 @@ def test_tracing_is_a_no_op_without_keys(monkeypatch):
 
 def test_graph_run_becomes_one_nested_trace(monkeypatch):
     pytest.importorskip("langfuse")
-    from langfuse import Langfuse
     from langgraph.graph import END, START, StateGraph
+    from opentelemetry.sdk.trace import TracerProvider
     from opentelemetry.sdk.trace.export.in_memory_span_exporter import InMemorySpanExporter
 
     monkeypatch.setenv("LANGFUSE_PUBLIC_KEY", "pk-test")
     monkeypatch.setenv("LANGFUSE_SECRET_KEY", "sk-test")
     monkeypatch.setattr(tracing, "enabled", lambda: True)
     exporter = InMemorySpanExporter()
-    client = Langfuse(public_key="pk-test", secret_key="sk-test", base_url="http://localhost:1",
-                      span_exporter=exporter)
+    provider = TracerProvider()
+    client = tracing.make_client(public_key="pk-test", secret_key="sk-test",
+                                 base_url="http://localhost:1", span_exporter=exporter,
+                                 tracer_provider=provider)
     monkeypatch.setattr(tracing, "_client", lambda: client)
 
     class State(TypedDict, total=False):
@@ -48,6 +50,12 @@ def test_graph_run_becomes_one_nested_trace(monkeypatch):
     def draft(_):
         messages = [{"role": "user", "content": [{"type": "image", "source": {"data": "AAAA"}}]}]
         with tracing.generation("draft_report", "claude-haiku-5-5", messages, "sys") as record:
+            # What the Anthropic SDK's own instrumentation emits for the same call.
+            with provider.get_tracer("com.anthropic.sdk.python").start_as_current_span(
+                    "anthropic.messages.create",
+                    attributes={"gen_ai.system": "anthropic",
+                                "gen_ai.usage.input_tokens": 10}):
+                pass
             record(NS(usage=NS(input_tokens=10, output_tokens=3), stop_reason="end_turn",
                       content=[{"type": "text", "text": "ok"}]))
         return {"x": 1}
@@ -63,6 +71,7 @@ def test_graph_run_becomes_one_nested_trace(monkeypatch):
 
     spans = {s.name: s for s in exporter.get_finished_spans()}
     assert {"surgidoc run", "draft", "draft_report"} <= set(spans)
+    assert "anthropic.messages.create" not in spans  # no duplicate generation per call
     assert len({s.context.trace_id for s in spans.values()}) == 1
     root, node, gen = spans["surgidoc run"], spans["draft"], spans["draft_report"]
     assert root.parent is None and gen.parent.span_id == node.context.span_id

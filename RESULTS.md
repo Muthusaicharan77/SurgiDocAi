@@ -147,6 +147,55 @@ Every rejection was for the intended reason (checked per category in the report 
 .venv/bin/python -m surgidoc.evals.injected --threads eval-video17 eval-video37 eval-video55
 ```
 
+## Judge: does each claim say only what its evidence says?
+
+Measured 2026-10-25. The verifier checks references with code, not meaning. The judge
+node (`src/surgidoc/agent/judge.py`, Claude Haiku 5.5, one call per draft) reads each claim
+the verifier passed next to its evidence (model output for its frames and events, or its
+quote and passage) and answers faithful, overstates or contradicts. Anything but faithful
+goes back to the drafter.
+
+**Planted claims** (`surgidoc.evals.injected --judge`, same cases as above):
+
+| Category | n | Rejected by verifier | Rejected by verifier + judge |
+|---|---:|---:|---:|
+| Errors the verifier catches (10 kinds) | 142 | 142 | 142 |
+| Misstated guideline (verbatim quote, opposite claim) | 15 | 0 | 15 |
+| Overstated observation (an action or condition the models cannot see) | 15 | 0 | 15 |
+| Vision error (model sees it, masks do not) | 8 | 0 | 0 |
+| True claims (controls) | 45 | 0 | 0 |
+
+**Real claims** (`surgidoc.evals.judge_real`, `configs/evals/judge_labels.json`). Claims
+Claude wrote in agent runs, each labelled by me as faithful or overstating before scoring.
+
+| Set | Claims | Overstating (my labels) | Caught | Missed | False alarms |
+|---|---:|---:|---:|---:|---:|
+| Tuning: test-video runs | 50 | 3 | 3 | 0 | 0 |
+| Held out: validation-video runs | 33 | 3 | 1 | 2 | 0 |
+
+- **What it catches:** actions, locations and spatial relations added to "in view"
+  ("the L-hook is in use on the cystic region", "near the gallbladder"), and guidance
+  turned around or stretched ("recommends videotaping the procedure", where the source asks
+  for an existing videotape to be added to the report).
+- **What it misses:** subtle distortions of a quote. "A complete critical view of safety is
+  achieved in only about 50% of cases" drops one word from "easily obtained in only 50% of
+  cases", which changes the meaning. And claims about the system itself it has no
+  evidence for (video18 c13, borderline).
+- **No false alarms** on 77 faithful real claims or 45 planted true claims.
+- **Tuning history.** The first version flagged 7 of the tuning set's 50 claims, 3 of them
+  wrongly, because the judge lacked frame ids, areas and the timeline. After adding them,
+  11 flags, with reasons that often argued for "faithful": the schema put the verdict before
+  the reason. Reason first, plus the passage as context for guideline claims, gave the
+  numbers above. Hence the held-out set, drafted and labelled after these changes.
+- **Caveats.** One labeller (me), 6 overstating claims in total, and an LLM judging an
+  LLM of the same family. The drafter's prompt now also tells it not to state actions,
+  so overstatements are rarer in the held-out drafts.
+
+```bash
+.venv/bin/python -m surgidoc.evals.injected --threads eval-video17 eval-video37 eval-video55 --judge
+.venv/bin/python -m surgidoc.evals.judge_real --set heldout
+```
+
 ## Agent: tool use in key-frame selection
 
 Measured 2026-10-25 (`reports/eval_tool_use.json`). Key-frame selection is the one node

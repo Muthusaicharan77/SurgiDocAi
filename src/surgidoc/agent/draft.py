@@ -47,6 +47,10 @@ claim more than the quote says.
 
 Rules:
 - One fact per claim, one sentence each. Ids c1, c2, ...
+- The vision models only say which structures are visible in which frames. Write "visible" \
+or "in view"; never state an action (cutting, retracting, holding), what an instrument \
+touches, or the condition of tissue. A second check rejects claims that say more than the \
+evidence or than their quote.
 - Structure ids: {", ".join(CLASS_NAMES)}. Phase ids: {", ".join(PHASES)}.
 - If the text names a structure (including instruments, blood, bleeding), list it in \
 structures, except in guideline and limitation claims.

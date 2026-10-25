@@ -10,109 +10,153 @@
    "kind": "error",
    "n": 15,
    "rejected": 15,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "partial_support": {
    "kind": "error",
    "n": 7,
    "rejected": 7,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 7,
+   "rejected_with_judge_rate": 1.0
   },
   "wrong_phase": {
    "kind": "error",
    "n": 15,
    "rejected": 15,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "unknown_frames": {
    "kind": "error",
    "n": 15,
    "rejected": 15,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "unknown_event": {
    "kind": "error",
    "n": 15,
    "rejected": 15,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "unlisted_structure": {
    "kind": "error",
    "n": 15,
    "rejected": 15,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "unretrieved_passage": {
    "kind": "error",
    "n": 15,
    "rejected": 15,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "altered_quote": {
    "kind": "error",
    "n": 15,
    "rejected": 15,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "quote_from_other_passage": {
    "kind": "error",
    "n": 15,
    "rejected": 15,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "guideline_with_observation": {
    "kind": "error",
    "n": 15,
    "rejected": 15,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "vision_error": {
    "kind": "blind_spot",
    "n": 8,
    "rejected": 0,
-   "rejected_rate": 0.0
+   "rejected_rate": 0.0,
+   "rejected_with_judge": 0,
+   "rejected_with_judge_rate": 0.0
   },
   "misstated_guideline": {
    "kind": "blind_spot",
    "n": 15,
    "rejected": 0,
-   "rejected_rate": 0.0
+   "rejected_rate": 0.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
+  },
+  "overstated_observation": {
+   "kind": "blind_spot",
+   "n": 15,
+   "rejected": 0,
+   "rejected_rate": 0.0,
+   "rejected_with_judge": 15,
+   "rejected_with_judge_rate": 1.0
   },
   "true_structure": {
    "kind": "control",
    "n": 15,
    "rejected": 0,
-   "rejected_rate": 0.0
+   "rejected_rate": 0.0,
+   "rejected_with_judge": 0,
+   "rejected_with_judge_rate": 0.0
   },
   "true_phase": {
    "kind": "control",
    "n": 15,
    "rejected": 0,
-   "rejected_rate": 0.0
+   "rejected_rate": 0.0,
+   "rejected_with_judge": 0,
+   "rejected_with_judge_rate": 0.0
   },
   "true_guideline": {
    "kind": "control",
    "n": 15,
    "rejected": 0,
-   "rejected_rate": 0.0
+   "rejected_rate": 0.0,
+   "rejected_with_judge": 0,
+   "rejected_with_judge_rate": 0.0
   },
   "all_error": {
    "kind": "error",
    "n": 142,
    "rejected": 142,
-   "rejected_rate": 1.0
+   "rejected_rate": 1.0,
+   "rejected_with_judge": 142,
+   "rejected_with_judge_rate": 1.0
   },
   "all_blind_spot": {
    "kind": "blind_spot",
-   "n": 23,
+   "n": 38,
    "rejected": 0,
-   "rejected_rate": 0.0
+   "rejected_rate": 0.0,
+   "rejected_with_judge": 30,
+   "rejected_with_judge_rate": 0.7894736842105263
   },
   "all_control": {
    "kind": "control",
    "n": 45,
    "rejected": 0,
-   "rejected_rate": 0.0
+   "rejected_rate": 0.0,
+   "rejected_with_judge": 0,
+   "rejected_with_judge_rate": 0.0
   }
  },
  "rows": [
@@ -143,7 +187,11 @@
    "reasons": [
     "connective_tissue visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "connective_tissue visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -172,7 +220,11 @@
    "reasons": [
     "hepatic_vein visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "hepatic_vein visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -201,7 +253,11 @@
    "reasons": [
     "liver_ligament visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "liver_ligament visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -230,7 +286,11 @@
    "reasons": [
     "cystic_duct visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "cystic_duct visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -259,7 +319,11 @@
    "reasons": [
     "connective_tissue visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "connective_tissue visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -289,7 +353,11 @@
    "reasons": [
     "grasper visible in 3/6 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "grasper visible in 3/6 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -319,7 +387,11 @@
    "reasons": [
     "gallbladder visible in 3/6 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "gallbladder visible in 3/6 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -349,7 +421,11 @@
    "reasons": [
     "gastrointestinal_tract visible in 3/6 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "gastrointestinal_tract visible in 3/6 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -376,7 +452,11 @@
    "reasons": [
     "phase gallbladder_dissection in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase gallbladder_dissection in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -403,7 +483,11 @@
    "reasons": [
     "phase gallbladder_packaging in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase gallbladder_packaging in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -430,7 +514,11 @@
    "reasons": [
     "phase gallbladder_dissection in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase gallbladder_dissection in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -457,7 +545,11 @@
    "reasons": [
     "phase cleaning_coagulation in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase cleaning_coagulation in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -484,7 +576,11 @@
    "reasons": [
     "phase gallbladder_retraction in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase gallbladder_retraction in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -513,7 +609,11 @@
    "reasons": [
     "unknown frame ids [64, 65, 66, 67, 68]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [64, 65, 66, 67, 68]"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -542,7 +642,11 @@
    "reasons": [
     "unknown frame ids [74, 75, 76, 77, 78]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [74, 75, 76, 77, 78]"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -571,7 +675,11 @@
    "reasons": [
     "unknown frame ids [84, 85, 86, 87, 88]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [84, 85, 86, 87, 88]"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -600,7 +708,11 @@
    "reasons": [
     "unknown frame ids [94, 95, 96, 97, 98]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [94, 95, 96, 97, 98]"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -629,7 +741,11 @@
    "reasons": [
     "unknown frame ids [104, 105, 106, 107, 108]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [104, 105, 106, 107, 108]"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -654,7 +770,11 @@
    "reasons": [
     "unknown event ids ['E7']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E7']"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -679,7 +799,11 @@
    "reasons": [
     "unknown event ids ['E8']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E8']"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -704,7 +828,11 @@
    "reasons": [
     "unknown event ids ['E9']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E9']"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -729,7 +857,11 @@
    "reasons": [
     "unknown event ids ['E10']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E10']"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -754,7 +886,11 @@
    "reasons": [
     "unknown event ids ['E11']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E11']"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -783,7 +919,11 @@
    "reasons": [
     "text names ['connective_tissue'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['connective_tissue'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -812,7 +952,11 @@
    "reasons": [
     "text names ['blood'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['blood'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -841,7 +985,11 @@
    "reasons": [
     "text names ['liver_ligament'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['liver_ligament'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -870,7 +1018,11 @@
    "reasons": [
     "text names ['liver_ligament'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['liver_ligament'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -899,7 +1051,11 @@
    "reasons": [
     "text names ['l_hook_electrocautery'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['l_hook_electrocautery'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -922,7 +1078,11 @@
    "reasons": [
     "passages ['WSES-ACC-2020-021'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-ACC-2020-021'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -945,7 +1105,11 @@
    "reasons": [
     "passages ['CVS-FAILS-2023-017'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['CVS-FAILS-2023-017'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -968,7 +1132,11 @@
    "reasons": [
     "passages ['WSES-BDI-2020-074'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-BDI-2020-074'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -991,7 +1159,11 @@
    "reasons": [
     "passages ['WSES-BDI-2020-007'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-BDI-2020-007'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1014,7 +1186,11 @@
    "reasons": [
     "passages ['CVS-FAILS-2023-004'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['CVS-FAILS-2023-004'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1037,7 +1213,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1060,7 +1240,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1083,7 +1267,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1106,7 +1294,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1129,7 +1321,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1152,7 +1348,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1175,7 +1375,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1198,7 +1402,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1221,7 +1429,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1244,7 +1456,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1273,7 +1489,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1302,7 +1522,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1331,7 +1555,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1360,7 +1588,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1389,7 +1621,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1412,7 +1648,9 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video17",
@@ -1433,7 +1671,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says guidance states the step is optional and can be skipped. The quote is a fragment about Wauben et al. comparing guidelines and says nothing about optionality or skipping. The claim asserts content not in the quote."
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1454,7 +1696,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says guidance states the step is optional. The quote says there is no strong evidence that CVS is superior to other cognitive instruments. It does not say CVS is optional or can be skipped; the claim strengthens and misstates the quote's content."
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1475,7 +1721,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says guidance states the step is optional and can be skipped. The quote says subtotal cholecystectomy is safe and a valuable option in difficult gallbladder removal. It does not say optional-and-skippable for a step; the claim extends the quote to an unsupported statement."
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1496,7 +1746,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says guidance states the step is optional. The quote says Jung et al. promoted documentation of safety as a black box, which is 'an option in further versions of the template'. Calling it optional is loosely near the quote, but the claim frames it as a skippable step of the guidance; the quote does not state this about a step being skipped, so the claim extends it."
+   ]
   },
   {
    "thread": "eval-video17",
@@ -1517,25 +1771,29 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says guidance states the step is optional and can be skipped. The quote describes fundus-first dissection and its higher blood loss; it says nothing about optionality or skipping."
+   ]
   },
   {
    "thread": "eval-video17",
-   "category": "true_structure",
-   "kind": "control",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
    "claim": {
     "id": "x55",
     "claim_type": "structures_visible",
-    "text": "The gallbladder is visible.",
+    "text": "The fat has been fully cleared.",
     "frame_ids": [
-     37,
-     38,
-     39,
-     40,
-     41
+     32,
+     33,
+     34,
+     35,
+     36
     ],
     "structures": [
-     "gallbladder"
+     "fat"
     ],
     "phase": null,
     "event_ids": [],
@@ -1544,49 +1802,26 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says the fat has been fully cleared. Evidence shows fat visible in 5/5 frames with mean area 13%, phase preparation. Nothing shows clearance, and full clearance is a strong claim the visual evidence does not support."
+   ]
   },
   {
    "thread": "eval-video17",
-   "category": "true_structure",
-   "kind": "control",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
    "claim": {
     "id": "x56",
     "claim_type": "structures_visible",
-    "text": "The grasper is visible.",
+    "text": "The liver appears cirrhotic.",
     "frame_ids": [
-     37,
-     38,
-     39,
-     40,
-     41
-    ],
-    "structures": [
-     "grasper"
-    ],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video17",
-   "category": "true_structure",
-   "kind": "control",
-   "claim": {
-    "id": "x57",
-    "claim_type": "structures_visible",
-    "text": "The liver is visible.",
-    "frame_ids": [
-     42,
-     43,
-     44,
-     45,
-     46
+     5,
+     6,
+     7,
+     8,
+     9
     ],
     "structures": [
      "liver"
@@ -1598,16 +1833,82 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says the liver appears cirrhotic. Evidence shows only liver area in frames and no condition assessment. Cirrhosis is a condition the evidence does not show."
+   ]
   },
   {
    "thread": "eval-video17",
-   "category": "true_structure",
-   "kind": "control",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x57",
+    "claim_type": "structures_visible",
+    "text": "The gallbladder appears inflamed and distended.",
+    "frame_ids": [
+     32,
+     33,
+     34,
+     35,
+     36
+    ],
+    "structures": [
+     "gallbladder"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says the gallbladder appears inflamed and distended. Evidence shows only gallbladder visible with mean area 10%. Inflammation and distension are conditions not shown."
+   ]
+  },
+  {
+   "thread": "eval-video17",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
    "claim": {
     "id": "x58",
     "claim_type": "structures_visible",
-    "text": "The liver is visible.",
+    "text": "The gallbladder appears inflamed and distended.",
+    "frame_ids": [
+     10,
+     11,
+     12,
+     13,
+     14
+    ],
+    "structures": [
+     "gallbladder"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says the gallbladder appears inflamed and distended. Evidence shows gallbladder visible with mean area 12%. Inflammation and distension are not in the evidence."
+   ]
+  },
+  {
+   "thread": "eval-video17",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x59",
+    "claim_type": "structures_visible",
+    "text": "The liver appears cirrhotic.",
     "frame_ids": [
      48,
      49,
@@ -1625,22 +1926,142 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Claim says the liver appears cirrhotic. Evidence shows liver visible in 5/5 frames with mean area 5%. No condition is assessed, so cirrhosis is unsupported."
+   ]
   },
   {
    "thread": "eval-video17",
    "category": "true_structure",
    "kind": "control",
    "claim": {
-    "id": "x59",
+    "id": "x60",
     "claim_type": "structures_visible",
-    "text": "The liver is visible.",
+    "text": "The abdominal wall is visible.",
+    "frame_ids": [
+     37,
+     38,
+     39,
+     40,
+     41
+    ],
+    "structures": [
+     "abdominal_wall"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_structure",
+   "kind": "control",
+   "claim": {
+    "id": "x61",
+    "claim_type": "structures_visible",
+    "text": "The fat is visible.",
+    "frame_ids": [
+     37,
+     38,
+     39,
+     40,
+     41
+    ],
+    "structures": [
+     "fat"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_structure",
+   "kind": "control",
+   "claim": {
+    "id": "x62",
+    "claim_type": "structures_visible",
+    "text": "The abdominal wall is visible.",
     "frame_ids": [
      20,
      21,
      22,
      23,
      24
+    ],
+    "structures": [
+     "abdominal_wall"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_structure",
+   "kind": "control",
+   "claim": {
+    "id": "x63",
+    "claim_type": "structures_visible",
+    "text": "The fat is visible.",
+    "frame_ids": [
+     53,
+     54,
+     55,
+     56,
+     57
+    ],
+    "structures": [
+     "fat"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_structure",
+   "kind": "control",
+   "claim": {
+    "id": "x64",
+    "claim_type": "structures_visible",
+    "text": "The liver is visible.",
+    "frame_ids": [
+     10,
+     11,
+     12,
+     13,
+     14
     ],
     "structures": [
      "liver"
@@ -1652,14 +2073,97 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video17",
    "category": "true_phase",
    "kind": "control",
    "claim": {
-    "id": "x60",
+    "id": "x65",
+    "claim_type": "phase",
+    "text": "Phase estimate for these frames.",
+    "frame_ids": [
+     15,
+     16,
+     17,
+     18,
+     19
+    ],
+    "structures": [],
+    "phase": "preparation",
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_phase",
+   "kind": "control",
+   "claim": {
+    "id": "x66",
+    "claim_type": "phase",
+    "text": "Phase estimate for these frames.",
+    "frame_ids": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "structures": [],
+    "phase": "preparation",
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_phase",
+   "kind": "control",
+   "claim": {
+    "id": "x67",
+    "claim_type": "phase",
+    "text": "Phase estimate for these frames.",
+    "frame_ids": [
+     20,
+     21,
+     22,
+     23,
+     24
+    ],
+    "structures": [],
+    "phase": "preparation",
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_phase",
+   "kind": "control",
+   "claim": {
+    "id": "x68",
     "claim_type": "phase",
     "text": "Phase estimate for these frames.",
     "frame_ids": [
@@ -1677,64 +2181,16 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video17",
    "category": "true_phase",
    "kind": "control",
    "claim": {
-    "id": "x61",
-    "claim_type": "phase",
-    "text": "Phase estimate for these frames.",
-    "frame_ids": [
-     25,
-     26,
-     27,
-     28,
-     29
-    ],
-    "structures": [],
-    "phase": "preparation",
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video17",
-   "category": "true_phase",
-   "kind": "control",
-   "claim": {
-    "id": "x62",
-    "claim_type": "phase",
-    "text": "Phase estimate for these frames.",
-    "frame_ids": [
-     48,
-     49,
-     50,
-     51,
-     52
-    ],
-    "structures": [],
-    "phase": "preparation",
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video17",
-   "category": "true_phase",
-   "kind": "control",
-   "claim": {
-    "id": "x63",
+    "id": "x69",
     "claim_type": "phase",
     "text": "Phase estimate for these frames.",
     "frame_ids": [
@@ -1752,39 +2208,16 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video17",
-   "category": "true_phase",
-   "kind": "control",
-   "claim": {
-    "id": "x64",
-    "claim_type": "phase",
-    "text": "Phase estimate for these frames.",
-    "frame_ids": [
-     37,
-     38,
-     39,
-     40,
-     41
-    ],
-    "structures": [],
-    "phase": "preparation",
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video17",
    "category": "true_guideline",
    "kind": "control",
    "claim": {
-    "id": "x65",
+    "id": "x70",
     "claim_type": "guideline",
     "text": "Guidance on this step.",
     "frame_ids": [],
@@ -1794,81 +2227,20 @@
     "passage_ids": [
      "CVS-FAILS-2023-016"
     ],
-    "quote": "in Calot\u2019s triangle [52]. Jenkins suggests this technique is underused, and its"
+    "quote": "due to inflammatory changes in Calot\u2019s triangle [52]. Jenkins suggests this technique"
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video17",
    "category": "true_guideline",
    "kind": "control",
    "claim": {
-    "id": "x66",
-    "claim_type": "guideline",
-    "text": "Guidance on this step.",
-    "frame_ids": [],
-    "structures": [],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [
-     "CVS-FAILS-2023-026"
-    ],
-    "quote": "outcome [89,90]. Mind maps and algorithms use heuristic pathways to facilitate correct"
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video17",
-   "category": "true_guideline",
-   "kind": "control",
-   "claim": {
-    "id": "x67",
-    "claim_type": "guideline",
-    "text": "Guidance on this step.",
-    "frame_ids": [],
-    "structures": [],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [
-     "SYNOPTIC-2022-023"
-    ],
-    "quote": "despite possible elevated costs associated with the creation of digital archives [13]."
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video17",
-   "category": "true_guideline",
-   "kind": "control",
-   "claim": {
-    "id": "x68",
-    "claim_type": "guideline",
-    "text": "Guidance on this step.",
-    "frame_ids": [],
-    "structures": [],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [
-     "SYNOPTIC-2022-001"
-    ],
-    "quote": "operative reporting template for the future. A search for all relevant articles"
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video17",
-   "category": "true_guideline",
-   "kind": "control",
-   "claim": {
-    "id": "x69",
+    "id": "x71",
     "claim_type": "guideline",
     "text": "Guidance on this step.",
     "frame_ids": [],
@@ -1878,11 +2250,82 @@
     "passage_ids": [
      "SYNOPTIC-2022-006"
     ],
-    "quote": "none have dealt with the operative report [21, 22]. Comprehensive reporting systems"
+    "quote": "procedure with suboptimal use of intra-operative imaging [12, 18\u201320]. Many guidelines relating"
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_guideline",
+   "kind": "control",
+   "claim": {
+    "id": "x72",
+    "claim_type": "guideline",
+    "text": "Guidance on this step.",
+    "frame_ids": [],
+    "structures": [],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [
+     "WSES-ACC-2020-002"
+    ],
+    "quote": "those with cardiac disease, renal disease and cirrhosis; or those who are"
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_guideline",
+   "kind": "control",
+   "claim": {
+    "id": "x73",
+    "claim_type": "guideline",
+    "text": "Guidance on this step.",
+    "frame_ids": [],
+    "structures": [],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [
+     "CVS-FAILS-2023-026"
+    ],
+    "quote": "each patient are important elements to increase patients\u2019 safety [87]. Decision making"
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video17",
+   "category": "true_guideline",
+   "kind": "control",
+   "claim": {
+    "id": "x74",
+    "claim_type": "guideline",
+    "text": "Guidance on this step.",
+    "frame_ids": [],
+    "structures": [],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [
+     "SYNOPTIC-2022-001"
+    ],
+    "quote": "published data were assimilated into one \u201cideal\u201d laparoscopic operative report template following"
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
@@ -1911,7 +2354,11 @@
    "reasons": [
     "gastrointestinal_tract visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "gastrointestinal_tract visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -1940,7 +2387,11 @@
    "reasons": [
     "blood visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "blood visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -1969,7 +2420,11 @@
    "reasons": [
     "cystic_duct visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "cystic_duct visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -1998,7 +2453,11 @@
    "reasons": [
     "cystic_duct visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "cystic_duct visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2027,7 +2486,11 @@
    "reasons": [
     "hepatic_vein visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "hepatic_vein visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2057,7 +2520,11 @@
    "reasons": [
     "l_hook_electrocautery visible in 3/6 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "l_hook_electrocautery visible in 3/6 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2084,7 +2551,11 @@
    "reasons": [
     "phase gallbladder_retraction in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase gallbladder_retraction in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2111,7 +2582,11 @@
    "reasons": [
     "phase clipping_cutting in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase clipping_cutting in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2138,7 +2613,11 @@
    "reasons": [
     "phase cleaning_coagulation in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase cleaning_coagulation in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2165,7 +2644,11 @@
    "reasons": [
     "phase calot_triangle_dissection in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase calot_triangle_dissection in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2192,7 +2675,11 @@
    "reasons": [
     "phase gallbladder_dissection in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase gallbladder_dissection in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2221,7 +2708,11 @@
    "reasons": [
     "unknown frame ids [96, 97, 98, 99, 100]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [96, 97, 98, 99, 100]"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2250,7 +2741,11 @@
    "reasons": [
     "unknown frame ids [106, 107, 108, 109, 110]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [106, 107, 108, 109, 110]"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2279,7 +2774,11 @@
    "reasons": [
     "unknown frame ids [116, 117, 118, 119, 120]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [116, 117, 118, 119, 120]"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2308,7 +2807,11 @@
    "reasons": [
     "unknown frame ids [126, 127, 128, 129, 130]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [126, 127, 128, 129, 130]"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2337,7 +2840,11 @@
    "reasons": [
     "unknown frame ids [136, 137, 138, 139, 140]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [136, 137, 138, 139, 140]"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2362,7 +2869,11 @@
    "reasons": [
     "unknown event ids ['E4']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E4']"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2387,7 +2898,11 @@
    "reasons": [
     "unknown event ids ['E5']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E5']"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2412,7 +2927,11 @@
    "reasons": [
     "unknown event ids ['E6']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E6']"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2437,7 +2956,11 @@
    "reasons": [
     "unknown event ids ['E7']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E7']"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2462,7 +2985,11 @@
    "reasons": [
     "unknown event ids ['E8']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E8']"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2491,7 +3018,11 @@
    "reasons": [
     "text names ['cystic_duct'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['cystic_duct'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2520,7 +3051,11 @@
    "reasons": [
     "text names ['connective_tissue'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['connective_tissue'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2549,7 +3084,11 @@
    "reasons": [
     "text names ['hepatic_vein'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['hepatic_vein'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2578,7 +3117,11 @@
    "reasons": [
     "text names ['hepatic_vein'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['hepatic_vein'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2607,7 +3150,11 @@
    "reasons": [
     "text names ['blood'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['blood'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2630,7 +3177,11 @@
    "reasons": [
     "passages ['WSES-ACC-2020-053'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-ACC-2020-053'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2653,7 +3204,11 @@
    "reasons": [
     "passages ['WSES-BDI-2020-045'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-BDI-2020-045'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2676,7 +3231,11 @@
    "reasons": [
     "passages ['WSES-ACC-2020-011'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-ACC-2020-011'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2699,7 +3258,11 @@
    "reasons": [
     "passages ['WSES-ACC-2020-064'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-ACC-2020-064'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2722,7 +3285,11 @@
    "reasons": [
     "passages ['WSES-BDI-2020-055'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-BDI-2020-055'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2745,7 +3312,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2768,7 +3339,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2791,7 +3366,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2814,7 +3393,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2837,7 +3420,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2860,7 +3447,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2883,7 +3474,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2906,7 +3501,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2929,7 +3528,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2952,7 +3555,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -2981,7 +3588,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -3010,7 +3621,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -3039,7 +3654,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -3068,7 +3687,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -3097,7 +3720,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video37",
@@ -3120,7 +3747,9 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
@@ -3143,7 +3772,9 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
@@ -3164,7 +3795,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: The quote is a fragment about anatomical depictions differing from cadaveric structures due to stretching during manoeuvres. Nothing in it says this is optional or can be skipped, so the claim adds a statement the quote does not contain."
+   ]
   },
   {
    "thread": "eval-video37",
@@ -3185,7 +3820,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: contradicts: The quote says the ideal report should follow the CVS schema. That is a directive to follow the schema, the opposite of saying it is optional and can be skipped."
+   ]
   },
   {
    "thread": "eval-video37",
@@ -3206,7 +3845,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: The quote says whether a timeout is performed should be reported. It does not mention optional or skippable steps, so the claim adds a statement the quote does not support."
+   ]
   },
   {
    "thread": "eval-video37",
@@ -3227,7 +3870,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: The quote is a fragment about operative notes and cholecystitis guidelines. It says nothing about the step being optional or skippable, so the claim adds content the quote does not contain."
+   ]
   },
   {
    "thread": "eval-video37",
@@ -3248,16 +3895,178 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: The quote says a document safety check list at the start of the procedure will fit with the need for global safety. It does not say the step is optional or can be skipped, so the claim adds content."
+   ]
+  },
+  {
+   "thread": "eval-video37",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x54",
+    "claim_type": "structures_visible",
+    "text": "The grasper is retracting the gallbladder fundus.",
+    "frame_ids": [
+     86,
+     87,
+     88,
+     89,
+     90
+    ],
+    "structures": [
+     "grasper",
+     "gallbladder"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: The evidence shows grasper and gallbladder visible in 5 frames. It does not show a retraction action or the fundus being touched. The word retracting adds an action the evidence cannot show."
+   ]
+  },
+  {
+   "thread": "eval-video37",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x55",
+    "claim_type": "structures_visible",
+    "text": "The gallbladder appears inflamed and distended.",
+    "frame_ids": [
+     36,
+     37,
+     38,
+     39,
+     40
+    ],
+    "structures": [
+     "gallbladder"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: The evidence shows only that the gallbladder is visible at about 7% of frame area. Inflamed and distended are conditions the evidence does not show, and appears adds certainty the models cannot provide."
+   ]
+  },
+  {
+   "thread": "eval-video37",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x56",
+    "claim_type": "structures_visible",
+    "text": "The fat has been fully cleared.",
+    "frame_ids": [
+     61,
+     62,
+     63,
+     64,
+     65
+    ],
+    "structures": [
+     "fat"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: contradicts: The evidence shows fat visible in all 5 frames at a mean area of 18%. The claim that fat has been fully cleared says the opposite of what the evidence shows."
+   ]
+  },
+  {
+   "thread": "eval-video37",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x57",
+    "claim_type": "structures_visible",
+    "text": "The grasper is retracting the gallbladder fundus.",
+    "frame_ids": [
+     81,
+     82,
+     83,
+     84,
+     85
+    ],
+    "structures": [
+     "grasper",
+     "gallbladder"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: The evidence shows grasper and gallbladder visible in 5 frames. It does not show a retraction action or the fundus being touched. The word retracting adds an action the evidence cannot show."
+   ]
+  },
+  {
+   "thread": "eval-video37",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x58",
+    "claim_type": "structures_visible",
+    "text": "The grasper is retracting the gallbladder fundus.",
+    "frame_ids": [
+     56,
+     57,
+     58,
+     59,
+     60
+    ],
+    "structures": [
+     "grasper",
+     "gallbladder"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: The evidence shows grasper and gallbladder visible in 5 frames. It does not show a retraction action or the fundus being touched. The word retracting adds an action the evidence cannot show."
+   ]
   },
   {
    "thread": "eval-video37",
    "category": "true_structure",
    "kind": "control",
    "claim": {
-    "id": "x54",
+    "id": "x59",
     "claim_type": "structures_visible",
-    "text": "The abdominal wall is visible.",
+    "text": "The grasper is visible.",
     "frame_ids": [
      71,
      72,
@@ -3266,7 +4075,7 @@
      75
     ],
     "structures": [
-     "abdominal_wall"
+     "grasper"
     ],
     "phase": null,
     "event_ids": [],
@@ -3275,76 +4084,24 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_structure",
    "kind": "control",
    "claim": {
-    "id": "x55",
-    "claim_type": "structures_visible",
-    "text": "The gallbladder is visible.",
-    "frame_ids": [
-     26,
-     27,
-     28,
-     29,
-     30
-    ],
-    "structures": [
-     "gallbladder"
-    ],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video37",
-   "category": "true_structure",
-   "kind": "control",
-   "claim": {
-    "id": "x56",
-    "claim_type": "structures_visible",
-    "text": "The liver is visible.",
-    "frame_ids": [
-     51,
-     52,
-     53,
-     54,
-     55
-    ],
-    "structures": [
-     "liver"
-    ],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video37",
-   "category": "true_structure",
-   "kind": "control",
-   "claim": {
-    "id": "x57",
+    "id": "x60",
     "claim_type": "structures_visible",
     "text": "The abdominal wall is visible.",
     "frame_ids": [
-     66,
-     67,
-     68,
-     69,
-     70
+     46,
+     47,
+     48,
+     49,
+     50
     ],
     "structures": [
      "abdominal_wall"
@@ -3356,22 +4113,53 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_structure",
    "kind": "control",
    "claim": {
-    "id": "x58",
+    "id": "x61",
+    "claim_type": "structures_visible",
+    "text": "The grasper is visible.",
+    "frame_ids": [
+     56,
+     57,
+     58,
+     59,
+     60
+    ],
+    "structures": [
+     "grasper"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video37",
+   "category": "true_structure",
+   "kind": "control",
+   "claim": {
+    "id": "x62",
     "claim_type": "structures_visible",
     "text": "The gallbladder is visible.",
     "frame_ids": [
-     41,
-     42,
-     43,
-     44,
-     45
+     31,
+     32,
+     33,
+     34,
+     35
     ],
     "structures": [
      "gallbladder"
@@ -3383,22 +4171,53 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video37",
+   "category": "true_structure",
+   "kind": "control",
+   "claim": {
+    "id": "x63",
+    "claim_type": "structures_visible",
+    "text": "The grasper is visible.",
+    "frame_ids": [
+     81,
+     82,
+     83,
+     84,
+     85
+    ],
+    "structures": [
+     "grasper"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_phase",
    "kind": "control",
    "claim": {
-    "id": "x59",
+    "id": "x64",
     "claim_type": "phase",
     "text": "Phase estimate for these frames.",
     "frame_ids": [
-     91,
-     92,
-     93,
-     94,
-     95
+     86,
+     87,
+     88,
+     89,
+     90
     ],
     "structures": [],
     "phase": "calot_triangle_dissection",
@@ -3408,22 +4227,24 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_phase",
    "kind": "control",
    "claim": {
-    "id": "x60",
+    "id": "x65",
     "claim_type": "phase",
     "text": "Phase estimate for these frames.",
     "frame_ids": [
-     56,
-     57,
-     58,
-     59,
-     60
+     0,
+     1,
+     2,
+     3,
+     4
     ],
     "structures": [],
     "phase": "preparation",
@@ -3433,22 +4254,24 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_phase",
    "kind": "control",
    "claim": {
-    "id": "x61",
+    "id": "x66",
     "claim_type": "phase",
     "text": "Phase estimate for these frames.",
     "frame_ids": [
-     71,
-     72,
-     73,
-     74,
-     75
+     61,
+     62,
+     63,
+     64,
+     65
     ],
     "structures": [],
     "phase": "preparation",
@@ -3458,14 +4281,43 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_phase",
    "kind": "control",
    "claim": {
-    "id": "x62",
+    "id": "x67",
+    "claim_type": "phase",
+    "text": "Phase estimate for these frames.",
+    "frame_ids": [
+     21,
+     22,
+     23,
+     24,
+     25
+    ],
+    "structures": [],
+    "phase": "preparation",
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video37",
+   "category": "true_phase",
+   "kind": "control",
+   "claim": {
+    "id": "x68",
     "claim_type": "phase",
     "text": "Phase estimate for these frames.",
     "frame_ids": [
@@ -3483,39 +4335,16 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video37",
-   "category": "true_phase",
-   "kind": "control",
-   "claim": {
-    "id": "x63",
-    "claim_type": "phase",
-    "text": "Phase estimate for these frames.",
-    "frame_ids": [
-     51,
-     52,
-     53,
-     54,
-     55
-    ],
-    "structures": [],
-    "phase": "preparation",
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_guideline",
    "kind": "control",
    "claim": {
-    "id": "x64",
+    "id": "x69",
     "claim_type": "guideline",
     "text": "Guidance on this step.",
     "frame_ids": [],
@@ -3525,18 +4354,20 @@
     "passage_ids": [
      "SYNOPTIC-2022-010"
     ],
-    "quote": "reported 6 key steps of the LC based on the 2006 guideline"
+    "quote": "neck from its bed on the liver before clipping and transecting the"
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_guideline",
    "kind": "control",
    "claim": {
-    "id": "x65",
+    "id": "x70",
     "claim_type": "guideline",
     "text": "Guidance on this step.",
     "frame_ids": [],
@@ -3544,41 +4375,22 @@
     "phase": null,
     "event_ids": [],
     "passage_ids": [
-     "CVS-FAILS-2023-012"
+     "CVS-FAILS-2023-026"
     ],
-    "quote": "the stretching that occurs during surgical manoeuvres. The triangle contains the Lund"
+    "quote": "exposure. It looks \u201cbehind\u201d by evoking past mistakes and \u201cabove\u201d by implementing"
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_guideline",
    "kind": "control",
    "claim": {
-    "id": "x66",
-    "claim_type": "guideline",
-    "text": "Guidance on this step.",
-    "frame_ids": [],
-    "structures": [],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [
-     "SYNOPTIC-2022-001"
-    ],
-    "quote": "operative templates from published data were assimilated into one \u201cideal\u201d laparoscopic operative"
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video37",
-   "category": "true_guideline",
-   "kind": "control",
-   "claim": {
-    "id": "x67",
+    "id": "x71",
     "claim_type": "guideline",
     "text": "Guidance on this step.",
     "frame_ids": [],
@@ -3588,18 +4400,20 @@
     "passage_ids": [
      "WSES-BDI-2020-029"
     ],
-    "quote": "location other than the gallbladderBile draining from a tubular structureA second cystic"
+    "quote": "aberrant bile duct, or duct of LuschkaDuctal abnormalities: wide cystic duct (which"
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video37",
    "category": "true_guideline",
    "kind": "control",
    "claim": {
-    "id": "x68",
+    "id": "x72",
     "claim_type": "guideline",
     "text": "Guidance on this step.",
     "frame_ids": [],
@@ -3607,13 +4421,38 @@
     "phase": null,
     "event_ids": [],
     "passage_ids": [
-     "WSES-ACC-2020-002"
+     "SYNOPTIC-2022-001"
     ],
-    "quote": "should lead to a distinction between high-risk patients and patients who are"
+    "quote": "for all relevant articles was conducted using PubMed version of Medline, Scopus"
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video37",
+   "category": "true_guideline",
+   "kind": "control",
+   "claim": {
+    "id": "x73",
+    "claim_type": "guideline",
+    "text": "Guidance on this step.",
+    "frame_ids": [],
+    "structures": [],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [
+     "CVS-FAILS-2023-012"
+    ],
+    "quote": "mainly because of the stretching that occurs during surgical manoeuvres. The triangle"
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
@@ -3642,7 +4481,11 @@
    "reasons": [
     "hepatic_vein visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "hepatic_vein visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3671,7 +4514,11 @@
    "reasons": [
     "gastrointestinal_tract visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "gastrointestinal_tract visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3700,7 +4547,11 @@
    "reasons": [
     "cystic_duct visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "cystic_duct visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3729,7 +4580,11 @@
    "reasons": [
     "blood visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "blood visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3758,7 +4613,11 @@
    "reasons": [
     "cystic_duct visible in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "cystic_duct visible in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3788,7 +4647,11 @@
    "reasons": [
     "connective_tissue visible in 3/6 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "connective_tissue visible in 3/6 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3818,7 +4681,11 @@
    "reasons": [
     "gastrointestinal_tract visible in 3/6 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "gastrointestinal_tract visible in 3/6 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3848,7 +4715,11 @@
    "reasons": [
     "l_hook_electrocautery visible in 3/6 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "l_hook_electrocautery visible in 3/6 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3875,7 +4746,11 @@
    "reasons": [
     "phase clipping_cutting in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase clipping_cutting in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3902,7 +4777,11 @@
    "reasons": [
     "phase preparation in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase preparation in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3929,7 +4808,11 @@
    "reasons": [
     "phase clipping_cutting in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase clipping_cutting in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3956,7 +4839,11 @@
    "reasons": [
     "phase gallbladder_dissection in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase gallbladder_dissection in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -3983,7 +4870,11 @@
    "reasons": [
     "phase clipping_cutting in 0/5 cited frames"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "phase clipping_cutting in 0/5 cited frames"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4012,7 +4903,11 @@
    "reasons": [
     "unknown frame ids [48, 49, 50, 51, 52]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [48, 49, 50, 51, 52]"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4041,7 +4936,11 @@
    "reasons": [
     "unknown frame ids [58, 59, 60, 61, 62]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [58, 59, 60, 61, 62]"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4070,7 +4969,11 @@
    "reasons": [
     "unknown frame ids [68, 69, 70, 71, 72]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [68, 69, 70, 71, 72]"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4099,7 +5002,11 @@
    "reasons": [
     "unknown frame ids [78, 79, 80, 81, 82]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [78, 79, 80, 81, 82]"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4128,7 +5035,11 @@
    "reasons": [
     "unknown frame ids [88, 89, 90, 91, 92]"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown frame ids [88, 89, 90, 91, 92]"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4153,7 +5064,11 @@
    "reasons": [
     "unknown event ids ['E6']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E6']"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4178,7 +5093,11 @@
    "reasons": [
     "unknown event ids ['E7']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E7']"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4203,7 +5122,11 @@
    "reasons": [
     "unknown event ids ['E8']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E8']"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4228,7 +5151,11 @@
    "reasons": [
     "unknown event ids ['E9']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E9']"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4253,7 +5180,11 @@
    "reasons": [
     "unknown event ids ['E10']"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "unknown event ids ['E10']"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4282,7 +5213,11 @@
    "reasons": [
     "text names ['liver_ligament'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['liver_ligament'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4311,7 +5246,11 @@
    "reasons": [
     "text names ['hepatic_vein'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['hepatic_vein'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4340,7 +5279,11 @@
    "reasons": [
     "text names ['blood'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['blood'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4369,7 +5312,11 @@
    "reasons": [
     "text names ['liver_ligament'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['liver_ligament'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4398,7 +5345,11 @@
    "reasons": [
     "text names ['hepatic_vein'] but structures does not list them"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "text names ['hepatic_vein'] but structures does not list them"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4421,7 +5372,11 @@
    "reasons": [
     "passages ['WSES-BDI-2020-009'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-BDI-2020-009'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4444,7 +5399,11 @@
    "reasons": [
     "passages ['SYNOPTIC-2022-025'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['SYNOPTIC-2022-025'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4467,7 +5426,11 @@
    "reasons": [
     "passages ['WSES-ACC-2020-068'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-ACC-2020-068'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4490,7 +5453,11 @@
    "reasons": [
     "passages ['WSES-BDI-2020-070'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-BDI-2020-070'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4513,7 +5480,11 @@
    "reasons": [
     "passages ['WSES-ACC-2020-060'] were not retrieved in this run"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "passages ['WSES-ACC-2020-060'] were not retrieved in this run"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4536,7 +5507,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4559,7 +5534,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4582,7 +5561,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4605,7 +5588,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4628,7 +5615,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4651,7 +5642,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4674,7 +5669,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4697,7 +5696,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4720,7 +5723,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4743,7 +5750,11 @@
    "reasons": [
     "quote does not appear verbatim in the cited passages"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "quote does not appear verbatim in the cited passages"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4772,7 +5783,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4801,7 +5816,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4830,7 +5849,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4859,7 +5882,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4888,7 +5915,11 @@
    "reasons": [
     "guideline claims state guidance, not observations; put observations in their own claim"
    ],
-   "correct": true
+   "correct": true,
+   "judged_status": "invalid",
+   "judged_reasons": [
+    "guideline claims state guidance, not observations; put observations in their own claim"
+   ]
   },
   {
    "thread": "eval-video55",
@@ -4913,7 +5944,9 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
@@ -4938,7 +5971,9 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
@@ -4963,7 +5998,9 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
@@ -4986,7 +6023,9 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
@@ -5011,7 +6050,9 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
@@ -5032,7 +6073,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: contradicts: The quote says operative notes may not adequately represent the procedure, and the passage argues for a comprehensive reporting template. Nothing in the quote says the guidance is optional or can be skipped. The claim asserts the opposite of the passage's emphasis on reporting."
+   ]
   },
   {
    "thread": "eval-video55",
@@ -5053,7 +6098,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: contradicts: The quote says the inferior liver border is much more useful for laparoscopic anatomy. Nothing says the guidance is optional or can be skipped. The passage treats this landmark as useful, which runs against the claim."
+   ]
   },
   {
    "thread": "eval-video55",
@@ -5074,7 +6123,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: contradicts: The quote says a detailed and precise surgical report will be critically important. The claim that the guidance is optional or skippable is the opposite of that."
+   ]
   },
   {
    "thread": "eval-video55",
@@ -5095,7 +6148,11 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: contradicts: The quote says the report should be computerized and should incorporate drop-down menus. The claim that this is optional or skippable runs against 'should incorporate'."
+   ]
   },
   {
    "thread": "eval-video55",
@@ -5116,22 +6173,119 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: contradicts: The quote says applying the CVS principles is even more important. Nothing supports the claim that this is optional or can be skipped, and the passage argues the reverse."
+   ]
   },
   {
    "thread": "eval-video55",
-   "category": "true_structure",
-   "kind": "control",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
    "claim": {
     "id": "x59",
     "claim_type": "structures_visible",
-    "text": "The gallbladder is visible.",
+    "text": "The liver appears cirrhotic.",
+    "frame_ids": [
+     25,
+     26,
+     27,
+     28,
+     29
+    ],
+    "structures": [
+     "liver"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Evidence shows the liver is visible and connective tissue in 4/5 frames. Nothing in the evidence shows cirrhosis. The claim adds a condition the evidence does not show."
+   ]
+  },
+  {
+   "thread": "eval-video55",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x60",
+    "claim_type": "structures_visible",
+    "text": "The fat has been fully cleared.",
+    "frame_ids": [
+     10,
+     11,
+     12,
+     13,
+     14
+    ],
+    "structures": [
+     "fat"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: contradicts: Evidence shows fat in 5/5 frames with mean area 21%, so fat is still visible. The claim that it has been fully cleared is the opposite of what the evidence shows."
+   ]
+  },
+  {
+   "thread": "eval-video55",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x61",
+    "claim_type": "structures_visible",
+    "text": "The liver appears cirrhotic.",
     "frame_ids": [
      15,
      16,
      17,
      18,
      19
+    ],
+    "structures": [
+     "liver"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Evidence shows the liver is visible. Nothing in the evidence shows cirrhosis, so the claim adds a condition the evidence does not show."
+   ]
+  },
+  {
+   "thread": "eval-video55",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
+   "claim": {
+    "id": "x62",
+    "claim_type": "structures_visible",
+    "text": "The gallbladder appears inflamed and distended.",
+    "frame_ids": [
+     0,
+     1,
+     2,
+     3,
+     4
     ],
     "structures": [
      "gallbladder"
@@ -5143,16 +6297,20 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Evidence shows the gallbladder is visible, with no information on inflammation or distension. The claim adds conditions the evidence does not show."
+   ]
   },
   {
    "thread": "eval-video55",
-   "category": "true_structure",
-   "kind": "control",
+   "category": "overstated_observation",
+   "kind": "blind_spot",
    "claim": {
-    "id": "x60",
+    "id": "x63",
     "claim_type": "structures_visible",
-    "text": "The gallbladder is visible.",
+    "text": "The gallbladder appears inflamed and distended.",
     "frame_ids": [
      5,
      6,
@@ -5170,22 +6328,55 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "unsupported",
+   "judged_reasons": [
+    "judge: overstates: Evidence shows the gallbladder is visible, with no information on inflammation or distension. The claim adds conditions the evidence does not show."
+   ]
   },
   {
    "thread": "eval-video55",
    "category": "true_structure",
    "kind": "control",
    "claim": {
-    "id": "x61",
+    "id": "x64",
+    "claim_type": "structures_visible",
+    "text": "The abdominal wall is visible.",
+    "frame_ids": [
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "structures": [
+     "abdominal_wall"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video55",
+   "category": "true_structure",
+   "kind": "control",
+   "claim": {
+    "id": "x65",
     "claim_type": "structures_visible",
     "text": "The grasper is visible.",
     "frame_ids": [
-     10,
-     11,
-     12,
-     13,
-     14
+     0,
+     1,
+     2,
+     3,
+     4
     ],
     "structures": [
      "grasper"
@@ -5197,16 +6388,76 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
    "category": "true_structure",
    "kind": "control",
    "claim": {
-    "id": "x62",
+    "id": "x66",
     "claim_type": "structures_visible",
     "text": "The liver is visible.",
+    "frame_ids": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "structures": [
+     "liver"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video55",
+   "category": "true_structure",
+   "kind": "control",
+   "claim": {
+    "id": "x67",
+    "claim_type": "structures_visible",
+    "text": "The gastrointestinal is visible.",
+    "frame_ids": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "structures": [
+     "gastrointestinal_tract"
+    ],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video55",
+   "category": "true_structure",
+   "kind": "control",
+   "claim": {
+    "id": "x68",
+    "claim_type": "structures_visible",
+    "text": "The grasper is visible.",
     "frame_ids": [
      35,
      36,
@@ -5215,7 +6466,7 @@
      39
     ],
     "structures": [
-     "liver"
+     "grasper"
     ],
     "phase": null,
     "event_ids": [],
@@ -5224,91 +6475,16 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video55",
-   "category": "true_structure",
-   "kind": "control",
-   "claim": {
-    "id": "x63",
-    "claim_type": "structures_visible",
-    "text": "The liver is visible.",
-    "frame_ids": [
-     0,
-     1,
-     2,
-     3,
-     4
-    ],
-    "structures": [
-     "liver"
-    ],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
    "category": "true_phase",
    "kind": "control",
    "claim": {
-    "id": "x64",
-    "claim_type": "phase",
-    "text": "Phase estimate for these frames.",
-    "frame_ids": [
-     5,
-     6,
-     7,
-     8,
-     9
-    ],
-    "structures": [],
-    "phase": "calot_triangle_dissection",
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video55",
-   "category": "true_phase",
-   "kind": "control",
-   "claim": {
-    "id": "x65",
-    "claim_type": "phase",
-    "text": "Phase estimate for these frames.",
-    "frame_ids": [
-     40,
-     41,
-     42,
-     43,
-     44
-    ],
-    "structures": [],
-    "phase": "calot_triangle_dissection",
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video55",
-   "category": "true_phase",
-   "kind": "control",
-   "claim": {
-    "id": "x66",
+    "id": "x69",
     "claim_type": "phase",
     "text": "Phase estimate for these frames.",
     "frame_ids": [
@@ -5326,39 +6502,16 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
    "category": "true_phase",
    "kind": "control",
    "claim": {
-    "id": "x67",
-    "claim_type": "phase",
-    "text": "Phase estimate for these frames.",
-    "frame_ids": [
-     30,
-     31,
-     32,
-     33,
-     34
-    ],
-    "structures": [],
-    "phase": "calot_triangle_dissection",
-    "event_ids": [],
-    "passage_ids": [],
-    "quote": null
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video55",
-   "category": "true_phase",
-   "kind": "control",
-   "claim": {
-    "id": "x68",
+    "id": "x70",
     "claim_type": "phase",
     "text": "Phase estimate for these frames.",
     "frame_ids": [
@@ -5376,35 +6529,97 @@
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
-   "category": "true_guideline",
+   "category": "true_phase",
    "kind": "control",
    "claim": {
-    "id": "x69",
-    "claim_type": "guideline",
-    "text": "Guidance on this step.",
-    "frame_ids": [],
-    "structures": [],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [
-     "SYNOPTIC-2022-001"
+    "id": "x71",
+    "claim_type": "phase",
+    "text": "Phase estimate for these frames.",
+    "frame_ids": [
+     10,
+     11,
+     12,
+     13,
+     14
     ],
-    "quote": "the future. A search for all relevant articles was conducted using PubMed"
+    "structures": [],
+    "phase": "calot_triangle_dissection",
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video55",
+   "category": "true_phase",
+   "kind": "control",
+   "claim": {
+    "id": "x72",
+    "claim_type": "phase",
+    "text": "Phase estimate for these frames.",
+    "frame_ids": [
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "structures": [],
+    "phase": "calot_triangle_dissection",
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video55",
+   "category": "true_phase",
+   "kind": "control",
+   "claim": {
+    "id": "x73",
+    "claim_type": "phase",
+    "text": "Phase estimate for these frames.",
+    "frame_ids": [
+     35,
+     36,
+     37,
+     38,
+     39
+    ],
+    "structures": [],
+    "phase": "calot_triangle_dissection",
+    "event_ids": [],
+    "passage_ids": [],
+    "quote": null
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
    "category": "true_guideline",
    "kind": "control",
    "claim": {
-    "id": "x70",
+    "id": "x74",
     "claim_type": "guideline",
     "text": "Guidance on this step.",
     "frame_ids": [],
@@ -5414,60 +6629,20 @@
     "passage_ids": [
      "SYNOPTIC-2022-006"
     ],
-    "quote": "understanding of intra-operative difficulties. Few studies have created a comprehensive gallbladder operative"
+    "quote": "comprehensive gallbladder operative reporting template [23]. The aim of this study was"
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   },
   {
    "thread": "eval-video55",
    "category": "true_guideline",
    "kind": "control",
    "claim": {
-    "id": "x71",
-    "claim_type": "guideline",
-    "text": "Guidance on this step.",
-    "frame_ids": [],
-    "structures": [],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [
-     "CVS-FAILS-2023-012"
-    ],
-    "quote": "When Jean-Francois Calot described this anatomical landmark in his doctoral thesis, he"
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video55",
-   "category": "true_guideline",
-   "kind": "control",
-   "claim": {
-    "id": "x72",
-    "claim_type": "guideline",
-    "text": "Guidance on this step.",
-    "frame_ids": [],
-    "structures": [],
-    "phase": null,
-    "event_ids": [],
-    "passage_ids": [
-     "SYNOPTIC-2022-023"
-    ],
-    "quote": "costs associated with the creation of digital archives [13]. Jung et al."
-   },
-   "status": "supported",
-   "reasons": [],
-   "correct": true
-  },
-  {
-   "thread": "eval-video55",
-   "category": "true_guideline",
-   "kind": "control",
-   "claim": {
-    "id": "x73",
+    "id": "x75",
     "claim_type": "guideline",
     "text": "Guidance on this step.",
     "frame_ids": [],
@@ -5477,11 +6652,82 @@
     "passage_ids": [
      "CVS-FAILS-2023-024"
     ],
-    "quote": "to support that the use of the CVS is superior to other"
+    "quote": "is Strasberg\u2019s critical view of safety introduced almost three decades ago [8]."
    },
    "status": "supported",
    "reasons": [],
-   "correct": true
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video55",
+   "category": "true_guideline",
+   "kind": "control",
+   "claim": {
+    "id": "x76",
+    "claim_type": "guideline",
+    "text": "Guidance on this step.",
+    "frame_ids": [],
+    "structures": [],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [
+     "CVS-FAILS-2023-016"
+    ],
+    "quote": "the cystic plate might be fused with elements of the porta hepatis,"
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video55",
+   "category": "true_guideline",
+   "kind": "control",
+   "claim": {
+    "id": "x77",
+    "claim_type": "guideline",
+    "text": "Guidance on this step.",
+    "frame_ids": [],
+    "structures": [],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [
+     "SYNOPTIC-2022-001"
+    ],
+    "quote": "to fashion a comprehensive, synoptic operative reporting template for the future. A"
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
+  },
+  {
+   "thread": "eval-video55",
+   "category": "true_guideline",
+   "kind": "control",
+   "claim": {
+    "id": "x78",
+    "claim_type": "guideline",
+    "text": "Guidance on this step.",
+    "frame_ids": [],
+    "structures": [],
+    "phase": null,
+    "event_ids": [],
+    "passage_ids": [
+     "CVS-FAILS-2023-026"
+    ],
+    "quote": "best fits each patient are important elements to increase patients\u2019 safety [87]."
+   },
+   "status": "supported",
+   "reasons": [],
+   "correct": true,
+   "judged_status": "supported",
+   "judged_reasons": []
   }
  ]
 }

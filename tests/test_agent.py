@@ -1,3 +1,5 @@
+import json
+
 from surgidoc.agent.claims import Claim
 from surgidoc.agent.facts import FrameFacts, StructureFacts, validated_classes
 from surgidoc.agent.perception import contiguous_runs
@@ -153,3 +155,38 @@ def test_timeline_splits_segments_at_phase_changes_and_gaps():
 
 def test_contiguous_runs():
     assert contiguous_runs([0, 1, 2, 10, 11], max_gap_s=3) == [range(3), range(3, 5)]
+
+
+def test_judge_only_sees_passed_claims_and_turns_overstatements_into_failures(monkeypatch):
+    from types import SimpleNamespace as NS
+
+    from surgidoc.agent import judge as judge_mod
+    from surgidoc.agent.judge import Judgement, Verdict
+
+    facts, timeline = scene()
+    claims = [
+        Claim(id="c1", claim_type="structures_visible", text="The grasper is visible",
+              frame_ids=[0, 1], structures=["grasper"]),
+        Claim(id="c2", claim_type="structures_visible", text="The hook is cutting tissue",
+              frame_ids=[0, 1], structures=["l_hook_electrocautery"]),
+        Claim(id="c3", claim_type="structures_visible", text="Cystic duct visible",
+              frame_ids=[0], structures=["cystic_duct"]),  # fails the verifier
+    ]
+    results = verify(claims, facts, timeline, {}).results
+    sent = {}
+
+    def parse(**kwargs):
+        sent["ids"] = [c["claim_id"] for c in json.loads(kwargs["messages"][0]["content"])]
+        verdicts = [Verdict(claim_id="c1", verdict="faithful", reason="ok"),
+                    Verdict(claim_id="c2", verdict="overstates", reason="cutting not observed")]
+        return NS(parsed_output=Judgement(verdicts=verdicts), stop_reason="end_turn",
+                  content=[], usage=NS(input_tokens=1, output_tokens=1))
+
+    monkeypatch.setattr(judge_mod, "ENABLED", True)
+    monkeypatch.setattr(judge_mod, "client", lambda: NS(messages=NS(parse=parse)))
+    judged, usage = judge_mod.judge(claims, results, facts, timeline, {})
+    assert sent["ids"] == ["c1", "c2"]
+    by_id = {r.claim_id: r for r in judged}
+    assert by_id["c1"].status == "supported"
+    assert by_id["c2"].status == "unsupported" and "cutting not observed" in by_id["c2"].reasons[0]
+    assert by_id["c3"].status == "unsupported" and usage["node"] == "judge"

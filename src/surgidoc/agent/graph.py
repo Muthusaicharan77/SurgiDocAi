@@ -1,8 +1,8 @@
 """The LangGraph pipeline that turns a video folder into a reviewed report.
 
     sample_frames -> perceive -> build_timeline -> select_key_frames -> retrieve
-      -> draft_report -> verify --(failures, retries left)--> draft_report
-                              \\--(passed or out of retries)--> drop_unsupported
+      -> draft_report -> verify -> judge --(failures, retries left)--> draft_report
+                                       \\--(passed or out of retries)--> drop_unsupported
       -> human_review (pauses the run) -> finalize
 
     python -m surgidoc.agent.graph run --source /path/to/cholecseg8k/video37
@@ -33,6 +33,7 @@ from surgidoc.tracing import run_trace
 from .claims import Claim, ClaimResult
 from .draft import draft_report
 from .facts import FrameFacts, Timeline
+from .judge import judge
 from .perception import Perceiver, sample_frames
 from .render import render
 from .retrieve import retrieve
@@ -135,6 +136,14 @@ def node_verify(s: RunState) -> dict:
     return {"results": [r.model_dump() for r in report.results]}
 
 
+def node_judge(s: RunState) -> dict:
+    """Claude checks the meaning of the claims the verifier passed (see judge.py)."""
+    results = [ClaimResult(**r) for r in s["results"]]
+    results, usage = judge(_claims(s), results, _facts(s), _timeline(s),
+                           {p["id"]: p["text"] for p in s["passages"]})
+    return {"results": [r.model_dump() for r in results], "usage": [usage] if usage else []}
+
+
 def route_after_verify(s: RunState) -> str:
     passed = all(r["status"] == "supported" for r in s["results"])
     if passed or s["drafts"] >= MAX_DRAFTS:
@@ -194,6 +203,7 @@ def build_graph(checkpointer):
     g.add_node("retrieve", node_retrieve)
     g.add_node("draft_report", node_draft)
     g.add_node("verify", node_verify)
+    g.add_node("judge", node_judge)
     g.add_node("drop_unsupported", node_drop)
     g.add_node("human_review", node_review)
     g.add_node("finalize", node_finalize)
@@ -205,7 +215,8 @@ def build_graph(checkpointer):
     g.add_edge("select_key_frames", "retrieve")
     g.add_edge("retrieve", "draft_report")
     g.add_edge("draft_report", "verify")
-    g.add_conditional_edges("verify", route_after_verify, ["draft_report", "drop_unsupported"])
+    g.add_edge("verify", "judge")
+    g.add_conditional_edges("judge", route_after_verify, ["draft_report", "drop_unsupported"])
     g.add_edge("drop_unsupported", "human_review")
     g.add_conditional_edges("human_review", route_after_review, ["finalize", END])
     g.add_edge("finalize", END)

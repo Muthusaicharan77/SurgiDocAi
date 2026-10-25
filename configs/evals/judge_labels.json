@@ -1,0 +1,110 @@
+{
+ "note": "Hand labels by the author: does each claim say only what its evidence shows (faithful) or more (overstates)? Labelled by reading each claim next to the run's facts, timeline and quoted passage.",
+ "sets": {
+  "tuning": {
+   "claims": "with_verifier",
+   "note": "Test-video runs. The judge's prompt and evidence were adjusted on these claims.",
+   "runs": {
+    "eval-video17": {
+     "c1": "faithful",
+     "c2": "faithful",
+     "c3": "faithful",
+     "c4": "faithful",
+     "c5": "faithful",
+     "c6": "faithful",
+     "c7": "faithful",
+     "c8": "faithful",
+     "c9": "faithful",
+     "c10": "faithful",
+     "c11": "faithful",
+     "c12": "faithful",
+     "c13": "faithful",
+     "c14": "faithful"
+    },
+    "eval-video37": {
+     "c1": "faithful",
+     "c2": "faithful",
+     "c3": "faithful",
+     "c4": "faithful",
+     "c5": "faithful",
+     "c6": "faithful",
+     "c7": "faithful",
+     "c8": "faithful",
+     "c9": "faithful",
+     "c10": "faithful",
+     "c11": "faithful",
+     "c12": "faithful",
+     "c13": "faithful",
+     "c14": "faithful",
+     "c15": "faithful",
+     "c16": "faithful",
+     "c17": "faithful",
+     "c18": "faithful"
+    },
+    "eval-video55": {
+     "c1": "faithful",
+     "c2": "faithful",
+     "c3": "faithful",
+     "c4": "faithful",
+     "c5": "faithful",
+     "c6": "faithful",
+     "c7": "overstates",
+     "c8": "overstates",
+     "c9": "overstates",
+     "c10": "faithful",
+     "c11": "faithful",
+     "c12": "faithful",
+     "c13": "faithful",
+     "c14": "faithful",
+     "c15": "faithful",
+     "c16": "faithful",
+     "c17": "faithful",
+     "c18": "faithful"
+    }
+   }
+  },
+  "heldout": {
+   "claims": "no_verifier",
+   "note": "Validation videos (video18, video48), first drafts, written after the judge was adjusted; labelled before the judge was run on them. video18 c13 is borderline: it says per-frame data was unavailable, true of what the drafter was shown but not of the system.",
+   "runs": {
+    "heldout-video18": {
+     "c1": "faithful",
+     "c2": "faithful",
+     "c7": "faithful",
+     "c8": "faithful",
+     "c9": "faithful",
+     "c10": "faithful",
+     "c11": "faithful",
+     "c12": "faithful",
+     "c13": "overstates",
+     "c14": "faithful",
+     "c15": "faithful",
+     "c16": "faithful",
+     "c17": "overstates",
+     "c18": "faithful",
+     "c19": "overstates"
+    },
+    "heldout-video48": {
+     "c1": "faithful",
+     "c2": "faithful",
+     "c3": "faithful",
+     "c4": "faithful",
+     "c5": "faithful",
+     "c6": "faithful",
+     "c7": "faithful",
+     "c8": "faithful",
+     "c9": "faithful",
+     "c10": "faithful",
+     "c11": "faithful",
+     "c12": "faithful",
+     "c13": "faithful",
+     "c14": "faithful",
+     "c15": "faithful",
+     "c16": "faithful",
+     "c17": "faithful",
+     "c18": "faithful"
+    }
+   }
+  }
+ }
+}

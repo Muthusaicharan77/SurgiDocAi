@@ -1,0 +1,773 @@
+{
+ "heldout": {
+  "summary": {
+   "claims": 33,
+   "overstating_by_label": 3,
+   "caught": 1,
+   "missed": 2,
+   "false_alarms": 0,
+   "faithful_passed": 30
+  },
+  "rows": [
+   {
+    "thread": "heldout-video18",
+    "id": "c1",
+    "claim_type": "phase",
+    "text": "Frames 0-15 are estimated to belong to the Calot triangle dissection phase.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c2",
+    "claim_type": "phase",
+    "text": "Frames 16-31 are estimated to belong to the Calot triangle dissection phase.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c7",
+    "claim_type": "structures_visible",
+    "text": "The liver is visible in key frames 0, 8, 15, 16 and 31.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c8",
+    "claim_type": "structures_visible",
+    "text": "The gallbladder is visible in key frames 0, 8, 15, 16 and 31.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c9",
+    "claim_type": "structures_visible",
+    "text": "Fat is visible in key frames 0, 8, 15, 16 and 31.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c10",
+    "claim_type": "structures_visible",
+    "text": "The abdominal wall is visible in key frames 0, 8, 15, 16 and 31.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c11",
+    "claim_type": "structures_visible",
+    "text": "The gastrointestinal tract is visible in key frames 0, 8, 15 and 16.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c12",
+    "claim_type": "structures_visible",
+    "text": "Possible connective tissue is in view in key frame 15 (unverified, the class has no measured accuracy).",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c13",
+    "claim_type": "limitation",
+    "text": "No per-frame structure data was available for non-key frames, so structure claims cover only the key frames listed.",
+    "label": "overstates",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c14",
+    "claim_type": "limitation",
+    "text": "The timeline has a gap between frames 15 and 16 with no recorded events, and the system cannot determine what happened in that gap.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c15",
+    "claim_type": "limitation",
+    "text": "The system cannot determine whether the critical view of safety was achieved; the cystic duct and cystic artery were not identified, so the surgeon must confirm it.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c16",
+    "claim_type": "guideline",
+    "text": "Guidance states that the operative report should minimally include the intraoperative findings and the anatomical landmarks of the critical view of safety.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c17",
+    "claim_type": "guideline",
+    "text": "Guidance recommends videotaping the procedure whenever available.",
+    "label": "overstates",
+    "judged": "overstates",
+    "reason": "judge: overstates: The quote lists videotape of the procedure (whenever available) as an item in the operative report's minimum content. The claim turns this into a general recommendation to videotape the procedure, extending the scope beyond what the quote says."
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c18",
+    "claim_type": "guideline",
+    "text": "Guidance states that the three critical view of safety steps must be achieved to ensure a safe dissection.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video18",
+    "id": "c19",
+    "claim_type": "guideline",
+    "text": "Guidance notes that a complete critical view of safety is achieved in only about 50% of cases.",
+    "label": "overstates",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c1",
+    "claim_type": "phase",
+    "text": "Frames 0-31 are estimated to belong to the preparation phase.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c2",
+    "claim_type": "phase",
+    "text": "Frames 32-47 are estimated to belong to the preparation phase.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c3",
+    "claim_type": "event",
+    "text": "A grasper is in view during event E1, spanning frames 0-31.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c4",
+    "claim_type": "event",
+    "text": "A grasper is in view during event E2, spanning frames 32-47.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c5",
+    "claim_type": "structures_visible",
+    "text": "The liver is visible in key frames 0, 15, 23, 32 and 47.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c6",
+    "claim_type": "structures_visible",
+    "text": "The gallbladder is visible in key frames 0, 15, 23, 32 and 47.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c7",
+    "claim_type": "structures_visible",
+    "text": "Fat is visible in key frames 0, 15, 23, 32 and 47.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c8",
+    "claim_type": "structures_visible",
+    "text": "The abdominal wall is visible in key frames 0, 15, 23, 32 and 47.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c9",
+    "claim_type": "structures_visible",
+    "text": "The grasper is visible in key frames 0, 15, 23, 32 and 47.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c10",
+    "claim_type": "structures_visible",
+    "text": "Connective tissue is visible in key frames 32 and 47 (unverified class).",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c11",
+    "claim_type": "guideline",
+    "text": "Guidance says the operative report should minimally include intraoperative findings.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c12",
+    "claim_type": "guideline",
+    "text": "Guidance says the procedure videotape should be included in the documentation whenever available.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c13",
+    "claim_type": "guideline",
+    "text": "Guidance says whether a timeout before transecting any ductal structure was performed should be reported.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c14",
+    "claim_type": "guideline",
+    "text": "Guidance states that three steps must be achieved during laparoscopic cholecystectomy to ensure a safe dissection.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c15",
+    "claim_type": "limitation",
+    "text": "The system cannot determine whether the critical view of safety was achieved, so the surgeon must confirm it.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c16",
+    "claim_type": "limitation",
+    "text": "The system cannot determine whether bleeding occurred because the blood class has no validated accuracy.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c17",
+    "claim_type": "limitation",
+    "text": "Phase labels are estimates because the phase classifier has no measured accuracy here.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "heldout-video48",
+    "id": "c18",
+    "claim_type": "limitation",
+    "text": "The system cannot assess the cystic duct or cystic artery, so their identification must be confirmed by the surgeon.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   }
+  ]
+ },
+ "tuning": {
+  "summary": {
+   "claims": 50,
+   "overstating_by_label": 3,
+   "caught": 3,
+   "missed": 0,
+   "false_alarms": 0,
+   "faithful_passed": 47
+  },
+  "rows": [
+   {
+    "thread": "eval-video17",
+    "id": "c1",
+    "claim_type": "phase",
+    "text": "Frames 0-63 are estimated to belong to the preparation phase.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c2",
+    "claim_type": "structures_visible",
+    "text": "Liver, gallbladder, fat, abdominal wall, gastrointestinal tract and grasper are visible in key frames 0, 8, 24 and 40.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c3",
+    "claim_type": "structures_visible",
+    "text": "Abdominal wall dominates key frame 50, while the liver is largely out of frame.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c4",
+    "claim_type": "event",
+    "text": "The grasper entered view in five short events between frames 0 and 31.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c5",
+    "claim_type": "event",
+    "text": "The grasper was in view across frames 32-47, with the gallbladder visible alongside the liver.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c6",
+    "claim_type": "limitation",
+    "text": "No bleeding event was detected, but the blood class is unvalidated so possible bleeding cannot be ruled out.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c7",
+    "claim_type": "limitation",
+    "text": "Timeline gaps at frames 31-32 and 47-48 contain no segment labels, so transitions there could not be determined.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c8",
+    "claim_type": "limitation",
+    "text": "Only preparation frames were analysed; no calot triangle dissection, clipping or cutting phase was identified, and the phase classifier is unmeasured.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c9",
+    "claim_type": "limitation",
+    "text": "The system cannot determine whether the critical view of safety was achieved because the cystic duct is unvalidated; the surgeon must confirm it.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c10",
+    "claim_type": "guideline",
+    "text": "Guidance: the three steps of the critical view of safety must be achieved to ensure a safe dissection.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c11",
+    "claim_type": "guideline",
+    "text": "Guidance: the report should state whether a timeout was performed before transecting any ductal structure.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c12",
+    "claim_type": "guideline",
+    "text": "Guidance: any anatomical abnormality or unusual findings should be described in the operative report.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c13",
+    "claim_type": "guideline",
+    "text": "Guidance: combining audio, video and photographic documentation with the narrative of the synoptic report should enhance record accuracy.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video17",
+    "id": "c14",
+    "claim_type": "guideline",
+    "text": "Guidance: before exposing anatomical landmarks, adhesions should be lysed bluntly, sharply, or using electrocautery.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c1",
+    "claim_type": "phase",
+    "text": "Frames 0-15 belong to the preparation phase (estimate).",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c2",
+    "claim_type": "phase",
+    "text": "Frames 16-75 belong to the preparation phase (estimate).",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c3",
+    "claim_type": "phase",
+    "text": "Frames 76-95 belong to the calot_triangle_dissection phase (estimate).",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c4",
+    "claim_type": "event",
+    "text": "The grasper is in view from frame 0 to frame 15.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c5",
+    "claim_type": "event",
+    "text": "The grasper is in view from frame 16 to frame 95.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c6",
+    "claim_type": "event",
+    "text": "The l_hook_electrocautery is in view from frame 76 to frame 95.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c7",
+    "claim_type": "structures_visible",
+    "text": "Frame 0 shows the abdominal wall, liver, fat, grasper and gallbladder.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c8",
+    "claim_type": "structures_visible",
+    "text": "Frame 16 shows the grasper and gallbladder with abdominal wall, liver and fat.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c9",
+    "claim_type": "structures_visible",
+    "text": "Frame 45 shows the grasper and gallbladder with abdominal wall, liver and fat.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c10",
+    "claim_type": "structures_visible",
+    "text": "Frame 76 shows the l_hook_electrocautery alongside the grasper and gallbladder.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c11",
+    "claim_type": "structures_visible",
+    "text": "Frame 95 shows the l_hook_electrocautery and grasper together with the gallbladder, fat and liver.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c12",
+    "claim_type": "guideline",
+    "text": "Guidance states that the critical view of safety requires three steps to ensure a safe dissection.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c13",
+    "claim_type": "guideline",
+    "text": "Guidance states that whether a timeout is performed before transecting any ductal structure should be reported.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c14",
+    "claim_type": "guideline",
+    "text": "Guidance states that the surgeon should report during which critical view of safety steps difficulties were encountered.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c15",
+    "claim_type": "guideline",
+    "text": "Guidance states that combining audio, video and photographic documentation with the narrative report will enhance record-keeping accuracy.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c16",
+    "claim_type": "limitation",
+    "text": "The system cannot confirm the critical view of safety because it does not assess the cystic duct and cystic artery, so the surgeon must confirm it.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c17",
+    "claim_type": "limitation",
+    "text": "The system did not detect bleeding, and the blood and cystic duct classes have no measured accuracy.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video37",
+    "id": "c18",
+    "claim_type": "limitation",
+    "text": "Phase labels have no measured accuracy, and the timeline has a gap between frames 15 and 16 with no assigned segment.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c1",
+    "claim_type": "phase",
+    "text": "The footage segment from frame 0 to frame 47 (20.3 s to 29.7 s) is estimated to be the calot_triangle_dissection phase.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c2",
+    "claim_type": "structures_visible",
+    "text": "The grasper, gallbladder, liver, fat and abdominal wall are visible in the key frames.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c3",
+    "claim_type": "structures_visible",
+    "text": "The gastrointestinal tract is visible in most key frames.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c4",
+    "claim_type": "structures_visible",
+    "text": "The L-hook electrocautery is visible in most key frames, from frame 8 onward.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c5",
+    "claim_type": "event",
+    "text": "The grasper is in view for the whole segment from frame 0 to frame 47.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c6",
+    "claim_type": "event",
+    "text": "The L-hook electrocautery first appears at about 21.9 s (frame 8) alongside the grasper.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c7",
+    "claim_type": "event",
+    "text": "The L-hook electrocautery is in use on the cystic region from frame 14 to frame 22 (23.1 s to 24.7 s) while the grasper holds the tissue.",
+    "label": "overstates",
+    "judged": "overstates",
+    "reason": "judge: overstates: The evidence shows the L-hook in view from frame 14 to 22 and the grasper in view in those frames. It does not show the L-hook being used, nor that it is on the cystic region, nor that the grasper holds tissue. These are actions and locations the vision output cannot show."
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c8",
+    "claim_type": "event",
+    "text": "The L-hook electrocautery is in view near the gallbladder from frame 30 to frame 32 (26.3 s to 26.7 s).",
+    "label": "overstates",
+    "judged": "overstates",
+    "reason": "judge: overstates: Event E4 shows the L-hook in view from frame 30 to 32, and the gallbladder is visible in those frames. The evidence does not show the instrument being near the gallbladder, so 'near the gallbladder' goes beyond what is shown."
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c9",
+    "claim_type": "event",
+    "text": "The L-hook electrocautery is in use from frame 36 to frame 47 (27.5 s to 29.7 s) at the gallbladder neck.",
+    "label": "overstates",
+    "judged": "overstates",
+    "reason": "judge: overstates: Event E5 shows the L-hook in view from frame 36 to 47 and the gallbladder visible in those frames. The claim adds that the instrument is 'in use' and is 'at the gallbladder neck'. Neither the action nor the location is shown."
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c10",
+    "claim_type": "structures_visible",
+    "text": "Connective tissue is detected in key frames, but this class is unverified.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c11",
+    "claim_type": "limitation",
+    "text": "No bleeding was reported by the system, and blood is an unvalidated class, so possible bleeding cannot be assessed from this footage.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c12",
+    "claim_type": "limitation",
+    "text": "The system cannot determine whether the cystic duct and cystic artery are identified, so the surgeon must confirm the critical view of safety.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c13",
+    "claim_type": "limitation",
+    "text": "The phase classifier has no measured accuracy here, so the phase label is an estimate only.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c14",
+    "claim_type": "limitation",
+    "text": "Blood loss, operative time and drainage use cannot be determined from the video and must come from the surgical record.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c15",
+    "claim_type": "guideline",
+    "text": "Guidance states that the three Critical View of Safety steps must be achieved to ensure a safe dissection.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c16",
+    "claim_type": "guideline",
+    "text": "Guidance states that the surgeon should report during which Critical View of Safety step difficulties were encountered.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c17",
+    "claim_type": "guideline",
+    "text": "Guidance states that the operative report should include the amount of blood loss.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   },
+   {
+    "thread": "eval-video55",
+    "id": "c18",
+    "claim_type": "guideline",
+    "text": "Guidance states that combining video documentation with the narrative of the synoptic report will enhance record-keeping accuracy.",
+    "label": "faithful",
+    "judged": "faithful",
+    "reason": ""
+   }
+  ]
+ }
+}

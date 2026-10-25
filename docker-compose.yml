@@ -1,0 +1,24 @@
+# docker compose up --build    then open http://localhost:8000/docs
+#
+# One-time setup, from the repo root (writes into the mounted folders):
+#   docker compose run --rm api python scripts/download_weights.py
+#   docker compose run --rm api python scripts/fetch_guidelines.py
+#   docker compose run --rm api python -m surgidoc.retrieval.index build
+# The segmentation weights come from your own training run: weights/seg/unet_r34_best.pt
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: .env          # ANTHROPIC_API_KEY, optional LANGFUSE_* keys
+        required: false
+    volumes:
+      - ./weights:/app/weights
+      - ./data:/app/data    # guideline corpus, Qdrant index, run checkpoints, uploads
+      - ./runs:/app/runs    # reports
+      - hf-cache:/home/surgidoc/.cache/huggingface  # embedding and reranker models
+    restart: unless-stopped
+
+volumes:
+  hf-cache:

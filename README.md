@@ -33,6 +33,7 @@ is measured.
 - [x] Tool-use eval for key-frame selection: clean tool calls, no measured gain over the deterministic fallback rule ([RESULTS.md](RESULTS.md))
 - [x] Judge node: Claude checks that each claim says only what its evidence says; catches 30/30 planted meaning errors but at most 1 of 3 real overstatements on held-out runs; 2 false alarms in 231 judgements of faithful claims ([RESULTS.md](RESULTS.md))
 - [x] Checklist comparison with a German operative report template and three standards: 1 of 31 items covered, 5 partly, 11 visible in a full recording but not reported, 14 need the patient record ([RESULTS.md](RESULTS.md))
+- [x] Serving: HTTP API with live progress (FastAPI, Server-Sent Events), MCP server for the vision and retrieval tools, Docker image built and checked in CI (`src/surgidoc/serve/`)
 - [x] Langfuse tracing: a span per graph node, a generation per Claude call, verifier scores per trace (`src/surgidoc/tracing.py`)
 - [ ] Trace screenshot from a real Langfuse instance
 
@@ -100,6 +101,39 @@ echo "ANTHROPIC_API_KEY=..." > .env            # git-ignored
 
 The run pauses before the report is written and prints the verified claims for review.
 The model is Claude Haiku 5.5 by default (`SURGIDOC_MODEL` to change it).
+
+## Serving
+
+**HTTP API** (`src/surgidoc/serve/api.py`): upload a video, follow the run, review, get the report.
+
+```bash
+.venv/bin/pip install -e ".[agent,serve]"
+.venv/bin/uvicorn surgidoc.serve.api:app --port 8000       # docs at http://localhost:8000/docs
+
+curl -F video=@clip.mp4 localhost:8000/runs                 # {"id": "...", "status": "running"}
+curl -N localhost:8000/runs/<id>/events                     # progress, as Server-Sent Events
+curl localhost:8000/runs/<id>                               # status; the claims once it awaits review
+curl -X POST localhost:8000/runs/<id>/review -H 'content-type: application/json' \
+     -d '{"approve": true, "remove": ["c7"], "notes": "..."}'
+curl localhost:8000/runs/<id>/report                        # Markdown, once approved
+```
+
+Videos are sampled at 5 frames per second. Runs execute one at a time in a background
+worker; their state is in the same SQLite checkpoints as the CLI's, so it survives a
+restart and CLI runs can be reviewed through the API. No authentication: run it locally
+or behind your own access control.
+
+**MCP server** (`src/surgidoc/serve/mcp_server.py`): `segment_frame`, `classify_phase` and
+`retrieve_guideline` for any MCP client, over stdio. Every result says whether the class or
+phase estimate has measured accuracy.
+
+```bash
+claude mcp add surgidoc -- "$PWD/.venv/bin/python" -m surgidoc.serve.mcp_server
+```
+
+**Docker** (`Dockerfile`, `docker-compose.yml`): the API on CPU. Weights, the guideline index
+and run data are mounted from `weights/`, `data/` and `runs/`; see the compose file for the
+one-time setup commands. CI builds the image and checks that it serves.
 
 ## Tracing (optional)
 

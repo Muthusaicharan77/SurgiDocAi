@@ -29,3 +29,19 @@ jobs:
       # fake clients. The evals that call Claude are run by hand (RESULTS.md).
       - name: Test
         run: pytest -q
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build image
+        run: docker build -t surgidoc .
+      # No weights, index or API key in CI: the app starts without them (models load on
+      # the first run), so this checks the image installs and serves.
+      - name: Start and check /health
+        run: |
+          docker run -d --name api -p 8000:8000 surgidoc
+          for i in $(seq 1 30); do curl -sf localhost:8000/health && exit 0; sleep 2; done
+          docker logs api
+          exit 1

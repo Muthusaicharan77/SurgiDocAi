@@ -179,6 +179,70 @@ before being chosen, fallback never needed. About 7,200 input tokens per selecti
 .venv/bin/python -m surgidoc.evals.tool_use --threads eval-video17 eval-video37 eval-video55 --repeats 3
 ```
 
+## Report: comparison with what a real operative report contains
+
+Compiled 2026-10-25 (`configs/evals/report_checklist.json`, `reports/eval_checklist.json`).
+No public dataset pairs Cholec80 or CholecSeg8k videos with surgeons' reports, so the
+reports from the 3 test runs are compared with what such a report must contain. Four
+sources, merged into 31 items:
+
+- **DE:** a German operative report template for laparoscopic cholecystectomy (MIC-Manual
+  der Endoskopischen Chirurgie, Kliniken Essen-Mitte, 2001; fictitious patient). Cited, not
+  copied.
+- **RCSI:** the Royal College of Surgeons of Ireland's 14 criteria for operative notes.
+- **WSES:** the WSES 2020 guideline's minimum content of the operative report.
+- **DSS:** the Dutch Surgical Society's 6 key steps.
+
+| Source | Items | Covered | Partial | Visible in a full recording, not reported | Needs the record, not the video |
+|---|---:|---:|---:|---:|---:|
+| German template | 22 | 1 | 4 | 9 | 8 |
+| RCSI | 14 | 0 | 3 | 1 | 10 |
+| WSES | 11 | 1 | 2 | 5 | 3 |
+| DSS | 6 | 0 | 1 | 4 | 1 |
+| **All, deduplicated** | **31** | **1** | **5** | **11** | **14** |
+
+- **Covered:** the energy device (L-hook electrocautery in view, with times), in the 2 runs
+  whose footage shows it.
+- **Partial:** findings (which structures are visible, not their condition), Calot
+  dissection (as a phase estimate, 2 of 3 runs), complications (possible bleeding only,
+  unvalidated), key images (chosen for coverage, not for the steps a surgeon photographs),
+  and sign-off (reviewer approval, no named signature).
+- **Visible but not reported:** access, adhesiolysis, the critical view of safety, clipping,
+  gallbladder dissection, retrieval, haemostasis, anatomical variations, conversion, drain,
+  operative time. Some need models SurgiDoc does not have (CVS, actions, clip counting);
+  most are simply not in the 10-25 s CholecSeg8k fragments. The critical view of safety is
+  handed to the surgeon as a limitation in all 3 reports.
+- **Needs the record:** patient, date, team, anaesthesia, urgency, diagnosis and codes,
+  blood loss volume, closure, histology, implants, cholangiography, post-operative orders.
+
+**How the reports differ, beyond coverage:**
+
+- **The German report narrates actions and states judgements.** It is one paragraph of what
+  the surgeon did, in order ("Einbringen der Trokare", "Darstellung des Ductus cysticus"),
+  with verdicts such as "können zweifelsfrei identifiziert werden" (can be identified
+  beyond doubt). That verdict is the central safety statement of the report, and it is the
+  one SurgiDoc defers to the surgeon.
+- **SurgiDoc lists observations, with their uncertainty.** What is visible when, with frame
+  times, phase estimates labelled as estimates, unvalidated classes labelled unverified,
+  guideline passages quoted, and an explicit list of what it could not determine. The
+  template has none of these.
+- **So the output is a draft of the video part of the report.** It can supply timestamps,
+  instrument use and key frames that a surgeon would otherwise reconstruct from memory, plus
+  reminders of what the guidelines ask to be documented. It does not replace the report.
+- **One wording problem found while comparing.** video55's report says the L-hook "is in
+  use on the cystic region ... while the grasper holds the tissue". The vision models only
+  show both instruments in view; "in use", "cystic region" and "holds" are Claude's
+  interpretation. The verifier checks which structures a claim names, not its verbs, so
+  this passed.
+
+**Caveats.** The categories are my judgement from the system's design, not a surgeon's.
+The German template is a single example from 2001. The covered and partial items were
+checked against the 3 test runs' actual claims; the rest were not, by definition.
+
+```bash
+.venv/bin/python -m surgidoc.evals.checklist --threads eval-video17 eval-video37 eval-video55
+```
+
 ## Guideline retrieval
 
 Measured 2026-10-24 (`reports/eval_retrieval.json`). 27 hand-written questions over the

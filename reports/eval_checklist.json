@@ -1,0 +1,343 @@
+{
+ "items": 31,
+ "categories": {
+  "not_from_video": 14,
+  "possible_from_video": 11,
+  "partial": 5,
+  "covered": 1
+ },
+ "by_source": {
+  "DE": {
+   "not_from_video": 8,
+   "possible_from_video": 9,
+   "partial": 4,
+   "covered": 1
+  },
+  "RCSI": {
+   "not_from_video": 10,
+   "possible_from_video": 1,
+   "partial": 3
+  },
+  "WSES": {
+   "possible_from_video": 5,
+   "not_from_video": 3,
+   "partial": 2,
+   "covered": 1
+  },
+  "DSS": {
+   "possible_from_video": 4,
+   "partial": 1,
+   "not_from_video": 1
+  }
+ },
+ "rows": [
+  {
+   "id": "patient_id",
+   "item": "Patient name and admission number",
+   "sources": [
+    "DE"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "date",
+   "item": "Date and time of the operation",
+   "sources": [
+    "DE",
+    "RCSI"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "duration",
+   "item": "Operative time (start and end)",
+   "sources": [
+    "DE",
+    "WSES"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "anaesthesia",
+   "item": "Type of anaesthesia",
+   "sources": [
+    "DE"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "team",
+   "item": "Surgeon, assistants, scrub nurse",
+   "sources": [
+    "DE",
+    "RCSI"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "urgency",
+   "item": "Elective or emergency procedure",
+   "sources": [
+    "RCSI"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "diagnosis",
+   "item": "Diagnosis and indication, with ICD-10 code",
+   "sources": [
+    "DE",
+    "RCSI",
+    "WSES"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "procedure",
+   "item": "Procedure performed, with OPS/ICPM code",
+   "sources": [
+    "DE",
+    "RCSI"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "access",
+   "item": "Access: incision, trocar insertion under vision, pneumoperitoneum",
+   "sources": [
+    "DE",
+    "RCSI",
+    "DSS"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "findings",
+   "item": "Intraoperative findings: state of the gallbladder, inflammation, adhesions",
+   "sources": [
+    "DE",
+    "RCSI",
+    "WSES",
+    "DSS"
+   ],
+   "category": "partial",
+   "present_in": [
+    "eval-video17",
+    "eval-video37",
+    "eval-video55"
+   ]
+  },
+  {
+   "id": "adhesiolysis",
+   "item": "Release of adhesions",
+   "sources": [
+    "DE"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "calot_dissection",
+   "item": "Dissection of Calot's triangle",
+   "sources": [
+    "DE"
+   ],
+   "category": "partial",
+   "present_in": [
+    "eval-video37",
+    "eval-video55"
+   ]
+  },
+  {
+   "id": "cvs",
+   "item": "Critical view of safety: cystic duct and artery identified as the only two structures",
+   "sources": [
+    "DE",
+    "WSES",
+    "DSS"
+   ],
+   "category": "possible_from_video",
+   "present_in": [
+    "eval-video17",
+    "eval-video37",
+    "eval-video55"
+   ]
+  },
+  {
+   "id": "clipping",
+   "item": "Clipping and division of duct and artery, number and type of clips",
+   "sources": [
+    "DE",
+    "DSS"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "gb_dissection",
+   "item": "Dissection of the gallbladder from the liver bed, with the device used",
+   "sources": [
+    "DE"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "energy_device",
+   "item": "Energy device used",
+   "sources": [
+    "DE",
+    "WSES"
+   ],
+   "category": "covered",
+   "present_in": [
+    "eval-video37",
+    "eval-video55"
+   ]
+  },
+  {
+   "id": "retrieval",
+   "item": "Retrieval of the gallbladder in a bag",
+   "sources": [
+    "DE"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "haemostasis",
+   "item": "Irrigation and haemostasis of the liver bed",
+   "sources": [
+    "DE",
+    "DSS"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "blood_loss",
+   "item": "Blood loss",
+   "sources": [
+    "WSES"
+   ],
+   "category": "not_from_video",
+   "present_in": [
+    "eval-video17",
+    "eval-video37",
+    "eval-video55"
+   ]
+  },
+  {
+   "id": "complications",
+   "item": "Problems and complications",
+   "sources": [
+    "RCSI"
+   ],
+   "category": "partial",
+   "present_in": [
+    "eval-video17",
+    "eval-video37",
+    "eval-video55"
+   ]
+  },
+  {
+   "id": "anatomical_variation",
+   "item": "Anatomical variations and unusual findings",
+   "sources": [
+    "WSES"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "cholangiography",
+   "item": "Intraoperative cholangiography findings, if performed",
+   "sources": [
+    "WSES"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "conversion",
+   "item": "Conversion to open surgery",
+   "sources": [
+    "WSES"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "drain",
+   "item": "Drain placement",
+   "sources": [
+    "DE",
+    "WSES"
+   ],
+   "category": "possible_from_video"
+  },
+  {
+   "id": "closure",
+   "item": "Trocar removal under vision, fascia and skin closure, dressing",
+   "sources": [
+    "DE",
+    "RCSI",
+    "DSS"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "specimen",
+   "item": "Tissue removed and sent to histology",
+   "sources": [
+    "DE",
+    "RCSI"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "extra_procedures",
+   "item": "Additional procedures and why",
+   "sources": [
+    "RCSI"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "implants",
+   "item": "Implants with serial numbers",
+   "sources": [
+    "RCSI"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "postop",
+   "item": "Post-operative instructions",
+   "sources": [
+    "RCSI"
+   ],
+   "category": "not_from_video"
+  },
+  {
+   "id": "images",
+   "item": "Images or video of the key steps",
+   "sources": [
+    "DE",
+    "WSES"
+   ],
+   "category": "partial",
+   "present_in": [
+    "eval-video17",
+    "eval-video37",
+    "eval-video55"
+   ]
+  },
+  {
+   "id": "signature",
+   "item": "Surgeon's signature",
+   "sources": [
+    "DE",
+    "RCSI"
+   ],
+   "category": "partial",
+   "present_in": [
+    "eval-video17",
+    "eval-video37",
+    "eval-video55"
+   ]
+  }
+ ]
+}

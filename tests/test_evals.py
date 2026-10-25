@@ -143,3 +143,25 @@ def test_selection_and_tool_metrics():
     t = tool_metrics(calls, [0, 7])
     assert (t["calls_with_unknown_ids"], t["images_viewed"], t["frames_viewed_twice"]) == (1, 2, 1)
     assert t["key_frames_inspected"] == 0.5
+
+
+def test_checklist_checks_and_labels():
+    from surgidoc.evals.checklist import DEFAULT_CHECKLIST, present
+
+    claims = [
+        Claim(id="c1", claim_type="phase", text="Calot", frame_ids=[0],
+              phase="calot_triangle_dissection"),
+        Claim(id="c2", claim_type="event", text="The L-hook is in view", event_ids=["E1"]),
+        Claim(id="c3", claim_type="limitation", text="The surgeon must confirm the critical view"),
+    ]
+    assert present({"phase": "calot_triangle_dissection"}, claims, [])
+    assert present({"event_structure": "l_hook_electrocautery"}, claims, [])
+    assert present({"limitation_mentions": ["critical view"]}, claims, [])
+    assert not present({"structure": "gallbladder"}, claims, [])
+
+    checklist = json.loads(DEFAULT_CHECKLIST.read_text())
+    for item in checklist["items"]:
+        assert item["category"] in checklist["categories"], item["id"]
+        assert set(item["sources"]) <= set(checklist["sources"]), item["id"]
+    count = {s: sum(s in i["sources"] for i in checklist["items"]) for s in checklist["sources"]}
+    assert count["RCSI"] == 14 and count["DSS"] == 6  # the standards' own item counts

@@ -29,6 +29,7 @@ is measured.
 - [x] Evals: claim grounding against ground-truth masks, verifier on/off, retrieval hit@k / recall@k / MRR with three rerankers (`src/surgidoc/evals/`, [RESULTS.md](RESULTS.md))
 - [x] Injected-error eval for the verifier: 142/142 planted errors rejected, 0/45 true claims rejected, 0/23 blind-spot cases caught ([RESULTS.md](RESULTS.md))
 - [x] Tool-use eval for key-frame selection: clean tool calls, no measured gain over the deterministic fallback rule ([RESULTS.md](RESULTS.md))
+- [x] Checklist comparison with a German operative report template and three standards: 1 of 31 items covered, 5 partly, 11 visible in a full recording but not reported, 14 need the patient record ([RESULTS.md](RESULTS.md))
 - [x] Langfuse tracing: a span per graph node, a generation per Claude call, verifier scores per trace (`src/surgidoc/tracing.py`)
 - [ ] Trace screenshot from a real Langfuse instance
 

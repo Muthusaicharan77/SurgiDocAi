@@ -148,3 +148,59 @@ def test_failures_and_bad_requests_are_reported(api):
         assert client.post("/runs", data={"source": str(tmp_path)}).status_code == 403  # off
         not_video = client.post("/runs", files={"video": ("x.mp4", b"not a video")}).json()["id"]
         assert wait_for(client, not_video, {"failed"})["error"]
+
+
+def test_mcp_tools_over_an_in_memory_client(tmp_path, monkeypatch):
+    import anyio
+    from mcp.client.client import Client
+    from PIL import Image
+
+    from surgidoc.retrieval.chunking import Passage
+    from surgidoc.retrieval.index import Hit
+    from surgidoc.serve import mcp_server as m
+
+    class FakePerceiver:
+        class phase:
+            @staticmethod
+            def predict_proba(images):
+                p = np.zeros((len(images), 7))
+                p[:, 1] = 0.9
+                p[:, 0] = 0.1
+                return p
+
+        def segment(self, images):
+            mask = np.full((20, 20), 2, np.int64)  # liver
+            mask[:4] = 5  # grasper, 20% of the frame
+            mask[19, 19] = 8  # one pixel (0.25%) of cystic duct: detected, not visible
+            return [mask for _ in images]
+
+    class FakeIndex:
+        def search(self, query, k):
+            p = Passage(id="P1", doc_key="D", doc_title="Doc", section="S", text="CVS first.",
+                        url="https://example.org", license="cc by")
+            return [Hit(passage=p, dense_score=0.5, rerank_score=0.9)][:k]
+
+    monkeypatch.setattr(m, "perceiver", lambda: FakePerceiver())
+    monkeypatch.setattr(m, "guideline_index", lambda: FakeIndex())
+    image = tmp_path / "f.png"
+    Image.new("RGB", (8, 8)).save(image)
+
+    async def calls():
+        async with Client(m.server) as client:
+            names = {t.name for t in (await client.list_tools()).tools}
+            seg = await client.call_tool("segment_frame", {"image_path": str(image)})
+            phase = await client.call_tool("classify_phase", {"image_paths": [str(image)] * 2})
+            guide = await client.call_tool("retrieve_guideline", {"query": "cvs", "k": 1})
+            missing = await client.call_tool("segment_frame", {"image_path": "/nope.png"})
+            return names, seg, phase, guide, missing
+
+    names, seg, phase, guide, missing = anyio.run(calls)
+    assert names == {"segment_frame", "classify_phase", "retrieve_guideline"}
+    s = seg.structured_content["structures"]
+    assert s["liver"]["visible"] and s["liver"]["validated"] and s["grasper"]["area"] == 0.2
+    assert not s["cystic_duct"]["visible"] and not s["cystic_duct"]["validated"]
+    frames = phase.structured_content["frames"]
+    assert [f["phase"] for f in frames] == ["calot_triangle_dissection"] * 2
+    assert phase.structured_content["validated"] is False
+    assert guide.structured_content["passages"][0]["id"] == "P1"
+    assert missing.is_error
